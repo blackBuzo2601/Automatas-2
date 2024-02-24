@@ -14,7 +14,7 @@
 fs.readFile('arreglojuegos.json','utf8', (err, data) => {
         var infoJSON = data; //variable que almacena toda la información del archivo .JSON
 
-    
+        
 
     
     

@@ -42,7 +42,40 @@
       "edadRecomendada": "14+",
       "descripcionDelJuego": "Me estoy yendo por la banqueta hombre"
     }
+  ],
+
+  "mensajesBienvenida" : [
+    {
+      "mensaje" : "Buenas tardes. Soy BOTBUZO."
+    },
+    {
+      "mensaje" : "Hola que tal. Soy BOTBUZO. ¿Que necesitas?"
+    },
+    {
+      "mensaje" : "Que tal amig@. Soy BOTBUZO. Selecciona un botón por favor."
+    },
+    {
+      "mensaje" : "Que tal. Soy BOTBUZO. Elige una de las opciones a continuación para hablar conmigo."
+    },
+    {
+      "mensaje" :  "Buenas, amigo@. Soy BOTBUZO. ¿Que deseas consultar?"
+    }
+  ],
+  "mensajesSalida" : [
+    {
+      "mensaje" : "Gracias por hablar conmigo. Hasta la próxima."
+    },
+    {
+      "mensaje" : "Fue un placer hablar contigo. Que estés bien."
+    },
+    {
+      "mensaje" : "Hasta pronto. Cuídate y come bien."   
+    },
+    {
+      "mensaje" : "Hasta la proxima, que pases bonito día."
+    }
   ]
+
 }
 
 
