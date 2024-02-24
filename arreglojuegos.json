@@ -1,0 +1,48 @@
+{
+  "listaVideojuegos": [
+    {
+      "titulo": "Mario Kart Wii",
+      "genero": "Carreras",
+      "año": "2008",
+      "edadRecomendada": "Para Todos",
+      "descripcionDelJuego": "Mario Kart Wii es un videojuego de carreras desarrollado y distribuido por Nintendo para la consola Wii. Es la sexta entrega de la serie Mario Kart y la segunda en usar la conexión Wi-Fi de Nintendo."
+    },
+    {
+      "titulo": "The Legend of Zelda Skyward Sword",
+      "genero": "Aventura",
+      "año": "2011",
+      "edadRecomendada": "Para Todos",
+      "descripcionDelJuego": "La historia de como comenzó todo, Skyward Sword nos cuenta el inicio de la historia que se convirtió en leyenda. Conoceras al primer Link y a la primera Zelda de la historia cronológicamente donde observaras cual es la razón de porque siempre cada tanto tiempo existe una batalla que involucra 3 heroes."
+    },
+    {
+      "titulo": "The Last of Us",
+      "genero": "Horror Supervivencia",
+      "año": "2013",
+      "edadRecomendada": "17+",
+      "descripcionDelJuego": "Ganador de más de 100 premios a mejor juego del año, The last of Us nos sitúa en un mundo post apocalíptico devastado por un virus donde los sobrevivientes tienen que luchar por sobrevivir incluso contra otras personas. Joel un sobreviviente del virus conoce una niña que es como su hija adoptiva, que le da la motivación de seguir."
+    },
+    {
+      "titulo": "Kingdom Hearts II",
+      "genero": "Aventura",
+      "año": "2005",
+      "edadRecomendada": "Para Todos",
+      "descripcionDelJuego": "KH2 tiene lugar justo un año despues de KH1, lo que significa que Sora despierta dentro del huevo 365 dias despues."
+    },
+    {
+      "titulo": "Super Smash Bros Brawl",
+      "genero": "Lucha",
+      "año": "2008",
+      "edadRecomendada": "Para Todos",
+      "descripcionDelJuego": "Es la tercera entrega de la saga Super Smash Bros. Este juego aprovecha al maximo los recursos del Wii, a día de hoy podría pasar facilmente los estándares de calidad de un videjuego. Este juego introdujo por primera vez personajes de otras franquicias ajenas a Nintendo como Snake de Metal Gear Solid."
+    },
+    {
+      "titulo": "MARVEL'S SPIDERMAN",
+      "genero": "Aventura",
+      "año": "2018",
+      "edadRecomendada": "14+",
+      "descripcionDelJuego": "Me estoy yendo por la banqueta hombre"
+    }
+  ]
+}
+
+
