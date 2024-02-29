@@ -126,7 +126,6 @@
    {
     "mensaje" : "Pareces grabadora, ya escribiste lo mismo anteriormente."
    },
-
    {
     "mensaje" : "Soy un bot, no soy humano. No puedo ofenderte pero mi amo sí. Por favor deja de repetir el mismo mensaje."
    },
@@ -189,6 +188,18 @@
     },
     {
       "mensaje" : "Las cosas baratas salen caras, no compres un iPhone con R-SIM. No vale la pena. Compralos mejor liberados de fábrica."
+    },
+    {
+      "mensaje" : "Aprende inglés. Es una herramienta muy importante para todo ingeniero. Incluso puedes aprender inglés jugando videojuegos. Aún más si lo prácticas en el chat de proximidad de Warzone."
+    },
+    {
+      "mensaje" : "Juega videojuegos. Es un pasatiempo sano. No sales. Bebes alcohol. No fumas. Es lo mejor."
+    },
+    {
+      "mensaje" : "Ve las peliculas de Star Wars, exceptuando la nueva trilogia hecha por disney, esas son basura. Las 6 clásicas son las mejores."
+    },
+    {
+      "mensaje" : "Ve Dragon Ball Z. Es el mejor anime que existe."
     }
   ]
 }
