@@ -29,17 +29,29 @@ const bot = new Telegraf(token);
 //Con esto nuestro bot ya se encuentra autenticado. Esta conectado con el Token correspondiente.
 //DEBO INVESTIGAR QUE SON LAS FUNCIONES DE FLECHA
 
+
+//nuevas variables
+var contadorMensajes=0
+
+//ctx (context) hace referencia a los datos que se usan en un chat
 bot.help((ctx) => { 
-    ctx.reply("Lista de los posibles comandos que puede ejecutar");   //ctx hace referencia a los datos que se usen en un chat
+    ctx.reply("Lista de los posibles comandos que puede ejecutar");   
 });
 
 bot.settings((ctx) => { 
-    ctx.reply("Opciones");   //ctx hace referencia a los datos que se usen en un chat
+    ctx.reply("Opciones"); 
 });
 
 bot.on('message', (ctx) => {
     // Responde con el mensaje de bienvenida a cualquier mensaje que llegue al bot
+    if(contadorMensajes==2){
+    ctx.reply('¡Se acabó anakin. Llevo la delantera!');
+    contadorMensajes=0;
+    }else{
     ctx.reply('Bienvenido. ¿En que puedo ayudarte? Elige una opción por favor.');
+    contadorMensajes++;
+    }
+    
 });
 
 

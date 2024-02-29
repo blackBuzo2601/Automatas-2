@@ -5,42 +5,80 @@
       "genero": "Carreras",
       "año": "2008",
       "edadRecomendada": "Para Todos",
-      "descripcionDelJuego": "Mario Kart Wii es un videojuego de carreras desarrollado y distribuido por Nintendo para la consola Wii. Es la sexta entrega de la serie Mario Kart y la segunda en usar la conexión Wi-Fi de Nintendo."
+      "descripcionDelJuego": "Mario Kart Wii es un juego de carreras de Mario exclusivo para Nintendo Wii, y también el primero de la serie Mario Kart en aparecer en Wii. Lo principal del juego es que se usa el Wii Wheel como si fuera un volante.",
+      "plataforma" : "Nintendo Wii"
     },
     {
-      "titulo": "The Legend of Zelda Skyward Sword",
-      "genero": "Aventura",
+      "titulo": "The Legend of Zelda: Skyward Sword",
+      "genero": "Accion-Aventura",
       "año": "2011",
       "edadRecomendada": "Para Todos",
-      "descripcionDelJuego": "La historia de como comenzó todo, Skyward Sword nos cuenta el inicio de la historia que se convirtió en leyenda. Conoceras al primer Link y a la primera Zelda de la historia cronológicamente donde observaras cual es la razón de porque siempre cada tanto tiempo existe una batalla que involucra 3 heroes."
+      "descripcionDelJuego": "Según la leyenda, milenios antes de los eventos de Skyward Sword, las tres deidades —Din, Nayru y Farore— crearon el mundo. Tras hacerlo dejaron en el mundo la Trifuerza, un triángulo sagrado que cumplían el deseo de su poseedor. La diosa Hylia se quedó en el mundo como guardiana de la reliquia. El poder de la reliquia sagrada despertó la ambición de poder de los demonios, que liderados por su rey, Demise, iniciaron una guerra con el fin de hacerse con éste.",
+      "plataforma" : "Nintendo Wii"
     },
     {
       "titulo": "The Last of Us",
-      "genero": "Horror Supervivencia",
+      "genero": "Accion-Aventura",
       "año": "2013",
       "edadRecomendada": "17+",
-      "descripcionDelJuego": "Ganador de más de 100 premios a mejor juego del año, The last of Us nos sitúa en un mundo post apocalíptico devastado por un virus donde los sobrevivientes tienen que luchar por sobrevivir incluso contra otras personas. Joel un sobreviviente del virus conoce una niña que es como su hija adoptiva, que le da la motivación de seguir."
+      "descripcionDelJuego": "The Last of Us es un videojuego de terror, acción y aventura desarrollado por la compañía estadounidense Naughty Dog y distribuido por Sony Computer Entertainment para la consola PlayStation 3 en 2013. La trama describe las vivencias de Joel y Ellie, un par de supervivientes de una pandemia en Estados Unidos que provoca la mutación de los seres humanos en criaturas caníbales.",
+      "plataforma" : "Sony Playstation 3"
     },
     {
       "titulo": "Kingdom Hearts II",
-      "genero": "Aventura",
+      "genero": "Accion RPG",
       "año": "2005",
-      "edadRecomendada": "Para Todos",
-      "descripcionDelJuego": "KH2 tiene lugar justo un año despues de KH1, lo que significa que Sora despierta dentro del huevo 365 dias despues."
+      "edadRecomendada": "10+",
+      "descripcionDelJuego": "Kingdom Hearts II (キングダムハーツII) es un ARPG desarrollado por Square Enix y publicado por la misma empresa y Buena Vista Games para la consola PlayStation 2. Es la secuela directa de Kingdom Hearts: Chain of Memories. Apenas un mes después de su salida logró vender más de un millón de copias en Norteamérica, convirtiéndose en el segundo juego más vendido del año 2006.",
+      "plataforma" : "Sony Playstation 2"
     },
     {
-      "titulo": "Super Smash Bros Brawl",
-      "genero": "Lucha",
+      "titulo": "Super Smash Bros. Brawl",
+      "genero": "Lucha,Plataformas,Crossover",
       "año": "2008",
-      "edadRecomendada": "Para Todos",
-      "descripcionDelJuego": "Es la tercera entrega de la saga Super Smash Bros. Este juego aprovecha al maximo los recursos del Wii, a día de hoy podría pasar facilmente los estándares de calidad de un videjuego. Este juego introdujo por primera vez personajes de otras franquicias ajenas a Nintendo como Snake de Metal Gear Solid."
+      "edadRecomendada": "12+",
+      "descripcionDelJuego": "Super Smash Bros. Brawl (大乱闘だいらんとうスマッシュブラザーズＸエックス Dairantō Sumasshu Burazāzu Ekkusu?, lit. «Gran estruendo de hermanos X») es un videojuego de lucha distribuido por Nintendo para la videoconsola Wii. Como la tercera entrega de la serie Super Smash Bros., la lista de personajes de Brawl se expande con respecto a la de su predecesor Super Smash Bros. Melee, y es el primer juego dentro de la serie en presentar personajes de franquicias externas a Nintendo, con la inclusión de Solid Snake de la serie Metal Gear de Konami, y Sonic de la serie Sonic the Hedgehog de Sega.",
+      "plataforma" : "Nintendo Wii"
     },
     {
       "titulo": "MARVEL'S SPIDERMAN",
-      "genero": "Aventura",
+      "genero": "Accion-Aventura",
       "año": "2018",
-      "edadRecomendada": "14+",
-      "descripcionDelJuego": "Me estoy yendo por la banqueta hombre"
+      "edadRecomendada": "15+",
+      "descripcionDelJuego": "El juego narra una historia completamente original de Spider-Man que no está ligada a películas o cómics anteriores. Cubre ambos aspectos del personaje, tanto de Peter Parker como el superhéroe, además de presentarlo en una faceta más experimentada. Durante el transcurso de la historia, Spider-Man debe hacerle frente a una gran variedad de famosos enemigos, tales como Mr. Negativo, Electro, Buitre, Rhino y Escorpión.",
+      "plataforma" : "Sony Playstation 4"
+    },
+    {
+      "titulo" : "The Legend of Zelda: Ocarina of Time",
+      "genero": "Accion-Aventura",
+      "año": "1998",
+      "edadRecomendada": "Para Todos",
+      "descripcionDelJuego" : "La historia del juego se enfoca en el joven héroe Link, quien emprende una aventura en el reino de Hyrule para detener a Ganondorf, rey de la tribu Gerudo, antes de que encuentre la Trifuerza, una reliquia sagrada capaz de concederle cualquier deseo a su poseedor. Para ello, debe viajar a través del tiempo y explorar varios templos con el fin de despertar a algunos sabios que tienen el poder para aprisionar de forma definitiva a Ganondorf. Se ha de mencionar que la música juega un papel muy importante en la trama del juego, puesto que el jugador tiene que aprender a tocar varias canciones con una ocarina. Incluso, la popularidad de Ocarina of Time incrementó de forma significativa las ventas de ocarinas reales",
+      "plataforma" : "Nintendo 64"
+    },
+    {
+      "titulo" : "The Legend of Zelda: Majora's Mask",
+      "genero": "Accion-Aventura",
+      "año": "2000",
+      "edadRecomendada": "Para Todos",
+      "descripcionDelJuego" : "El juego tiene lugar en Términa, una versión alternativa del emplazamiento habitual de la serie, Hyrule. Allí, un Skull Kid ha robado la «Máscara de Majora», un poderoso y antiguo artefacto. Bajo su influencia está provocando estragos entre los ciudadanos y amenaza con destruir el mundo lanzando la luna sobre este en un corto periodo de 72 horas. El protagonista principal, Link, se embarca en una aventura a través del tiempo, reviviendo una y otra vez los tres días que tiene como plazo para evitar el cataclismo.",
+      "plataforma" :"Nintendo 64"
+    },
+    {
+      "titulo" : "The Last of Us Part II",
+      "genero": "Accion-Aventura",
+      "año": "2020",
+      "edadRecomendada": "17+",
+      "descripcionDelJuego" : "Ambientado cinco años después de The Last of Us (2013), el juego se centra en dos personajes jugables en un Estados Unidos post-apocalíptico cuyas vidas se entrelazan: Ellie, que busca venganza después de sufrir una tragedia, y Abby, una soldado que se ve envuelta en un conflicto entre su milicia y un culto religioso. El juego se juega desde la perspectiva de la tercera persona y le permite al jugador luchar contra enemigos humanos e infectados con armas de fuego, armas improvisadas y sigilo.",
+      "plataforma" :"Sony Playstation 4"
+    },
+    {
+      "titulo" : "Super Mario Galaxy",
+      "genero": "Accion-Aventura",
+      "año": "2020",
+      "edadRecomendada": "17+",
+      "descripcionDelJuego" : "Ambientado cinco años después de The Last of Us (2013), el juego se centra en dos personajes jugables en un Estados Unidos post-apocalíptico cuyas vidas se entrelazan: Ellie, que busca venganza después de sufrir una tragedia, y Abby, una soldado que se ve envuelta en un conflicto entre su milicia y un culto religioso. El juego se juega desde la perspectiva de la tercera persona y le permite al jugador luchar contra enemigos humanos e infectados con armas de fuego, armas improvisadas y sigilo.",
+      "plataforma" :"Nintendo Wii"
     }
   ],
 
@@ -60,7 +98,9 @@
     {
       "mensaje" :  "Buenas, amigo@. Soy BOTBUZO. ¿Que deseas consultar?"
     }
+
   ],
+
   "mensajesSalida" : [
     {
       "mensaje" : "Gracias por hablar conmigo. Hasta la próxima."
@@ -73,6 +113,82 @@
     },
     {
       "mensaje" : "Hasta la proxima, que pases bonito día."
+    }
+  ],
+
+  "mensajesMensajeRepetido" : [
+   {
+      "mensaje" : "Ya escribiste ese mensaje anteriormente. Por favor escribe algo diferente."
+   },
+   {
+      "mensaje" : "¿Porque repites lo mismo? Con una sola vez es suficiente."
+   },
+   {
+    "mensaje" : "Pareces grabadora, ya escribiste lo mismo anteriormente."
+   },
+
+   {
+    "mensaje" : "Soy un bot, no soy humano. No puedo ofenderte pero mi amo sí. Por favor deja de repetir el mismo mensaje."
+   },
+   {
+    "mensaje" : "Estás diciendo exactamente lo mismo que el mensaje anterior. Por favor escribe algo diferente."
+   },
+   {
+    "mensaje" : "Lo siento, no puedo responder a eso. Estoy programado para no responder mensajes repetidos."
+   }
+  ],
+
+  "mensajesConsejosPersonales" : [
+    {
+      "mensaje" : "¡Piratea tu Nintendo Wii!. Puedes tener cientos juegos retro en ella."
+    },
+    {
+      "mensaje" : "Estudia una carrera que realmente te guste, no vale la pena estudiar algo que no te gusta y que no te haga feliz."
+    },
+    {
+      "mensaje" : "Haz ejercicio todos los días, tu cuerpo te lo agradecerá."
+    },
+    {
+      "mensaje" : "Si estás estudiando programación, aprende Javascript si puedes. Ahí está el dinero."
+    },
+    {
+      "mensaje" : "Juega uno de los videojuegos que te recomiendo. Absolutamente todos valen la pena probarlos al menos una vez."
+    },
+    {
+      "mensaje" : "Suscríbete a @blackbuzoSSJ en Youtube. Se lo que te digo ;)"
+    },
+    {
+      "mensaje" : "Te recomiendo que veas la documentación de JS, para que aprendas nuevos métodos y no uses los mismos de siempre."
+    },
+    {
+      "mensaje" : "Una vez un sabio dijo. 'No hardcodees código' La programación no siempre serán puros 'If-Else'."
+    },
+    {
+      "mensaje" : "No sigas comprando juegos de Nintendo a precio completo, mejor compra una cuenta secundaria en @RockGamesPS y puedes disfrutarlo completo las veces que quieras por un precio pequeño de $299."
+    },
+    {
+      "mensaje" : "No trabajes nunca en Little-Caesars. Hay sobreexplotación laboral y no pagan las horas extras que obligan a los empleados quedarse."
+    },
+    {
+      "mensaje" : "No escuches a BadBunny. Esa cosa ni se puede considerar música, mejor escucha rock clásico."
+    },
+    {
+      "mensaje" : "No tomes la clase de Automatas 1 con el Maestro Paco para después tomar Automatas 2 con la maestra Xenia o viceversa. No entenderás bastante y te perderás."
+    },
+    {
+      "mensaje" : "Java podrá ser un lenguaje que de asco, pero es suficientemente útil para entender POO."
+    },
+    {
+      "mensaje" : "Si te la pasas demasiado tiempo en la computadora, procura utilizar lentes de protección."
+    },
+    {
+      "mensaje" : "En verano, ve a las cañadas, se pone bueno el ambiente."
+    },
+    {
+      "mensaje" : "Escucha la banda 'Rhapsody of Fire'. Es rock americano buenísimo. La mejor canción que podría recomendarte como ejemplo es 'Dawn of Victory'."
+    },
+    {
+      "mensaje" : "Las cosas baratas salen caras, no compres un iPhone con R-SIM. No vale la pena. Compralos mejor liberados de fábrica."
     }
   ]
 }
