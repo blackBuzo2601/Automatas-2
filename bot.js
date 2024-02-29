@@ -28,7 +28,6 @@ const dataParseada = JSON.parse(jsonData); //Dividimos la Data del JSON en cuant
                                             //estamos indicando que de mensajesBienvenida, tomamos el objeto de la posición 3
                                             //recordemos que el valor es una arreglo (coleccion de objetos)
 
-
 /*Telegraf necesita el token para poder funcionar.
 En NODE.JS, 'process' es un objeto global que proporciona información y control
 sobre el proceso de ejecución de una aplicación. Es decir, es predefinido por
@@ -46,10 +45,19 @@ const bot = new Telegraf(token);
 //DEBO INVESTIGAR QUE SON LAS FUNCIONES DE FLECHA
 
 
-//nuevas variables
+//NUEVAS VARIABLES
 var contadorMensajes=0
-//var aleatorio = Math.random(); //usamos el objeto Math de JS y usamos el método random() que devuelve un No. aleatorio entre eo 0 y 1 en decimal.
-    //Math.floor(aleatorio*100);
+var randomDecimal = Math.random(); //usamos el objeto Math de JS y usamos el método random() que devuelve un numero aleatorio entre eo 0 y 1 en decimal.
+var randomEntero  = Math.floor(randomDecimal*100); //con el metodo floor del objeto Math, redondeamos un valor hacia abajo. Lo que devolverá un entero.
+
+//LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
+//Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
+//que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
+const listaVideojuegosCantidad = dataParseada.listaVideojuegos.length;
+const mensajesBienvenidaCantidad = dataParseada.mensajesBienvenida.length;
+const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;
+const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;
+const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length;
 
 //ctx (context) hace referencia a los datos que se usan en un chat
 bot.on('message', (ctx) => {
@@ -67,11 +75,11 @@ bot.on('message', (ctx) => {
 console.log("AREA DE PRUEBAS EN CONSOLA");
 console.log("AREA DE PRUEBAS EN CONSOLA");
 console.log("AREA DE PRUEBAS EN CONSOLA");
-console.log(dataParseada.mensajesBienvenida[3].mensaje);
+console.log(mensajesConsejosPersonalesCantidad);
 
 
 
 
 
 
-bot.launch(); //comando para que funcione el bot.
+bot.launch(); //comando para que se inicie el bot con toda la "configuración" anterior.
