@@ -44,11 +44,16 @@ const bot = new Telegraf(token);
 //Con esto nuestro bot ya se encuentra autenticado. Esta conectado con el Token correspondiente.
 //DEBO INVESTIGAR QUE SON LAS FUNCIONES DE FLECHA
 
+//IMPORTACIÓN DE FUNCIONES DE misFunciones.js
+
+
 
 //NUEVAS VARIABLES
-var contadorMensajes=0
+var contadorMensajesIguales=0;
 var randomDecimal = Math.random(); //usamos el objeto Math de JS y usamos el método random() que devuelve un numero aleatorio entre eo 0 y 1 en decimal.
 var randomEntero  = Math.floor(randomDecimal*100); //con el metodo floor del objeto Math, redondeamos un valor hacia abajo. Lo que devolverá un entero.
+var mensajeRecibido=""   //almacena el mensaje recibido actualmente
+var mensajeAnterior="";  //almacenara el mensaje recibido anteriormente para comparar que sean diferentes
 
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
@@ -58,24 +63,39 @@ const mensajesBienvenidaCantidad = dataParseada.mensajesBienvenida.length;
 const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length;
-
+///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
 bot.on('message', (ctx) => {
-    // Responde con el mensaje de bienvenida a cualquier mensaje que llegue al bot
-
-    if(contadorMensajes==2){ //aqui entra cuando ya se lanzaron 2 mensajes
-    ctx.reply(dataParseada.mensajesMensajeRepetido[5].mensaje);
-    contadorMensajes=0;
+   mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
+   mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
+                                            //message= es una propiedad de ctx que contiene propiedades como
+                                            //un id, el nombre y ultimo nombre (de quien lo envio) etc
+                                            //text= es una propiedad de message que contiene el texto especifico
+                                            //del mensage.
+    //el siguiente consolelog es para ver los mensajes recibidos en Consola cada que se envia un mensaje al bot
+    console.log("Mensaje recibido: "+mensajeRecibido);
+    if(mensajeAnterior==mensajeRecibido){
+      contadorMensajesIguales++;
+    }else{
+      contadorMensajesIguales=0;
+    }
+    
+    if(contadorMensajesIguales>=2){ 
+    ctx.reply(dataParseada.mensajesMensajeRepetido[5].mensaje);//reply es una función de ctx que responde al remitente.
     }else{ //Aquí entra la primera vez que se envia un mensaje al bot.
     ctx.reply(dataParseada.mensajesBienvenida[1].mensaje);
-    contadorMensajes++;
     }
+
 });
 
+
+
+//-----------------------------------------------------------------------------------------------------------------
 console.log("AREA DE PRUEBAS EN CONSOLA");
 console.log("AREA DE PRUEBAS EN CONSOLA");
 console.log("AREA DE PRUEBAS EN CONSOLA");
-console.log(mensajesConsejosPersonalesCantidad);
+
+
 
 
 
