@@ -54,7 +54,8 @@ var randomDecimal=0; //usamos el objeto Math de JS y usamos el método random() 
 var randomEntero=0;
 var mensajeRecibido=""   //almacena el mensaje recibido actualmente
 var mensajeAnterior="";  //almacenara el mensaje recibido anteriormente para comparar que sean diferentes
-var parametroNumerico=0;
+var parametroNumerico=0; //esta variable hace referencia a que en una función se usa para pasar parametros numericos
+
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -83,9 +84,12 @@ bot.on('message', (ctx) => {
     }
     
     if(contadorMensajesIguales>=2){ 
-    ctx.reply(dataParseada.mensajesMensajeRepetido[5].mensaje);//reply es una función de ctx que responde al remitente.
-    }else{ //Aquí entra la primera vez que se envia un mensaje al bot. Aqui entra cuando no se enviaron 3 mensajes iguales 
-    ctx.reply(dataParseada.mensajesBienvenida[1].mensaje);
+    mensajeAleatorio(mensajesMensajeRepetidoCantidad); //llamada la funcion de mensajeAleatorio
+    ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje);//reply es una función de ctx que responde al remitente.
+    }
+    else{ //Aquí entra la primera vez que se envia un mensaje al bot. Aqui entra cuando no se enviaron 3 mensajes iguales 
+    mensajeAleatorio(mensajesBienvenidaCantidad);
+    ctx.reply(dataParseada.mensajesBienvenida[randomEntero].mensaje); 
     }
 
 }); //fin de analizador de mensaje.
@@ -107,7 +111,6 @@ function mensajeAleatorio(parametroNumerico){ //recibe por parametro el valor ma
   randomDecimal=Math.random();                         //devuelve un valor aleatorio entre 0 y 1.
   randomEntero=Math.floor(randomDecimal * parametroNumerico); //se multiplica el valor
                                                 //0.aleatorio por el parametro y al final se redondea hacia abajo
-  console.log("EL resultado aleatorio es: "+randomEntero);
 }
 
 
