@@ -5,7 +5,6 @@ Con la función config() del modulo dotenv leeemos el archivo .env en el directo
 actual, en este caso estamos en la raiz del proyecto.
 */
 require('dotenv').config();
-
 /*
 1. Creamos una constante de nombre Telegraf.
 2. Utiliza el modulo require() de NODE.JS para cargar el módulo telegraf que es un framework
@@ -44,10 +43,6 @@ const bot = new Telegraf(token);
 //Con esto nuestro bot ya se encuentra autenticado. Esta conectado con el Token correspondiente.
 //DEBO INVESTIGAR QUE SON LAS FUNCIONES DE FLECHA
 
-//IMPORTACIÓN DE FUNCIONES DE misFunciones.js
-
-
-
 //NUEVAS VARIABLES
 var contadorMensajesIguales=0;
 var randomDecimal=0; //usamos el objeto Math de JS y usamos el método random() que devuelve un numero aleatorio entre eo 0 y 1 en decimal.
@@ -65,8 +60,6 @@ const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
-
-
 //ctx (context) hace referencia a los datos que se usan en un chat
 bot.on('message', (ctx) => {
    mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
@@ -99,10 +92,6 @@ bot.on('message', (ctx) => {
 //-----------------------------------------------------------------------------------------------------------------
 console.log("PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS\n");
 mensajeAleatorio(mensajesConsejosPersonalesCantidad); //llamada la funcion de mensajeAleatorio
-
-
-
-
 //----------------------------DECLARACION DE FUNCIONES ADICIONALES--------------------------------------------------
 
 
