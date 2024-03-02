@@ -50,6 +50,7 @@ var randomEntero=0;
 var mensajeRecibido=""   //almacena el mensaje recibido actualmente
 var mensajeAnterior="";  //almacenara el mensaje recibido anteriormente para comparar que sean diferentes
 var parametroNumerico=0; //esta variable hace referencia a que en una función se usa para pasar parametros numericos
+var banderaNegativaDetectada=false;
 
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
@@ -62,14 +63,17 @@ const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonal
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
 bot.on('message', (ctx) => {
-   mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
-   mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
-                                            //message= es una propiedad de ctx que contiene propiedades como
-                                            //un id, el nombre y ultimo nombre (de quien lo envio) etc
-                                            //text= es una propiedad de message que contiene el texto especifico
-                                            //del mensage.
-    //el siguiente consolelog es para ver los mensajes recibidos en Consola cada que se envia un mensaje al bot
+
+  mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
+  mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
+                                      //message= es una propiedad de ctx que contiene propiedades como
+                                      //un id, el nombre y ultimo nombre (de quien lo envio) etc
+                                      //text= es una propiedad de message que contiene el texto especifico
+                                      //del mensage.
+                                    
+  //el siguiente consolelog es para ver los mensajes recibidos en Consola cada que se envia un mensaje al bot
     console.log("Mensaje recibido: "+mensajeRecibido);
+
     if(mensajeAnterior==mensajeRecibido){
       contadorMensajesIguales++;
     }else{
