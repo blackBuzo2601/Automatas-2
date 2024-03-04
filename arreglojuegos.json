@@ -376,7 +376,31 @@
       "stup1d",
       "fucker",
       "fvcker",
-      "fvck3r"
+      "fvck3r",
+      "nigger",
+      "nigga",
+      "púto",
+      "pútó"
+  ],
+  "mensajesBlacklist" : [
+   "No está permitido ese lenguaje en este chat.",
+   "No puedo permitir que escribas eso aquí.",
+   "Te pido de favor que utilices un lenguaje neutro, sin palabras altisonantes.",
+   "Te aconsejo que moderes tu vocabulario, de lo contrario no podré ayudarte.",
+   "No toleraré que utilices palabras altisonantes.",
+   "No seas grosero, por favor. Utiliza un vocabulario adecuado.",
+   "Modera tu lenguaje por favor. No puedo ayudarte si no utilizas un lenguaje neutro.",
+   "No tolero el lenguaje vulgar. Por favor, escribe con palabras más bonitas.",
+   "No me importa que tan grosero seas, pero en este chat hay cero tolerancia al lenguaje vulgar.",
+   "Esta utilizando un lenguaje muy inapropiado. Por favor escribe algo más bonito.",
+   "No utilices lenguaje inapropiado.",
+   "Por favor, sé mas educado.",
+   "Discúlpame. Estoy programado para no responder mensajes con lenguaje vulgar.",
+   "Tranquilízate Broly",
+   "No uses palabras altisonantes.",
+   "En este chat, utilizamos lenguaje decente para hablar.",
+   "No seas grosero por favor.",
+   "No utilices palabas que sean ofensivas. Normalicemos hablar bien con los bots."
   ]
 
 

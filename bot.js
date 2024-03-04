@@ -51,6 +51,7 @@ var mensajeRecibido=""   //almacena el mensaje recibido actualmente
 var mensajeAnterior="";  //almacenara el mensaje recibido anteriormente para comparar que sean diferentes
 var parametroNumerico=0; //esta variable hace referencia a que en una función se usa para pasar parametros numericos
 var banderaNegativaDetectada=false;
+var mensajeRecibidoMinusculas="";
 
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
@@ -60,50 +61,72 @@ const mensajesBienvenidaCantidad = dataParseada.mensajesBienvenida.length;
 const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;                         
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
+const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
-bot.on('message', (ctx) => {
+bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
 
+  banderaNegativaDetectada=false;   //reiniciar bandera para encontrar palabras negativas
   mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
   mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
                                       //message= es una propiedad de ctx que contiene propiedades como
                                       //un id, el nombre y ultimo nombre (de quien lo envio) etc
                                       //text= es una propiedad de message que contiene el texto especifico
-                                      //del mensage.
-                                    
-  //el siguiente consolelog es para ver los mensajes recibidos en Consola cada que se envia un mensaje al bot
-    console.log("Mensaje recibido: "+mensajeRecibido);
+                                      //del mensaje.
+     
+   console.log("Mensaje recibido: "+mensajeRecibido); //ver en consola cada mensaje recibido
+   mensajeRecibidoMinusculas=mensajeRecibido.toString(); //convertir texto a String
+   mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLocaleLowerCase(); //convertirlo a minusculas lo recibido
 
-    if(mensajeAnterior==mensajeRecibido){
-      contadorMensajesIguales++;
-    }else{
-      contadorMensajesIguales=0;
-    }
+
+   for(let i=0;i<dataParseada.blackList.length;i++){ //for que buscara en el texto si hay alguna palabra negativa 
+      if(mensajeRecibidoMinusculas.includes(dataParseada.blackList[i])){
+        banderaNegativaDetectada=true; //activar bandera palabra encontrada negativa
+        break;
+      }
+   }//fin for que busca palabras negativas
+
+
+   if(banderaNegativaDetectada==true){ //si bandera de palabra negativa encontrada esta activada, arrojar mensaje
+      mensajeAleatorio(mensajesBlacklistCantidad);
+      ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
+   }else{ //INICIO DEL ELSE A
+
+          //Evaluar si hay mensajes repetidos
+          if(mensajeAnterior==mensajeRecibido){
+            contadorMensajesIguales++;
+          }else{
+            contadorMensajesIguales=0; //Si el siguiente mensaje fue diferente, reiniciar contador de palabras repetidas
+          }
+          
+          if(contadorMensajesIguales>=2){ 
+          mensajeAleatorio(mensajesMensajeRepetidoCantidad); //generar un No. Aleatorio para mensaje aleatorio
+          ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); //usar funcion de mensaje Aleatorio
+          }else{ 
+          mensajeAleatorio(mensajesBienvenidaCantidad); //generar un No. Aleatorio para mensaje aleatorio
+          ctx.reply(dataParseada.mensajesBienvenida[randomEntero].mensaje); //usar funcion de mensaje Aleatorio
+          }
+
+    }//FIN DEL ELSE A
+
+  
     
-    if(contadorMensajesIguales>=2){ 
-    mensajeAleatorio(mensajesMensajeRepetidoCantidad); //llamada la funcion de mensajeAleatorio
-    ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje);//reply es una función de ctx que responde al remitente.
-    }
-    else{ //Aquí entra la primera vez que se envia un mensaje al bot. Aqui entra cuando no se enviaron 3 mensajes iguales 
-    mensajeAleatorio(mensajesBienvenidaCantidad);
-    ctx.reply(dataParseada.mensajesBienvenida[randomEntero].mensaje); 
-    }
 
-}); //fin de analizador de mensaje.
+}); //FIN ANALIZADOR DE MENSAJE
+//-------------------------------------------------------------------------------------------------------------------------
 
 
-
-//-----------------------------------------------------------------------------------------------------------------
 console.log("PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS\n");
-mensajeAleatorio(mensajesConsejosPersonalesCantidad); //llamada la funcion de mensajeAleatorio
+
+
+
+
 //----------------------------DECLARACION DE FUNCIONES ADICIONALES--------------------------------------------------
-
-
 //FUNCION QUE ME PERMITIRÁ CALCULAR NUMEROS ALEATORIOS EN UN RANGO DEFINIDO para que mande un mensaje aleatorio
 function mensajeAleatorio(parametroNumerico){ //recibe por parametro el valor maximo del rango
   randomDecimal=Math.random();                         //devuelve un valor aleatorio entre 0 y 1.
   randomEntero=Math.floor(randomDecimal * parametroNumerico); //se multiplica el valor
-                                                //0.aleatorio por el parametro y al final se redondea hacia abajo
+                                                //0.aleatorio por el parametro y al final se redondea hacia abajo   
 }
 
 
@@ -111,4 +134,5 @@ function mensajeAleatorio(parametroNumerico){ //recibe por parametro el valor ma
 
 
 
+//-----------------------------------------------------------------------------------------------------------------
 bot.launch(); //comando para que se inicie el bot con toda la "configuración" anterior.
