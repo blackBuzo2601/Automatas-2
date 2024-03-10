@@ -62,6 +62,7 @@ const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
 const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
+
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
 bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
@@ -78,7 +79,7 @@ bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
    mensajeRecibidoMinusculas=mensajeRecibido.toString(); //convertir texto a String
    mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLocaleLowerCase(); //convertirlo a minusculas lo recibido
 
-
+    
    for(let i=0;i<dataParseada.blackList.length;i++){ //for que buscara en el texto si hay alguna palabra negativa 
       if(mensajeRecibidoMinusculas.includes(dataParseada.blackList[i])){
         banderaNegativaDetectada=true; //activar bandera palabra encontrada negativa
