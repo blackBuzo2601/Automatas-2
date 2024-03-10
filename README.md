@@ -3,7 +3,7 @@ Autor(es): Buzo Zamora Elian
 
 Estatus: Borrador
 
-Ultima Actualización: 23/02/2024
+Ultima Actualización: 03/03/2024
 ## Contenido
 * Metas 
 * Metas no tan prioritarias
@@ -14,7 +14,7 @@ Ultima Actualización: 23/02/2024
 
 ### Metas
 * Desarrollar un bot de telegram con Javascript que interactúe con quien quiera mandarme mensaje privado.
-* Lograr el funcionamiento con apoyo del framework NODE.JS
+* Lograr el funcionamiento con apoyo del framework NODE.JS v20.11.0 y Telegraf.js v4.16.3.
 * Darle distintas opciones de mensajes al usuario para enviarme
 * Cuando el usuario desee hablar conmigo directamente, haber pasado el filtro de mensajes BOT.
 * Reforzar mis conocimientos en JS y practicar del lado del Backend.
