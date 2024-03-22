@@ -213,6 +213,11 @@
   ],
 
   "blackList" : [
+
+    {
+      "nivel" : "1",
+      "groseria" :"puto"
+    },
       "puto",
       "puton",
       "putón",
@@ -425,7 +430,6 @@
    "No utilices lenguaje inapropiado.",
    "Por favor, sé mas educado.",
    "Discúlpame. Estoy programado para no responder mensajes con lenguaje vulgar.",
-   "Tranquilízate Broly",
    "No uses palabras altisonantes.",
    "En este chat, utilizamos lenguaje decente para hablar.",
    "No seas grosero por favor.",

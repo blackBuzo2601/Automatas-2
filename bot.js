@@ -18,7 +18,7 @@ const fs = require('fs');
 
 //almacenamos toda la data de areglojuegos.json en una const jsonData con el método readFileSync del modulo FS. 
 //especificamos el archivo que leeremos y el formato que este caso es el estándar UTF-8
-const jsonData = fs.readFileSync('arreglojuegos.json', 'utf-8');
+const jsonData = fs.readFileSync('miArchivo.json', 'utf-8');
 const dataParseada = JSON.parse(jsonData); //Dividimos la Data del JSON en cuanto a sus "CLAVES".
                                             //de esta manera podremos acceder a cada una de las CLAVES de mis objetos
                                             //que hay en arreglojuegos.json
@@ -52,6 +52,8 @@ var mensajeAnterior="";  //almacenara el mensaje recibido anteriormente para com
 var parametroNumerico=0; //esta variable hace referencia a que en una función se usa para pasar parametros numericos
 var banderaNegativaDetectada=false;
 var mensajeRecibidoMinusculas="";
+var banderaSaludo=false;
+var contadorBlackList=10;
 
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
@@ -70,12 +72,15 @@ bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
   banderaNegativaDetectada=false;   //reiniciar bandera para encontrar palabras negativas
   mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
   mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
-                                      //message= es una propiedad de ctx que contiene propiedades como
-                                      //un id, el nombre y ultimo nombre (de quien lo envio) etc
-                                      //text= es una propiedad de message que contiene el texto especifico
-                                      //del mensaje.
-     
+//message= es una propiedad de ctx que contiene propiedades como
+//un id, el nombre y ultimo nombre (de quien lo envio) etc
+//text= es una propiedad de message que contiene el texto especifico
+//del mensaje.
+
+
+
    console.log("Mensaje recibido: "+mensajeRecibido); //ver en consola cada mensaje recibido
+   
    mensajeRecibidoMinusculas=mensajeRecibido.toString(); //convertir texto a String
    mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLocaleLowerCase(); //convertirlo a minusculas lo recibido
 
@@ -87,10 +92,11 @@ bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
       }
    }//fin for que busca palabras negativas
 
-
    if(banderaNegativaDetectada==true){ //si bandera de palabra negativa encontrada esta activada, arrojar mensaje
       mensajeAleatorio(mensajesBlacklistCantidad);
       ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
+      ctx.deleteMessage();
+     // ESTA LINEA ES LA QUE ME HIZO VER LA INFO DEL MENSAJE ctx.deleteMessage(message_id,idChat);
    }else{ //INICIO DEL ELSE A
 
           //Evaluar si hay mensajes repetidos
@@ -104,8 +110,12 @@ bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
           mensajeAleatorio(mensajesMensajeRepetidoCantidad); //generar un No. Aleatorio para mensaje aleatorio
           ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); //usar funcion de mensaje Aleatorio
           }else{ 
-          mensajeAleatorio(mensajesBienvenidaCantidad); //generar un No. Aleatorio para mensaje aleatorio
-          ctx.reply(dataParseada.mensajesBienvenida[randomEntero].mensaje); //usar funcion de mensaje Aleatorio
+          if(banderaSaludo==false){
+            mensajeAleatorio(mensajesBienvenidaCantidad); //generar un No. Aleatorio para mensaje aleatorio
+            ctx.reply(dataParseada.mensajesBienvenida[randomEntero].mensaje); //usar funcion de mensaje Aleatorio
+            banderaSaludo=true;
+          }
+          
           }
 
     }//FIN DEL ELSE A
@@ -118,10 +128,6 @@ bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
 
 
 console.log("PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS\n");
-
-
-
-
 //----------------------------DECLARACION DE FUNCIONES ADICIONALES--------------------------------------------------
 //FUNCION QUE ME PERMITIRÁ CALCULAR NUMEROS ALEATORIOS EN UN RANGO DEFINIDO para que mande un mensaje aleatorio
 function mensajeAleatorio(parametroNumerico){ //recibe por parametro el valor maximo del rango

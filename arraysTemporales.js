@@ -1,0 +1,1 @@
+var personas=[]; //arreglo que almacenará el ID de los usuarios.
