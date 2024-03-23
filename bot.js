@@ -54,7 +54,7 @@ var banderaNegativaDetectada=false;
 var mensajeRecibidoMinusculas="";
 var banderaSaludo=false;
 var contadorBlackList=10;
-
+var banderaMensajeInicial=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -70,7 +70,9 @@ const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
 
 bot.on('message', (ctx) => { //INICIO de metodo .on del objeto BOT
 
-mensajeInicial();
+while(banderaMensajeInicial==false){
+    mensajeInicial();    
+}
 banderaNegativaDetectada=false;   //reiniciar bandera 
 mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
 mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
@@ -82,38 +84,49 @@ console.log("Mensaje recibido: "+mensajeRecibido);
 mensajeRecibidoMinusculas=mensajeRecibido.toString(); //Convertir mensaje a tipo STRING
 mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLocaleLowerCase(); //String a minusculas
 detectarGroserias();
-   
+
 //CONDICIONAL DE BLACKLIST (groserias)
 if(banderaNegativaDetectada==true){
   mensajeAleatorio(mensajesBlacklistCantidad);
   ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
   ctx.deleteMessage();
-}else{ //INICIO DEL ELSE A
+}else{ //INICIO ELSE 1
 
-          //Evaluar si hay mensajes repetidos
-          if(mensajeAnterior==mensajeRecibido){
-            contadorMensajesIguales++;
-          }else{
-            contadorMensajesIguales=0; //Si el siguiente mensaje fue diferente, reiniciar contador de palabras repetidas
-          }
-          
-          if(contadorMensajesIguales>=2){ 
-          mensajeAleatorio(mensajesMensajeRepetidoCantidad); //generar un No. Aleatorio para mensaje aleatorio
-          ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); //usar funcion de mensaje Aleatorio
-          }else{ 
-          if(banderaSaludo==false){
-            mensajeAleatorio(mensajesBienvenidaCantidad); //generar un No. Aleatorio para mensaje aleatorio
-            ctx.reply(dataParseada.mensajesBienvenida[randomEntero].mensaje); //usar funcion de mensaje Aleatorio
-            banderaSaludo=true;
-          }
-          
-          }
+contadorMsjRepetido();      
+if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
+  mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
+  ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
+}else{ //INICIO ELSE 1.1
+    detectorDeClaves();
+}//FIN ELSE 1.1
 
-    }//FIN DEL ELSE A
+}//FIN DEL ELSE 1 correspondiente a CONDICIONAL BLACKLIST 
 
-  
-    
 
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$FUNCIONES QUE SON NECESARIO QUE SE DECLAREN AQUI EN bot.on (message)$$$$$$$$$$$$$$$$$$$$$
+
+function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍA EL PRIMER MENSAJE AL BOT
+  ctx.reply(dataParseada.mensajesBienvenida[3].mensaje);
+  banderaMensajeInicial=true;
+}
+
+//FUNCION QUE DETECTA SI EL MENSAJE CONTIENE LAS CLAVES QUE SOLICITA EL BOT
+function detectorDeClaves(){
+  if(mensajeRecibidoMinusculas=="recomendar videojuego"){
+    mensajeAleatorio(listaVideojuegosCantidad);
+    ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
+    +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
+    "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma);        
+  }
+  else if(mensajeRecibidoMinusculas=="consejo personal"){
+    mensajeAleatorio(mensajesConsejosPersonalesCantidad);
+    ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje);   
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 }); //FIN de metodo .on del objeto BOT
 
 
@@ -129,17 +142,23 @@ function mensajeAleatorio(parametroNumerico){ //recibe por parametro el valor ma
 
 //FUNCIÓN QUE UTILIZA EL MÉTODO "includes" PARA TODAS LAS PALABRAS DE LA BLACKLIST Y ASI DETECTAR GROSERIAS
 function detectarGroserias(){
-  for(let i=0;i<dataParseada.blackList.length;i++){
-    if(mensajeRecibidoMinusculas.includes(dataParseada.blackList[i])){
-      banderaNegativaDetectada=true;
-      break;
+    for(let i=0;i<dataParseada.blackList.length;i++){
+      if(mensajeRecibidoMinusculas.includes(dataParseada.blackList[i])){
+        banderaNegativaDetectada=true;
+        break;
+      }
     }
- }
 }
-//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍA EL PRIMER MENSAJE AL BOT
-function mensajeInicial(){
-  ctx.reply(dataParseada.mensajesBienvenida[3]);
+
+function contadorMsjRepetido(){
+    if(mensajeAnterior==mensajeRecibido){
+      contadorMensajesIguales++;
+    }else{
+      contadorMensajesIguales=0; //Si el siguiente mensaje fue diferente, reiniciar contador de palabras repetidas
+    }
 }
+
+
 
 
 
@@ -147,6 +166,8 @@ function mensajeInicial(){
 
 //-----------------------------------------------------------------------------------------------------------------
 bot.launch(); //comando para que se inicie el bot con toda la "configuración" anterior.
+
+
 
 
 // ESTA LINEA ES LA QUE ME HIZO VER LA INFO DEL MENSAJE ctx.deleteMessage(message_id,idChat);

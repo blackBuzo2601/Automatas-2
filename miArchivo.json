@@ -77,7 +77,7 @@
       "genero": "Accion-Aventura",
       "año": "2020",
       "edadRecomendada": "17+",
-      "descripcionDelJuego" : "Ambientado cinco años después de The Last of Us (2013), el juego se centra en dos personajes jugables en un Estados Unidos post-apocalíptico cuyas vidas se entrelazan: Ellie, que busca venganza después de sufrir una tragedia, y Abby, una soldado que se ve envuelta en un conflicto entre su milicia y un culto religioso. El juego se juega desde la perspectiva de la tercera persona y le permite al jugador luchar contra enemigos humanos e infectados con armas de fuego, armas improvisadas y sigilo.",
+      "descripcionDelJuego" : "Una nueva aventura de Mario",
       "plataforma" :"Nintendo Wii"
     }
   ],
@@ -93,7 +93,7 @@
       "mensaje" : "Que tal amig@. Soy BOTBUZO. Selecciona un botón por favor."
     },
     {
-      "mensaje" : "Que tal. Soy BOTBUZO. Elige una de las opciones a continuación para hablar conmigo."
+      "mensaje" : "Que tal. Soy BOTBUZO. Por favor, escribe como mensaje alguna de las siguientes opciones. No importa si está en mayusculas o minusculas, solo escríbelo bien: \n\nRECOMENDAR VIDEOJUEGO\nCONSEJO PERSONAL\n\nEspero ser de ayuda :)"
     },
     {
       "mensaje" :  "Buenas, amigo@. Soy BOTBUZO. ¿Que deseas consultar?"
