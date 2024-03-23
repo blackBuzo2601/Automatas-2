@@ -16,12 +16,12 @@ const {Telegraf} = require('telegraf');
   leer y escribir archivos*/
 const fs = require('fs');
 
-//almacenamos toda la data de areglojuegos.json en una const jsonData con el método readFileSync del modulo FS. 
+//almacenamos toda la data de miArchivo.json en una const jsonData con el método readFileSync del modulo FS. 
 //especificamos el archivo que leeremos y el formato que este caso es el estándar UTF-8
 const jsonData = fs.readFileSync('miArchivo.json', 'utf-8');
 const dataParseada = JSON.parse(jsonData); //Dividimos la Data del JSON en cuanto a sus "CLAVES".
                                             //de esta manera podremos acceder a cada una de las CLAVES de mis objetos
-                                            //que hay en arreglojuegos.json
+                                            //que hay en miArchivo.json
 //Por ejemplo si quisiera acceder a mi CLAVE "mensajesBienvenida" que su valor es un arreglo de objetos,
 //para acceder puedo hacer lo siguiente: console.log(dataParseada.mensajesBienvenida[3]);
                                             //estamos indicando que de mensajesBienvenida, tomamos el objeto de la posición 3
@@ -67,37 +67,28 @@ const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
 
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
-bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
 
-  banderaNegativaDetectada=false;   //reiniciar bandera para encontrar palabras negativas
-  mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
-  mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
+bot.on('message', (ctx) => { //INICIO de metodo .on del objeto BOT
+
+mensajeInicial();
+banderaNegativaDetectada=false;   //reiniciar bandera 
+mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
+mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
 //message= es una propiedad de ctx que contiene propiedades como
 //un id, el nombre y ultimo nombre (de quien lo envio) etc
 //text= es una propiedad de message que contiene el texto especifico
 //del mensaje.
-
-
-
-   console.log("Mensaje recibido: "+mensajeRecibido); //ver en consola cada mensaje recibido
+console.log("Mensaje recibido: "+mensajeRecibido); 
+mensajeRecibidoMinusculas=mensajeRecibido.toString(); //Convertir mensaje a tipo STRING
+mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLocaleLowerCase(); //String a minusculas
+detectarGroserias();
    
-   mensajeRecibidoMinusculas=mensajeRecibido.toString(); //convertir texto a String
-   mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLocaleLowerCase(); //convertirlo a minusculas lo recibido
-
-    
-   for(let i=0;i<dataParseada.blackList.length;i++){ //for que buscara en el texto si hay alguna palabra negativa 
-      if(mensajeRecibidoMinusculas.includes(dataParseada.blackList[i])){
-        banderaNegativaDetectada=true; //activar bandera palabra encontrada negativa
-        break;
-      }
-   }//fin for que busca palabras negativas
-
-   if(banderaNegativaDetectada==true){ //si bandera de palabra negativa encontrada esta activada, arrojar mensaje
-      mensajeAleatorio(mensajesBlacklistCantidad);
-      ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
-      ctx.deleteMessage();
-     // ESTA LINEA ES LA QUE ME HIZO VER LA INFO DEL MENSAJE ctx.deleteMessage(message_id,idChat);
-   }else{ //INICIO DEL ELSE A
+//CONDICIONAL DE BLACKLIST (groserias)
+if(banderaNegativaDetectada==true){
+  mensajeAleatorio(mensajesBlacklistCantidad);
+  ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
+  ctx.deleteMessage();
+}else{ //INICIO DEL ELSE A
 
           //Evaluar si hay mensajes repetidos
           if(mensajeAnterior==mensajeRecibido){
@@ -123,19 +114,32 @@ bot.on('message', (ctx) => { //INICIO ANALIZADOR DE MENSAJE
   
     
 
-}); //FIN ANALIZADOR DE MENSAJE
-//-------------------------------------------------------------------------------------------------------------------------
+}); //FIN de metodo .on del objeto BOT
 
 
-console.log("PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS\n");
-//----------------------------DECLARACION DE FUNCIONES ADICIONALES--------------------------------------------------
+console.log("PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS \n");
+//===================================DECLARACION DE FUNCIONES ADICIONALES=========================0========================
+
 //FUNCION QUE ME PERMITIRÁ CALCULAR NUMEROS ALEATORIOS EN UN RANGO DEFINIDO para que mande un mensaje aleatorio
 function mensajeAleatorio(parametroNumerico){ //recibe por parametro el valor maximo del rango
-  randomDecimal=Math.random();                         //devuelve un valor aleatorio entre 0 y 1.
+  randomDecimal=Math.random();                //devuelve un valor aleatorio entre 0 y 1.
   randomEntero=Math.floor(randomDecimal * parametroNumerico); //se multiplica el valor
                                                 //0.aleatorio por el parametro y al final se redondea hacia abajo   
 }
 
+//FUNCIÓN QUE UTILIZA EL MÉTODO "includes" PARA TODAS LAS PALABRAS DE LA BLACKLIST Y ASI DETECTAR GROSERIAS
+function detectarGroserias(){
+  for(let i=0;i<dataParseada.blackList.length;i++){
+    if(mensajeRecibidoMinusculas.includes(dataParseada.blackList[i])){
+      banderaNegativaDetectada=true;
+      break;
+    }
+ }
+}
+//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍA EL PRIMER MENSAJE AL BOT
+function mensajeInicial(){
+  ctx.reply(dataParseada.mensajesBienvenida[3]);
+}
 
 
 
@@ -143,3 +147,6 @@ function mensajeAleatorio(parametroNumerico){ //recibe por parametro el valor ma
 
 //-----------------------------------------------------------------------------------------------------------------
 bot.launch(); //comando para que se inicie el bot con toda la "configuración" anterior.
+
+
+// ESTA LINEA ES LA QUE ME HIZO VER LA INFO DEL MENSAJE ctx.deleteMessage(message_id,idChat);
