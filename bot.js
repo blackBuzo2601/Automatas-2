@@ -55,6 +55,7 @@ var mensajeRecibidoMinusculas="";
 var contadorBlackList=10;
 var banderaMensajeInicial=0;
 var banderaPrimerMensajeRecibido=false;
+var banderaPregunta=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -82,7 +83,7 @@ mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaj
 //del mensaje.
 console.log("Mensaje recibido: "+mensajeRecibido); 
 mensajeRecibidoMinusculas=mensajeRecibido.toString(); //Convertir mensaje a tipo STRING
-mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLocaleLowerCase(); //String a minusculas
+mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLowerCase(); //String a minusculas
 detectarGroserias();
 
 //CONDICIONAL DE BLACKLIST (groserias)
@@ -90,18 +91,39 @@ if(banderaNegativaDetectada==true){
   mensajeAleatorio(mensajesBlacklistCantidad);
   ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
   ctx.deleteMessage();
-}else{ //INICIO ELSE 1
-      contadorMsjRepetido();      
-      if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
-        mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
-        ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
-      }else{ //INICIO ELSE 1.1
-        if(banderaMensajeInicial>=2){
-        detectorDeClaves();
+  banderaPregunta=false;
+}else{ //INICIO ELSE PRINCIPAL
+  
+  //CONDICIONAL DE BANDERA DE (S/N)
+      if(banderaPregunta==true){//inicialmente la bandera no está activada asi que pasa al ELSE
+        if(mensajeRecibidoMinusculas=="s"){
+          recomiendaJuegos();
         }
-      }//FIN ELSE 1.1
+        else if(mensajeRecibidoMinusculas=="n"){
+          ctx.reply("Regresando al menu principal: ");
+        }
+        else{
+          ctx.reply("lo siento, no te entiendo, pendejo");
+        }
 
-}//FIN DEL ELSE 1 correspondiente a CONDICIONAL BLACKLIST 
+
+      }else{//INICIO ELSE subprincipal
+          contadorMsjRepetido();      
+          if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
+            mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
+            ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
+          }else{ //INICIO ELSE 1.1.1
+            
+            if(banderaMensajeInicial>=2){
+            detectorDeClaves();
+            }
+          }//FIN ELSE 1.1.1
+      }//FIN ELSE subprincipal
+
+
+
+
+}//FIN DEL PRINCIPAL correspondiente a CONDICIONAL BLACKLIST 
 
 
 
@@ -115,11 +137,7 @@ function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍ
 //FUNCION QUE DETECTA SI EL MENSAJE CONTIENE LAS CLAVES QUE SOLICITA EL BOT
 function detectorDeClaves(){
   switch(mensajeRecibidoMinusculas){
-    case "recomendar videojuego":
-        mensajeAleatorio(listaVideojuegosCantidad);
-        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
-        +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
-        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma);        
+    case "recomendar videojuego": recomiendaJuegos();
     break;  
     
     case "consejo personal":
@@ -127,18 +145,30 @@ function detectorDeClaves(){
         ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje);
     break;   
 
+    case "acerca de elian":
+        ctx.reply("INFORMACIÓN GENERAL DE MI CREADOR\n\nNombre: Buzo Zamora Elian\nFecha de nacimiento: 26/01/2002\nNacionalidad: Mexicana\nSexo: Masculino\nCiudad de nacimiento: Ensenada\nEstado Civil: Soltero");
+        break;
+
     default:
         ctx.reply("Lo siento. No entendí lo que quisiste decir. Por favor, revisa y escribe bien tu mensaje.");
         break;
   }//fin swich
 }//fin funcion detectorDeClaves
 
+function recomiendaJuegos(){
+      mensajeAleatorio(listaVideojuegosCantidad);
+      ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
+      +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
+      "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma+"\n\n¿Recomendar otro videojuego? (S/N)");
+      banderaPregunta=true;
+}
+
+
 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 }); //FIN de metodo .on del objeto BOT
-
 
 console.log("PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS \n");
 //===================================DECLARACION DE FUNCIONES ADICIONALES=========================0========================
