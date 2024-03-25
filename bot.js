@@ -55,6 +55,7 @@ var mensajeRecibidoMinusculas="";
 var banderaSaludo=false;
 var contadorBlackList=10;
 var banderaMensajeInicial=false;
+var otraBanderaMsjInicial=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -97,7 +98,11 @@ if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje i
   mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
   ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
 }else{ //INICIO ELSE 1.1
-    detectorDeClaves();
+    if(otraBanderaMsjInicial==true){
+      detectorDeClaves();
+    }else{
+      otraBanderaMsjInicial=true;
+    }
 }//FIN ELSE 1.1
 
 }//FIN DEL ELSE 1 correspondiente a CONDICIONAL BLACKLIST 
@@ -114,17 +119,24 @@ function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍ
 
 //FUNCION QUE DETECTA SI EL MENSAJE CONTIENE LAS CLAVES QUE SOLICITA EL BOT
 function detectorDeClaves(){
-  if(mensajeRecibidoMinusculas=="recomendar videojuego"){
-    mensajeAleatorio(listaVideojuegosCantidad);
-    ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
-    +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
-    "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma);        
-  }
-  else if(mensajeRecibidoMinusculas=="consejo personal"){
-    mensajeAleatorio(mensajesConsejosPersonalesCantidad);
-    ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje);   
-  }
-}
+  switch(mensajeRecibidoMinusculas){
+    case "recomendar videojuego":
+        mensajeAleatorio(listaVideojuegosCantidad);
+        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
+        +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
+        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma);        
+    break;  
+    
+    case "consejo personal":
+        mensajeAleatorio(mensajesConsejosPersonalesCantidad);
+        ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje);
+    break;   
+
+    default:
+        ctx.reply("Lo siento. No entendí lo que quisiste decir. Por favor, revisa y escribe bien tu mensaje.");
+        break;
+  }//fin swich
+}//fin funcion detectoDeClaves
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 }); //FIN de metodo .on del objeto BOT
