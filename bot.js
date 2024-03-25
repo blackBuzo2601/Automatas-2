@@ -55,7 +55,7 @@ var mensajeRecibidoMinusculas="";
 var contadorBlackList=10;
 var banderaMensajeInicial=0;
 var banderaPrimerMensajeRecibido=false;
-var banderaPregunta=false;
+var banderaPregunta=0;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -91,45 +91,35 @@ if(banderaNegativaDetectada==true){
   mensajeAleatorio(mensajesBlacklistCantidad);
   ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
   ctx.deleteMessage();
-  banderaPregunta=false;
 }else{ //INICIO ELSE PRINCIPAL
   
-  //CONDICIONAL DE BANDERA DE (S/N)
-      if(banderaPregunta==true){//inicialmente la bandera no está activada asi que pasa al ELSE
-        if(mensajeRecibidoMinusculas=="s"){
-          recomiendaJuegos();
-        }
-        else if(mensajeRecibidoMinusculas=="n"){
-          ctx.reply("Regresando al menu principal: ");
-        }
-        else{
-          ctx.reply("lo siento, no te entiendo, pendejo");
-        }
+      //SWITCH DE BANDERA DE (S/N) 
+      switch(banderaPregunta){//start switch
+        case 1: snFuncionjuegos();
+          break;
 
-
-      }else{//INICIO ELSE subprincipal
+        case 2: snConsejosPersonales();
+          break;
+        
+        case 0:
           contadorMsjRepetido();      
           if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
             mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
             ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
           }else{ //INICIO ELSE 1.1.1
-            
             if(banderaMensajeInicial>=2){
             detectorDeClaves();
             }
           }//FIN ELSE 1.1.1
-      }//FIN ELSE subprincipal
+      }//end switch
 
-
-
-
-}//FIN DEL PRINCIPAL correspondiente a CONDICIONAL BLACKLIST 
-
+}//FIN DE ELSE PRINCIPAL correspondiente a CONDICIONAL BLACKLIST 
 
 
 
 //$$$$$$$$$$$$$$$$$$$$$$$FUNCIONES QUE SON NECESARIO QUE SE DECLAREN AQUI EN bot.on (message)$$$$$$$$$$$$$$$$$$$$$
-
+//$$$$$$$$$$$$$$$$$$$$$$$FUNCIONES QUE SON NECESARIO QUE SE DECLAREN AQUI EN bot.on (message)$$$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$FUNCIONES QUE SON NECESARIO QUE SE DECLAREN AQUI EN bot.on (message)$$$$$$$$$$$$$$$$$$$$$
 function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍA EL PRIMER MENSAJE AL BOT
   ctx.reply(dataParseada.mensajeBienvenida);
 }
@@ -138,12 +128,10 @@ function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍ
 function detectorDeClaves(){
   switch(mensajeRecibidoMinusculas){
     case "recomendar videojuego": recomiendaJuegos();
-    break;  
+        break;  
     
-    case "consejo personal":
-        mensajeAleatorio(mensajesConsejosPersonalesCantidad);
-        ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje);
-    break;   
+    case "consejo personal": consejosPersonales();
+        break;   
 
     case "acerca de elian":
         ctx.reply("INFORMACIÓN GENERAL DE MI CREADOR\n\nNombre: Buzo Zamora Elian\nFecha de nacimiento: 26/01/2002\nNacionalidad: Mexicana\nSexo: Masculino\nCiudad de nacimiento: Ensenada\nEstado Civil: Soltero");
@@ -155,16 +143,54 @@ function detectorDeClaves(){
   }//fin swich
 }//fin funcion detectorDeClaves
 
+//Funcion que devuelve un videojuego aleatorio en un mensaje con su informacion, ademas de activar bandera bien
 function recomiendaJuegos(){
       mensajeAleatorio(listaVideojuegosCantidad);
       ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
       +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
       "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma+"\n\n¿Recomendar otro videojuego? (S/N)");
-      banderaPregunta=true;
+      banderaPregunta=1;
 }
 
+//funcion para evaluar S/N en el mensaje recibido
+function snFuncionjuegos(){
+  switch(mensajeRecibidoMinusculas){//inicio switch
+    case "s": recomiendaJuegos();
+      break;
 
+    case "n": ctx.reply("Regresando al menu principal... ");
+    banderaPregunta=0;
+    mensajeInicial();
+      break;
+    
+    default:
+    ctx.reply("Por favor. Escribe bien. ¿Quieres otra recomendación de videojuego? (S/N)");
+      break;
+  }//fin switch
+}
 
+//funcion que devuelve un mensaje personal del JSON 
+function consejosPersonales(){
+  mensajeAleatorio(mensajesConsejosPersonalesCantidad);
+  ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje+"\n\n¿Quieres otro consejo? (S/N)");
+  banderaPregunta=2;
+}
+
+function snConsejosPersonales(){
+  switch(mensajeRecibidoMinusculas){//inicio switch
+    case "s": consejosPersonales();
+      break;
+
+    case "n": ctx.reply("Regresando al menu principal... ");
+    banderaPregunta=0;
+    mensajeInicial();
+      break;
+    
+    default:
+    ctx.reply("Por favor. Escribe bien. ¿Quieres otro consejo personal? (S/N)");
+      break;
+  }//fin switch
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
