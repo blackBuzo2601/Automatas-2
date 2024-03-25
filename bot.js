@@ -52,15 +52,13 @@ var mensajeAnterior="";  //almacenara el mensaje recibido anteriormente para com
 var parametroNumerico=0; //esta variable hace referencia a que en una función se usa para pasar parametros numericos
 var banderaNegativaDetectada=false;
 var mensajeRecibidoMinusculas="";
-var banderaSaludo=false;
 var contadorBlackList=10;
-var banderaMensajeInicial=false;
-var otraBanderaMsjInicial=false;
+var banderaMensajeInicial=0;
+var banderaPrimerMensajeRecibido=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
 const listaVideojuegosCantidad = dataParseada.listaVideojuegos.length;
-const mensajesBienvenidaCantidad = dataParseada.mensajesBienvenida.length;
 const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;                         
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
@@ -71,9 +69,10 @@ const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
 
 bot.on('message', (ctx) => { //INICIO de metodo .on del objeto BOT
 
-while(banderaMensajeInicial==false){
-    mensajeInicial();    
+if(banderaMensajeInicial==0){
+    mensajeInicial();   
 }
+banderaMensajeInicial++;
 banderaNegativaDetectada=false;   //reiniciar bandera 
 mensajeAnterior=mensajeRecibido; //almacenar el mensaje anterior.
 mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaje que se esta proceesando
@@ -92,18 +91,15 @@ if(banderaNegativaDetectada==true){
   ctx.reply(dataParseada.mensajesBlacklist[randomEntero]);
   ctx.deleteMessage();
 }else{ //INICIO ELSE 1
-
-contadorMsjRepetido();      
-if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
-  mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
-  ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
-}else{ //INICIO ELSE 1.1
-    if(otraBanderaMsjInicial==true){
-      detectorDeClaves();
-    }else{
-      otraBanderaMsjInicial=true;
-    }
-}//FIN ELSE 1.1
+      contadorMsjRepetido();      
+      if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
+        mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
+        ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
+      }else{ //INICIO ELSE 1.1
+        if(banderaMensajeInicial>=2){
+        detectorDeClaves();
+        }
+      }//FIN ELSE 1.1
 
 }//FIN DEL ELSE 1 correspondiente a CONDICIONAL BLACKLIST 
 
@@ -113,8 +109,7 @@ if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje i
 //$$$$$$$$$$$$$$$$$$$$$$$FUNCIONES QUE SON NECESARIO QUE SE DECLAREN AQUI EN bot.on (message)$$$$$$$$$$$$$$$$$$$$$
 
 function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍA EL PRIMER MENSAJE AL BOT
-  ctx.reply(dataParseada.mensajesBienvenida[3].mensaje);
-  banderaMensajeInicial=true;
+  ctx.reply(dataParseada.mensajeBienvenida);
 }
 
 //FUNCION QUE DETECTA SI EL MENSAJE CONTIENE LAS CLAVES QUE SOLICITA EL BOT
@@ -136,7 +131,10 @@ function detectorDeClaves(){
         ctx.reply("Lo siento. No entendí lo que quisiste decir. Por favor, revisa y escribe bien tu mensaje.");
         break;
   }//fin swich
-}//fin funcion detectoDeClaves
+}//fin funcion detectorDeClaves
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 }); //FIN de metodo .on del objeto BOT

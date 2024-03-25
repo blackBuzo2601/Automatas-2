@@ -483,24 +483,8 @@
 
   ],
 
-  "mensajesBienvenida" : [
-    {
-      "mensaje" : "Buenas tardes. Soy BOTBUZO."
-    },
-    {
-      "mensaje" : "Hola que tal. Soy BOTBUZO. ¿Que necesitas?"
-    },
-    {
-      "mensaje" : "Que tal amig@. Soy BOTBUZO. Selecciona un botón por favor."
-    },
-    {
-      "mensaje" : "Que tal. Soy BOTBUZO. Por favor, escribe como mensaje alguna de las siguientes opciones. No importa si está en mayusculas o minusculas, solo escríbelo bien: \n\nRECOMENDAR VIDEOJUEGO\nCONSEJO PERSONAL\n\nEspero ser de ayuda :)"
-    },
-    {
-      "mensaje" :  "Buenas, amigo@. Soy BOTBUZO. ¿Que deseas consultar?"
-    }
-
-  ],
+  "mensajeBienvenida" : "Que tal. Soy BOTBUZO. Por favor, escribe como mensaje alguna de las siguientes opciones. No importa si está en mayusculas o minusculas, solo escríbelo bien: \n\nRECOMENDAR VIDEOJUEGO\nCONSEJO PERSONAL\n\nEspero ser de ayuda :)"
+  ,
 
   "mensajesSalida" : [
     {
@@ -614,11 +598,6 @@
   ],
 
   "blackList" : [
-
-    {
-      "nivel" : "1",
-      "groseria" :"puto"
-    },
       "puto",
       "puton",
       "putón",
@@ -865,7 +844,6 @@
        "pendejit@",
        "pene"
 
-      
       ],
   "mensajesBlacklist" : [
    "No está permitido ese lenguaje en este chat.",
