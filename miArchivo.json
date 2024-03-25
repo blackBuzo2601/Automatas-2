@@ -1,85 +1,486 @@
 {
   "listaVideojuegos": [
-    {
-      "titulo": "Mario Kart Wii",
-      "genero": "Carreras",
-      "año": "2008",
-      "edadRecomendada": "Para Todos",
-      "descripcionDelJuego": "Mario Kart Wii es un juego de carreras de Mario exclusivo para Nintendo Wii, y también el primero de la serie Mario Kart en aparecer en Wii. Lo principal del juego es que se usa el Wii Wheel como si fuera un volante.",
-      "plataforma" : "Nintendo Wii"
-    },
-    {
-      "titulo": "The Legend of Zelda: Skyward Sword",
-      "genero": "Accion-Aventura",
-      "año": "2011",
-      "edadRecomendada": "Para Todos",
-      "descripcionDelJuego": "Según la leyenda, milenios antes de los eventos de Skyward Sword, las tres deidades —Din, Nayru y Farore— crearon el mundo. Tras hacerlo dejaron en el mundo la Trifuerza, un triángulo sagrado que cumplían el deseo de su poseedor. La diosa Hylia se quedó en el mundo como guardiana de la reliquia. El poder de la reliquia sagrada despertó la ambición de poder de los demonios, que liderados por su rey, Demise, iniciaron una guerra con el fin de hacerse con éste.",
-      "plataforma" : "Nintendo Wii"
-    },
-    {
-      "titulo": "The Last of Us",
-      "genero": "Accion-Aventura",
-      "año": "2013",
-      "edadRecomendada": "17+",
-      "descripcionDelJuego": "The Last of Us es un videojuego de terror, acción y aventura desarrollado por la compañía estadounidense Naughty Dog y distribuido por Sony Computer Entertainment para la consola PlayStation 3 en 2013. La trama describe las vivencias de Joel y Ellie, un par de supervivientes de una pandemia en Estados Unidos que provoca la mutación de los seres humanos en criaturas caníbales.",
-      "plataforma" : "Sony Playstation 3"
-    },
-    {
-      "titulo": "Kingdom Hearts II",
-      "genero": "Accion RPG",
-      "año": "2005",
-      "edadRecomendada": "10+",
-      "descripcionDelJuego": "Kingdom Hearts II (キングダムハーツII) es un ARPG desarrollado por Square Enix y publicado por la misma empresa y Buena Vista Games para la consola PlayStation 2. Es la secuela directa de Kingdom Hearts: Chain of Memories. Apenas un mes después de su salida logró vender más de un millón de copias en Norteamérica, convirtiéndose en el segundo juego más vendido del año 2006.",
-      "plataforma" : "Sony Playstation 2"
-    },
-    {
-      "titulo": "Super Smash Bros. Brawl",
-      "genero": "Lucha,Plataformas,Crossover",
-      "año": "2008",
-      "edadRecomendada": "12+",
-      "descripcionDelJuego": "Super Smash Bros. Brawl (大乱闘だいらんとうスマッシュブラザーズＸエックス Dairantō Sumasshu Burazāzu Ekkusu?, lit. «Gran estruendo de hermanos X») es un videojuego de lucha distribuido por Nintendo para la videoconsola Wii. Como la tercera entrega de la serie Super Smash Bros., la lista de personajes de Brawl se expande con respecto a la de su predecesor Super Smash Bros. Melee, y es el primer juego dentro de la serie en presentar personajes de franquicias externas a Nintendo, con la inclusión de Solid Snake de la serie Metal Gear de Konami, y Sonic de la serie Sonic the Hedgehog de Sega.",
-      "plataforma" : "Nintendo Wii"
-    },
-    {
-      "titulo": "MARVEL'S SPIDERMAN",
-      "genero": "Accion-Aventura",
-      "año": "2018",
-      "edadRecomendada": "15+",
-      "descripcionDelJuego": "El juego narra una historia completamente original de Spider-Man que no está ligada a películas o cómics anteriores. Cubre ambos aspectos del personaje, tanto de Peter Parker como el superhéroe, además de presentarlo en una faceta más experimentada. Durante el transcurso de la historia, Spider-Man debe hacerle frente a una gran variedad de famosos enemigos, tales como Mr. Negativo, Electro, Buitre, Rhino y Escorpión.",
-      "plataforma" : "Sony Playstation 4"
-    },
-    {
-      "titulo" : "The Legend of Zelda: Ocarina of Time",
-      "genero": "Accion-Aventura",
-      "año": "1998",
-      "edadRecomendada": "Para Todos",
-      "descripcionDelJuego" : "La historia del juego se enfoca en el joven héroe Link, quien emprende una aventura en el reino de Hyrule para detener a Ganondorf, rey de la tribu Gerudo, antes de que encuentre la Trifuerza, una reliquia sagrada capaz de concederle cualquier deseo a su poseedor. Para ello, debe viajar a través del tiempo y explorar varios templos con el fin de despertar a algunos sabios que tienen el poder para aprisionar de forma definitiva a Ganondorf. Se ha de mencionar que la música juega un papel muy importante en la trama del juego, puesto que el jugador tiene que aprender a tocar varias canciones con una ocarina. Incluso, la popularidad de Ocarina of Time incrementó de forma significativa las ventas de ocarinas reales",
-      "plataforma" : "Nintendo 64"
-    },
-    {
-      "titulo" : "The Legend of Zelda: Majora's Mask",
-      "genero": "Accion-Aventura",
-      "año": "2000",
-      "edadRecomendada": "Para Todos",
-      "descripcionDelJuego" : "El juego tiene lugar en Términa, una versión alternativa del emplazamiento habitual de la serie, Hyrule. Allí, un Skull Kid ha robado la «Máscara de Majora», un poderoso y antiguo artefacto. Bajo su influencia está provocando estragos entre los ciudadanos y amenaza con destruir el mundo lanzando la luna sobre este en un corto periodo de 72 horas. El protagonista principal, Link, se embarca en una aventura a través del tiempo, reviviendo una y otra vez los tres días que tiene como plazo para evitar el cataclismo.",
-      "plataforma" :"Nintendo 64"
-    },
-    {
-      "titulo" : "The Last of Us Part II",
-      "genero": "Accion-Aventura",
-      "año": "2020",
-      "edadRecomendada": "17+",
-      "descripcionDelJuego" : "Ambientado cinco años después de The Last of Us (2013), el juego se centra en dos personajes jugables en un Estados Unidos post-apocalíptico cuyas vidas se entrelazan: Ellie, que busca venganza después de sufrir una tragedia, y Abby, una soldado que se ve envuelta en un conflicto entre su milicia y un culto religioso. El juego se juega desde la perspectiva de la tercera persona y le permite al jugador luchar contra enemigos humanos e infectados con armas de fuego, armas improvisadas y sigilo.",
-      "plataforma" :"Sony Playstation 4"
-    },
-    {
-      "titulo" : "Super Mario Galaxy",
-      "genero": "Accion-Aventura",
-      "año": "2020",
-      "edadRecomendada": "17+",
-      "descripcionDelJuego" : "Una nueva aventura de Mario",
-      "plataforma" :"Nintendo Wii"
-    }
+      {
+        "titulo": "The Legend of Zelda: Ocarina of Time",
+        "genero": "Acción-Aventura",
+        "año": "1998",
+        "edadRecomendada": "10+",
+        "descripcionDelJuego": "The Legend of Zelda: Ocarina of Time es un clásico atemporal de la acción y la aventura. Los jugadores asumen el papel de Link, quien se embarca en una épica misión para salvar el reino de Hyrule y rescatar a la Princesa Zelda de las garras del malvado Ganondorf. Con una narrativa cautivadora, entornos vastos y mazmorras desafiantes, este juego estableció nuevos estándares en la industria de los videojuegos y sigue siendo ampliamente celebrado como uno de los mejores juegos de todos los tiempos.",
+        "plataforma" : "Nintendo 64"
+      },
+      {
+        "titulo": "The Legend of Zelda: Majora's Mask",
+        "genero": "Acción-Aventura",
+        "año": "2000",
+        "edadRecomendada": "10+",
+        "descripcionDelJuego": "The Legend of Zelda: Majora's Mask es una aventura única y oscura que sigue a Link en su búsqueda para detener la luna que amenaza con destruir el mundo de Termina en tres días. Con un innovador sistema de tiempo, los jugadores deben explorar y manipular eventos para desentrañar los misterios de este mundo en constante peligro. Con su atmósfera inquietante y mecánicas de juego ingeniosas, Majora's Mask se destaca como uno de los títulos más originales de la serie Zelda.",
+        "plataforma" : "Nintendo 64"
+      },
+      {
+        "titulo": "Mario Party 3",
+        "genero": "Fiesta",
+        "año": "2000",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Party 3 es el tercer título de la popular serie de juegos de fiesta de Nintendo. Los jugadores compiten en una variedad de minijuegos emocionantes mientras avanzan por un tablero virtual en una carrera por las estrellas. Con una mezcla de estrategia, suerte y habilidad, Mario Party 3 ofrece diversión para jugadores de todas las edades. Además de los clásicos modos para varios jugadores, este juego también presenta un modo para un solo jugador con desafíos únicos y emocionantes.",
+        "plataforma" : "Nintendo 64"
+      },
+      {
+        "titulo": "Rayman 2",
+        "genero": "Plataformas",
+        "año": "1999",
+        "edadRecomendada": "7+",
+        "descripcionDelJuego": "Rayman 2 es un emocionante juego de plataformas que sigue las aventuras del héroe sin extremidades, Rayman, en su lucha contra el malvado pirata Robo-Pirata y su ejército de esbirros. Con gráficos vibrantes, jugabilidad fluida y una variedad de niveles desafiantes, Rayman 2 ofrece una experiencia de juego inmersiva para jugadores de todas las edades. Únete a Rayman en su misión para salvar el Gran Protoón y restaurar la paz en el mundo.",
+        "plataforma" : "Nintendo 64, Sony Playstation, Sega Dreamcast"
+      },
+      {
+        "titulo": "Super Mario 64",
+        "genero": "Plataformas",
+        "año": "1996",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Mario 64 revolucionó el género de los juegos de plataformas con su mundo tridimensional y su innovadora jugabilidad. Los jugadores asumen el papel de Mario mientras atraviesan el castillo de la Princesa Peach en busca de estrellas para combatir a Bowser y rescatar a la princesa. Con amplios entornos para explorar, desafiantes acertijos y emocionantes batallas contra jefes, Super Mario 64 estableció un nuevo estándar para los juegos de mundo abierto y sigue siendo querido por los fanáticos hasta el día de hoy.",
+        "plataforma" : "Nintendo 64"
+      },
+      {
+        "titulo": "Super Smash Bros",
+        "genero": "Lucha",
+        "año": "1999",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Smash Bros es un juego de lucha único que reúne a personajes icónicos de diversas franquicias de videojuegos en emocionantes combates multijugador. Los jugadores pueden elegir entre una variedad de personajes, incluidos Mario, Link, Pikachu y muchos más, cada uno con sus propios movimientos y habilidades especiales. Con una mecánica de juego accesible pero profunda, Super Smash Bros es perfecto para enfrentamientos competitivos entre amigos o para disfrutar en solitario contra la IA.",
+        "plataforma" : "Nintendo 64"
+      },
+      {
+        "titulo": "Rayman 3",
+        "genero": "Plataformas",
+        "año": "2003",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Rayman 3 lleva a los jugadores a otra aventura emocionante con el héroe sin extremidades, Rayman, mientras lucha contra el malvado Andre y sus secuaces Robo-Piratas. Con una combinación de plataformas desafiantes, combate fluido y humor extravagante, Rayman 3 ofrece una experiencia de juego vibrante y entretenida para jugadores de todas las edades. Únete a Rayman y sus amigos mientras intentan salvar el Gran Protoón y restaurar la paz en el mundo una vez más.",
+        "plataforma" : "Sony Playstation 2, Nintendo Gamecube, XBOX"
+      },
+      {
+        "titulo": "Soulcalibur 2",
+        "genero": "Lucha",
+        "año": "2002",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Soulcalibur 2 es la tercera entrega de la aclamada serie de juegos de lucha de Namco. Con una mezcla de personajes clásicos y nuevos, así como un sistema de combate profundo y estratégico, Soulcalibur 2 ofrece emocionantes batallas para jugadores de todas las habilidades. Además del modo de un jugador con una historia épica, el juego presenta modos multijugador competitivos que permiten a los jugadores enfrentarse entre sí en intensos combates uno contra uno o en batallas de equipo.",
+        "plataforma" : "Sony Playstation 2, Nintendo Gamecube, XBOX"
+      },
+      {
+        "titulo": "Star Fox Adventures",
+        "genero": "Acción-Aventura",
+        "año": "2002",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Star Fox Adventures es un juego de acción y aventuras que sigue las hazañas del equipo de mercenarios conocido como Star Fox. En este título, Fox McCloud se embarca en una misión para rescatar al planeta Dinosauria de la malvada influencia de General Scales. Con gráficos impresionantes, jugabilidad variada y una emocionante historia, Star Fox Adventures ofrece una experiencia única en el universo de Star Fox.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Super Mario Strikers",
+        "genero": "Deportes",
+        "año": "2005",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Mario Strikers es un juego de fútbol arcade que presenta a los personajes icónicos de Mario y sus amigos compitiendo en partidos intensos y llenos de acción. Con poderosos movimientos especiales, arenas interactivas y una atmósfera vibrante, los jugadores disfrutarán de una experiencia de fútbol única en el universo de Mario. Ya sea compitiendo en el modo para un jugador o desafiando a amigos en emocionantes enfrentamientos multijugador, Super Mario Strikers ofrece diversión para todas las edades.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Super Mario Sunshine",
+        "genero": "Plataformas",
+        "año": "2002",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Mario Sunshine lleva a los jugadores a una emocionante aventura en la isla tropical de Delfino, donde Mario se embarca en una misión para limpiar la isla y restaurar la paz después de que fuera ensuciada por un impostor que se hace pasar por él. Con la ayuda de su fiel compañero, FLUDD, Mario debe usar su dispositivo de limpieza de agua para superar obstáculos, resolver acertijos y derrotar a enemigos en esta vibrante aventura de plataformas.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Super Smash Bros Melee",
+        "genero": "Lucha",
+        "año": "2001",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Smash Bros Melee es la segunda entrega de la popular serie de juegos de lucha de Nintendo. Con un elenco expandido de personajes jugables, incluidos invitados especiales como Ganondorf y Mewtwo, el juego ofrece una experiencia de combate frenética y emocionante. Los jugadores pueden enfrentarse entre sí en una variedad de escenarios temáticos de Nintendo y participar en desafíos para un jugador para desbloquear nuevos personajes, escenarios y trofeos.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "The Legend of Zelda: Twilight Princess",
+        "genero": "Acción-Aventura",
+        "año": "2006",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "The Legend of Zelda: Twilight Princess sumerge a los jugadores en una oscura y épica aventura en el reino de Hyrule. Controlando al héroe Link, los jugadores se embarcan en una búsqueda para salvar el reino de la influencia del crepúsculo y rescatar a la Princesa Zelda. Con una narrativa envolvente, mazmorras desafiantes y un vasto mundo por explorar, Twilight Princess es un punto culminante de la serie Zelda que sigue siendo muy apreciado por los fans.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Luigi's Mansion",
+        "genero": "Acción-Aventura",
+        "año": "2001",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Luigi's Mansion es un juego de aventuras y terror que sigue a Luigi, el hermano de Mario, mientras explora una mansión embrujada para rescatar a Mario, quien ha sido capturado por fantasmas. Armado con una aspiradora modificada para capturar fantasmas, Luigi debe enfrentarse a una serie de desafiantes espectros y resolver acertijos para progresar. Con su atmósfera espeluznante y su sentido del humor peculiar, Luigi's Mansion ofrece una experiencia única y memorable para los jugadores.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Mario Kart: Double Dash",
+        "genero": "Carreras",
+        "año": "2003",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Kart: Double Dash es una entrega única en la serie de juegos de carreras de Mario Kart, introduciendo la mecánica de dobles equipos donde dos personajes manejan un solo kart. Los jugadores pueden intercambiar roles entre el conductor y el pasajero para utilizar estratégicamente los objetos y ganar ventaja en la pista. Con una gran variedad de personajes, pistas y modos de juego, Mario Kart: Double Dash ofrece una experiencia de carreras divertida y emocionante para jugadores de todas las edades.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Mario Party 4",
+        "genero": "Fiesta",
+        "año": "2002",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Party 4 continúa la tradición de la serie al ofrecer una variedad de emocionantes minijuegos y tableros temáticos para que los jugadores compitan entre sí. Con nuevos elementos de juego y modos de juego, como el modo de batalla y el modo de historia, Mario Party 4 promete horas de diversión para toda la familia.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Mario Party 5",
+        "genero": "Fiesta",
+        "año": "2003",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Party 5 lleva la diversión de la serie a nuevas alturas con una amplia variedad de minijuegos, tableros y modos de juego emocionantes. Los jugadores pueden competir entre sí en una serie de desafíos mientras avanzan por tableros únicos, cada uno con sus propias trampas y sorpresas. Con la adición de nuevos personajes jugables y elementos de juego, Mario Party 5 ofrece una experiencia festiva y divertida para jugadores de todas las edades.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Mario Party 7",
+        "genero": "Fiesta",
+        "año": "2005",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Party 7 es la séptima entrega de la serie de juegos de fiesta de Nintendo. Con una selección aún más amplia de minijuegos, tableros y modos de juego, este título ofrece una experiencia de fiesta aún más emocionante. Los jugadores pueden competir entre sí en una variedad de desafíos mientras disfrutan de la diversión y el caos característicos de la serie Mario Party.",
+        "plataforma" : "Nintendo GameCube"
+      },
+      {
+        "titulo": "Capcom vs SNK 2",
+        "genero": "Lucha",
+        "año": "2001",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Capcom vs SNK 2 es un juego de lucha crossover que enfrenta a los personajes de Capcom y SNK en emocionantes combates uno contra uno. Con una amplia selección de luchadores de ambas compañías, así como una variedad de modos de juego y opciones de personalización, este título es un sueño hecho realidad para los fans de los juegos de lucha.",
+        "plataforma" : "Sony Playstation 2, Nintendo Gamecube, XBOX"
+      },
+      {
+        "titulo": "Mario Kart Wii",
+        "genero": "Carreras",
+        "año": "2008",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Kart Wii es un emocionante juego de carreras de Mario exclusivo para Nintendo Wii, y también el primero de la serie Mario Kart en aparecer en Wii. Lo principal del juego es que se usa el Wii Wheel como si fuera un volante.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Donkey Kong Country Returns",
+        "genero": "Plataformas",
+        "año": "2010",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Donkey Kong Country Returns es un juego de plataformas de desplazamiento lateral que devuelve a Donkey Kong a sus raíces en una aventura emocionante y desafiante. Con impresionantes gráficos en 2D y una jugabilidad clásica, los jugadores se embarcan en una búsqueda para recuperar las preciadas bananas de Donkey Kong y derrotar a los malvados invasores de la isla.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Golden Eye 007 (Wii)",
+        "genero": "Disparos en primera persona",
+        "año": "2010",
+        "edadRecomendada": "16+",
+        "descripcionDelJuego": "GoldenEye 007 para Wii es un remake del clásico juego de disparos en primera persona lanzado originalmente para Nintendo 64. Con gráficos mejorados, controles adaptados para el Wii Remote y nuevas características, el juego ofrece una experiencia modernizada pero fiel al original, que permite a los jugadores revivir los emocionantes momentos del agente secreto James Bond mientras se enfrenta a enemigos y completa misiones peligrosas.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Mario Party 9",
+        "genero": "Fiesta",
+        "año": "2012",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Party 9 introduce un nuevo enfoque en la serie al cambiar la mecánica tradicional de moverse por un tablero a un sistema de juego más lineal donde todos los jugadores viajan juntos en un vehículo. Con una variedad de nuevos minijuegos y modos de juego, así como la adición de jefes finales en cada tablero, Mario Party 9 ofrece una experiencia fresca y emocionante para los fanáticos de la serie.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Mario Sports Mix",
+        "genero": "Deportes",
+        "año": "2011",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Sports Mix es una colección de juegos deportivos protagonizados por los personajes más queridos de Nintendo. Desde el baloncesto y el voleibol hasta el hockey sobre hielo y el balonmano, los jugadores pueden disfrutar de una variedad de deportes emocionantes en modos para un jugador y multijugador. Con controles intuitivos y una jugabilidad divertida, Mario Sports Mix es perfecto para jugar con amigos y familiares.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Mario Strikers Charged",
+        "genero": "Deportes",
+        "año": "2007",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Strikers Charged es un juego de fútbol arcade cargado de acción protagonizado por los personajes de Mario. Los jugadores compiten en partidos de fútbol emocionantes en campos dinámicos llenos de trampas y power-ups. Con controles intuitivos y una mecánica de juego rápida y frenética, este título es perfecto para enfrentamientos multijugador entre amigos.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Metroid Other M",
+        "genero": "Acción-Aventura",
+        "año": "2010",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Metroid Other M es un juego de acción y aventuras que combina elementos de plataformas y disparos en tercera persona. En este título, los jugadores asumen el papel de Samus Aran mientras explora una misteriosa nave espacial infestada de alienígenas y descubre secretos sobre su propio pasado. Con una narrativa envolvente, jugabilidad variada y combates intensos, Metroid Other M es una adición imprescindible a la serie Metroid.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Metroid Prime Trilogy",
+        "genero": "Acción-Aventura",
+        "año": "2009",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Metroid Prime Trilogy es una recopilación de los tres juegos de la serie Metroid Prime, lanzados originalmente para GameCube y Wii. Con gráficos mejorados, controles optimizados y contenido adicional, esta colección ofrece una experiencia completa para los fanáticos de la serie. Los jugadores pueden sumergirse en la exploración atmosférica y la acción emocionante de los juegos de Metroid Prime en una sola entrega.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Punch-Out!! (Wii)",
+        "genero": "Deportes",
+        "año": "2009",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Punch-Out!! para Wii es un remake del clásico juego de boxeo lanzado originalmente para NES y Super Nintendo. Los jugadores asumen el papel de Little Mac mientras luchan contra una serie de oponentes únicos en su camino hacia el campeonato mundial. Con controles intuitivos basados en movimientos y la inclusión de personajes icónicos como Mike Tyson y King Hippo, Punch-Out!! ofrece una experiencia nostálgica y divertida para jugadores de todas las edades.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Rayman Origins",
+        "genero": "Plataformas",
+        "año": "2011",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Rayman Origins es un juego de plataformas de desplazamiento lateral que sigue las aventuras del héroe sin extremidades, Rayman, en su lucha contra el malvado Mr. Dark y sus secuaces. Con un estilo artístico único, jugabilidad fluida y una banda sonora encantadora, Rayman Origins ofrece una experiencia de juego vibrante y llena de diversión para jugadores de todas las edades.",
+        "plataforma" : "Sony Playstation 3, Nintendo Wii, Xbox 360, PC"
+      },
+      {
+        "titulo": "Wii Sports Resort",
+        "genero": "Deportes",
+        "año": "2009",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Wii Sports Resort es una colección de juegos deportivos diseñados para aprovechar al máximo los controles de movimiento del Wii MotionPlus. Con actividades que van desde el esquí acuático y el tenis de mesa hasta el paracaidismo y el golf, los jugadores pueden disfrutar de una variedad de deportes emocionantes mientras exploran la isla tropical de Wuhu. Con controles precisos y una jugabilidad accesible, Wii Sports Resort es perfecto para jugadores de todas las edades y habilidades.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Super Mario Galaxy",
+        "genero": "Plataformas",
+        "año": "2007",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Mario Galaxy lleva al fontanero más famoso del mundo a nuevas alturas, ¡literalmente! En esta aventura épica, Mario viaja a través de galaxias y planetas para rescatar a la Princesa Peach de las garras de Bowser. Con mecánicas de juego innovadoras que aprovechan al máximo el control de movimiento del Wii Remote, una banda sonora impresionante y niveles creativos, Super Mario Galaxy es aclamado como uno de los mejores juegos de plataformas de todos los tiempos.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Super Mario Galaxy 2",
+        "genero": "Plataformas",
+        "año": "2010",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Mario Galaxy 2 es la continuación de la aclamada aventura cósmica de Mario, llevándolo a nuevas galaxias y planetas en su búsqueda para rescatar a la Princesa Peach. Con mecánicas de juego refinadas, nuevos poderes y desafiantes niveles, este juego ofrece una experiencia emocionante y llena de diversión para jugadores de todas las edades.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Super Smash Bros Brawl",
+        "genero": "Lucha",
+        "año": "2008",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Smash Bros Brawl es la tercera entrega de la serie de juegos de lucha crossover de Nintendo, lanzada para la consola Wii. Con una extensa lista de personajes jugables, incluidos nuevos luchadores como Sonic the Hedgehog y Solid Snake, este juego ofrece una experiencia de combate aún más diversa y emocionante. Además del modo multijugador competitivo, el juego presenta un modo de historia épico llamado Subspace Emissary, donde los jugadores luchan contra enemigos en una serie de niveles inspirados en los juegos de Nintendo.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "The Last Story",
+        "genero": "RPG",
+        "año": "2011",
+        "edadRecomendada": "12+",
+        "descripcionDelJuego": "The Last Story es un juego de rol desarrollado por Mistwalker y AQ Interactive para la consola Nintendo Wii. La historia sigue a un grupo de mercenarios liderados por Zael, quien busca convertirse en un caballero y ganarse el respeto de la sociedad. Con una combinación única de elementos de combate en tiempo real y mecánicas de juego de rol tradicionales, este juego ofrece una experiencia envolvente y emocionante para los fanáticos del género.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Dragon Ball Z Budokai Tenkaichi 3",
+        "genero": "Lucha",
+        "año": "2008",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Dragon Ball Z Budokai Tenkaichi 3 es un juego de lucha basado en la popular serie de anime Dragon Ball Z. Con un vasto elenco de personajes jugables y una amplia variedad de movimientos y técnicas especiales, este juego permite a los jugadores recrear las épicas batallas de la serie. Desde combates uno contra uno hasta intensos torneos, Dragon Ball Z Budokai Tenkaichi 3 ofrece una experiencia de lucha emocionante y llena de acción para los fanáticos de la franquicia.",
+        "plataforma" : "Sony Playstation 2, Nintendo Wii"
+      },
+      {
+        "titulo": "Dragon Ball Z Budokai 3",
+        "genero": "Lucha",
+        "año": "2004",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Dragon Ball Z Budokai 3 es un juego de lucha basado en el popular anime Dragon Ball Z. Con gráficos cel-shaded impresionantes y una jugabilidad fluida, los jugadores pueden experimentar batallas épicas mientras controlan a sus personajes favoritos de la serie. Con un amplio elenco de luchadores y modos de juego emocionantes, Budokai 3 es un título imprescindible para los fanáticos de Dragon Ball Z y los juegos de lucha en general.",
+        "plataforma" : "Sony Playstation 2"
+      },
+      {
+        "titulo": "Call of Duty: Black Ops 1",
+        "genero": "Disparos en primera persona",
+        "año": "2010",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Call of Duty: Black Ops es un juego de disparos en primera persona que se desarrolla durante la Guerra Fría y más allá. Con una campaña intensa, emocionantes modos multijugador y el popular modo zombis, este juego ofrece una experiencia completa para los amantes de los juegos de disparos. Con gráficos impresionantes, una narrativa envolvente y un sólido diseño de juego, Black Ops es un punto destacado en la franquicia Call of Duty.",
+        "plataforma" : "Sony Playstation 3, Nintendo Wii, Xbox 360, PC"
+      },
+      {
+        "titulo": "Call of Duty: Black Ops 2",
+        "genero": "Disparos en primera persona",
+        "año": "2012",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Call of Duty: Black Ops 2 lleva la exitosa franquicia de disparos en primera persona a nuevos niveles de innovación y emoción. Con una campaña ramificada que abarca dos líneas de tiempo diferentes, un emocionante modo multijugador y el regreso del popular modo zombis, este juego ofrece una experiencia completa para los fanáticos de la serie. Con gráficos mejorados y una jugabilidad pulida, Black Ops 2 es una adición imprescindible a la colección de cualquier fan de los juegos de disparos.",
+        "plataforma" : "Sony Playstation 3, Nintendo Wii, Xbox 360, PC"
+      },
+      {
+        "titulo": "Call of Duty: Modern Warfare 3",
+        "genero": "Disparos en primera persona",
+        "año": "2011",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Call of Duty: Modern Warfare 3 continúa la saga épica de la serie Modern Warfare con una campaña intensa y emocionante que lleva a los jugadores a través de una serie de escenarios de guerra en todo el mundo. Además de la campaña, el juego presenta un modo multijugador competitivo y cooperativo, así como el regreso del popular modo Especialista. Con gráficos impresionantes, una jugabilidad pulida y una variedad de modos de juego, Modern Warfare 3 es un título imprescindible para los fanáticos de los juegos de disparos.",
+        "plataforma" : "Sony Playstation 3, Nintendo Wii, Xbox 360, PC"
+      },
+      {
+        "titulo": "Call of Duty: Black Ops 3",
+        "genero": "Disparos en primera persona",
+        "año": "2015",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Call of Duty: Black Ops 3 lleva a los jugadores a un futuro oscuro donde la tecnología ha transformado la guerra. Con una campaña llena de giros y vueltas, un modo multijugador competitivo y la inclusión del modo Zombies, este título ofrece una experiencia completa para los fanáticos de la franquicia de Call of Duty.",
+        "plataforma" : "Sony Playstation 3, Sony Playstation 4, Xbox 360, XBOX ONE, PC"
+      },
+      {
+        "titulo": "Call of Duty: Black Ops Cold War",
+        "genero": "Disparos en primera persona",
+        "año": "2020",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Call of Duty: Black Ops Cold War lleva a los jugadores de regreso a la era de la Guerra Fría, ofreciendo una experiencia de juego llena de intriga, espionaje y acción intensa. Con una emocionante campaña para un jugador, un modo multijugador competitivo y el regreso del modo Zombies, este título ofrece una experiencia completa de Call of Duty ambientada en uno de los períodos más tensos de la historia mundial.",
+        "plataforma" : "Sony Playstation 4, XBOX ONE, Sony Playstation 5, XBOX Series S,X, PC"
+      },
+      {
+        "titulo": "Star Wars Jedi: Fallen Order",
+        "genero": "Acción-Aventura",
+        "año": "2019",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Star Wars Jedi: Fallen Order es un juego de acción y aventuras que sigue la historia de Cal Kestis, un joven padawan que sobrevive a la Orden 66 y debe esconder su identidad mientras explora los secretos de la Fuerza. Con una narrativa envolvente, combates emocionantes con sables de luz y exploración de mundos exóticos, este juego ofrece una experiencia auténtica de Star Wars para los fanáticos de la saga.",
+        "plataforma" : "Sony Playstation 4, XBOX ONE, Sony Playstation 5, XBOX Series S,X"
+      },
+      {
+        "titulo": "Marvel's Spider-Man (PS4)",
+        "genero": "Acción-Aventura",
+        "año": "2018",
+        "edadRecomendada": "16+",
+        "descripcionDelJuego": "Marvel's Spider-Man es un juego de acción y aventuras que sigue las hazañas de Peter Parker mientras lucha contra el crimen en la ciudad de Nueva York como el icónico superhéroe Spider-Man. Con una jugabilidad emocionante que combina combate fluido, acrobacias impresionantes y una historia convincente, este título ofrece a los jugadores la experiencia definitiva de ser Spider-Man.",
+        "plataforma" : "Sony PlayStation 4"
+      },
+      {
+        "titulo": "Kingdom Hearts",
+        "genero": "Acción-RPG",
+        "año": "2002",
+        "edadRecomendada": "10+",
+        "descripcionDelJuego": "Kingdom Hearts es un juego de rol de acción que combina los mundos de Disney y Final Fantasy en una emocionante aventura. Los jugadores asumen el papel de Sora, un joven elegido para proteger el universo de la invasión de los Heartless. Con un elenco de personajes queridos, una historia emocionante y acción en tiempo real, Kingdom Hearts cautiva a los jugadores con su encanto único.",
+        "plataforma" : "Sony Playstation 2"
+      },
+      {
+        "titulo": "Kingdom Hearts 2",
+        "genero": "Acción-RPG",
+        "año": "2005",
+        "edadRecomendada": "10+",
+        "descripcionDelJuego": "Kingdom Hearts 2 es la secuela del exitoso juego de rol de acción que combina los universos de Disney y Final Fantasy. Los jugadores continúan la historia de Sora mientras se enfrenta a nuevos desafíos y enemigos en su misión para salvar los mundos de la oscuridad. Con una jugabilidad mejorada, gráficos mejorados y una trama aún más profunda, Kingdom Hearts 2 ofrece una experiencia inolvidable para los fanáticos del juego original.",
+        "plataforma" : "Sony Playstation 2"
+      },
+      {
+        "titulo": "Kingdom Hearts 3",
+        "genero": "Acción-RPG",
+        "año": "2019",
+        "edadRecomendada": "10+",
+        "descripcionDelJuego": "Kingdom Hearts 3 es la esperada tercera entrega de la amada serie de juegos de rol de acción que combina los mundos de Disney y Final Fantasy. Los jugadores asumen el papel de Sora, quien se embarca en una aventura épica para detener la oscuridad que amenaza con consumir los mundos. Con gráficos impresionantes, una jugabilidad emocionante y la inclusión de nuevos mundos y personajes de Disney, Kingdom Hearts 3 ofrece una experiencia mágica para jugadores de todas las edades.",
+        "plataforma" : "Sony Playstation 4, XBOX ONE"
+      },
+      {
+        "titulo": "Metal Slug Anthology",
+        "genero": "Shoot 'em up",
+        "año": "2006",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Metal Slug Anthology es una colección de los clásicos juegos de disparos de la serie Metal Slug. Los jugadores se embarcan en una serie de misiones explosivas mientras luchan contra enemigos, rescatan rehenes y derrotan a jefes desafiantes. Con su estilo de arte distintivo, acción frenética y humor extravagante, esta antología es un tesoro para los fanáticos de los juegos de arcade.",
+        "plataforma" : "Playstation Portable, Sony Playstation 2, Nintendo Wii, XBOX, XBOX360, Playstation 3"
+      },
+      {
+        "titulo": "Shadow of the Colossus",
+        "genero": "Aventura",
+        "año": "2005",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Shadow of the Colossus es un juego de aventuras que sigue la historia de Wander, un joven que busca revivir a una chica sacrificando a dieciséis gigantes colosales. A bordo de su fiel caballo, Agro, Wander se aventura en un vasto mundo lleno de majestuosos colosos que deben ser derrotados. Con su atmósfera evocadora, paisajes impresionantes y una jugabilidad única, Shadow of the Colossus es considerado un clásico moderno en la industria de los videojuegos.",
+        "plataforma" : "PlayStation 2"
+      },
+      {
+        "titulo": "The Last of Us",
+        "genero": "Acción-Aventura",
+        "año": "2013",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "The Last of Us es un videojuego de terror, acción y aventura desarrollado por la compañía estadounidense Naughty Dog y distribuido por Sony Computer Entertainment para la consola PlayStation 3 en 2013. La trama describe las vivencias de Joel y Ellie, un par de supervivientes de una pandemia en Estados Unidos que provoca la mutación de los seres humanos en criaturas caníbales.",
+        "plataforma" : "Sony PlayStation 3"
+      },
+      {
+        "titulo": "The Last of Us Part II",
+        "genero": "Acción-Aventura",
+        "año": "2020",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "The Last of Us Part II es la esperada secuela del aclamado juego de Naughty Dog. Ambientado en un mundo post-apocalíptico infestado de peligros, el juego sigue la historia de Ellie mientras busca venganza en un viaje emocionalmente desgarrador. Con gráficos impresionantes, una narrativa poderosa y una jugabilidad envolvente, este título es una experiencia inolvidable para los jugadores.",
+        "plataforma" : "Sony PlayStation 4"
+      },
+      {
+        "titulo": "Bloodborne",
+        "genero": "Acción-RPG",
+        "año": "2015",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Bloodborne es un juego de acción y rol desarrollado por FromSoftware, conocido por la serie Dark Souls. Ambientado en la ciudad gótica de Yharnam, los jugadores asumen el papel de un cazador en busca de una cura para una enfermedad misteriosa. Con combates desafiantes, un mundo oscuro y atmosférico, y monstruos grotescos, Bloodborne ofrece una experiencia intensa y gratificante para los amantes del género.",
+        "plataforma" : "Sony PlayStation 4"
+      },
+      {
+        "titulo": "Uncharted 4: A Thief's End",
+        "genero": "Acción-Aventura",
+        "año": "2016",
+        "edadRecomendada": "13+",
+        "descripcionDelJuego": "Uncharted 4: A Thief's End es la conclusión épica de la aclamada serie de Naughty Dog. Los jugadores asumen el papel de Nathan Drake en su última aventura mientras busca un tesoro legendario y se enfrenta a enemigos mortales. Con impresionantes gráficos, emocionantes secuencias de acción y una narrativa convincente, Uncharted 4 ofrece una experiencia cinematográfica inigualable en el mundo de los videojuegos.",
+        "plataforma" : "Sony PlayStation 4"
+      },
+      {
+        "titulo": "Dark Souls 3",
+        "genero": "Acción-RPG",
+        "año": "2016",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Dark Souls 3 es la última entrega de la famosa serie de juegos de rol de FromSoftware. Ambientado en un mundo oscuro y hostil, los jugadores enfrentan desafíos mortales mientras exploran ruinas antiguas y luchan contra monstruos imponentes. Con una jugabilidad desafiante, un diseño de nivel intrincado y una atmósfera inquietante, Dark Souls 3 ofrece una experiencia gratificante para los jugadores valientes.",
+        "plataforma" : "Sony Playstation 4, XBOX ONE, PC"
+      },
+      {
+        "titulo": "Super Smash Bros for Wii U",
+        "genero": "Lucha",
+        "año": "2014",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Smash Bros for Wii U es la cuarta entrega de la serie Super Smash Bros, que reúne a personajes icónicos de diversas franquicias de videojuegos en emocionantes combates multijugador. Con una amplia selección de luchadores, escenarios y modos de juego, este título ofrece una experiencia de lucha caótica y divertida para jugadores de todas las edades.",
+        "plataforma" : "Nintendo Wii U"
+      },
+      {
+        "titulo": "Super Smash Bros Ultimate",
+        "genero": "Lucha",
+        "año": "2018",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Super Smash Bros Ultimate es la quinta entrega de la serie Super Smash Bros, que reúne a un elenco masivo de personajes de diversas franquicias de videojuegos en épicas batallas multijugador. Con la adición de nuevos luchadores, escenarios y modos de juego, así como un sistema de juego mejorado, este título ofrece la experiencia definitiva de Super Smash Bros para Nintendo Switch.",
+        "plataforma" : "Nintendo Switch"
+      },
+      {
+        "titulo": "Mario Kart 8 Deluxe",
+        "genero": "Carreras",
+        "año": "2017",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Kart 8 Deluxe es una versión mejorada y expandida del exitoso juego de carreras de Nintendo. Con nuevos personajes, pistas y objetos, así como la inclusión de todos los contenidos descargables del juego original, Mario Kart 8 Deluxe ofrece la experiencia definitiva de carreras de karts para la consola Nintendo Switch.",
+        "plataforma" : "Nintendo Switch"
+      },
+      {
+        "titulo": "Mario Party Superstars",
+        "genero": "Fiesta",
+        "año": "2021",
+        "edadRecomendada": "Para Todos",
+        "descripcionDelJuego": "Mario Party Superstars es una colección de minijuegos clásicos de la serie Mario Party, reunidos en un solo juego para Nintendo Switch. Los jugadores pueden competir en emocionantes tableros temáticos mientras participan en una variedad de divertidos minijuegos diseñados para poner a prueba sus habilidades y suerte. Con gráficos mejorados y la inclusión de funciones en línea, Mario Party Superstars ofrece una experiencia festiva y competitiva para amigos y familiares.",
+        "plataforma" : "Nintendo Switch"
+      },
+      {
+        "titulo": "The Legend of Zelda: Breath of the Wild",
+        "genero": "Acción-Aventura",
+        "año": "2017",
+        "edadRecomendada": "10+",
+        "descripcionDelJuego": "The Legend of Zelda: Breath of the Wild redefine la icónica serie de aventuras de Link con un vasto mundo abierto y una libertad sin precedentes. Los jugadores exploran Hyrule en busca de misterios, luchan contra enemigos formidables y resuelven acertijos ingeniosos mientras descubren la historia detrás del reino en ruinas. Con un diseño de juego innovador, paisajes impresionantes y una sensación de asombro constante, Breath of the Wild es una experiencia inolvidable para los amantes de los juegos de aventuras.",
+        "plataforma" : "Nintendo Switch, Wii U"
+      },
+      {
+        "titulo": "The Legend of Zelda: Skyward Sword",
+        "genero": "Acción-Aventura",
+        "año": "2011",
+        "edadRecomendada": "10+",
+        "descripcionDelJuego": "The Legend of Zelda: Skyward Sword sigue las aventuras de Link mientras emprende un viaje por los cielos para salvar a Zelda y derrotar al malvado señor oscuro, Ghirahim. Con controles de movimiento precisos que aprovechan al máximo la tecnología de Wii MotionPlus, los jugadores deben dominar el arte de la espada y resolver acertijos desafiantes en su búsqueda. Con una narrativa cautivadora y un diseño de nivel ingenioso, Skyward Sword ofrece una experiencia inolvidable para los fans de la serie Zelda.",
+        "plataforma" : "Nintendo Wii"
+      },
+      {
+        "titulo": "Call of Duty: Modern Warfare (2019)",
+        "genero": "Disparos en primera persona",
+        "año": "2019",
+        "edadRecomendada": "17+",
+        "descripcionDelJuego": "Call of Duty: Modern Warfare es un reinicio de la exitosa serie de disparos en primera persona, que ofrece una campaña emocionante, un modo multijugador competitivo y operaciones especiales cooperativas. Ambientado en un mundo moderno lleno de conflictos geopolíticos, el juego presenta un realismo visual impresionante y una jugabilidad intensa que desafía a los jugadores a tomar decisiones difíciles en el campo de batalla.",
+        "plataforma" : "Sony Playstation 4, XBOX ONE, PC"
+      }
+
   ],
 
   "mensajesBienvenida" : [
@@ -199,7 +600,7 @@
       "mensaje" : "Aprende inglés. Es una herramienta muy importante para todo ingeniero. Incluso puedes aprender inglés jugando videojuegos. Aún más si lo prácticas en el chat de proximidad de Warzone."
     },
     {
-      "mensaje" : "Juega videojuegos. Es un pasatiempo sano. No sales. Bebes alcohol. No fumas. Es lo mejor."
+      "mensaje" : "Juega videojuegos. Es un pasatiempo sano. No sales. No Bebes alcohol. No fumas. Es lo mejor."
     },
     {
       "mensaje" : "Ve las peliculas de Star Wars, exceptuando la nueva trilogia hecha por disney, esas son basura. Las 6 clásicas son las mejores."
@@ -224,8 +625,10 @@
       "pvt0n",
       "pvton",
       "puta",
+      "put@",
       "putito",
       "putita",
+      "putit@",
       "put4",
       "put0",
       "pito",
@@ -241,8 +644,10 @@
       "putoo",
       "putote",
       "putota",
+      "putot@",
       "putito",
       "putita",
+      "putit@",
       "pvtito",
       "pvtit0",
       "pvt1t0",
@@ -251,6 +656,7 @@
       "pvt1t0",
       "pendejo",
       "pendeja",
+      "pendej@",
       "p3ndejo",
       "p3nd3jo",
       "p3nd3j0",
@@ -259,11 +665,18 @@
       "piton",
       "pitón",
       "reatudo",
+      "re@tudo",
       "reata",
+      "re@ta",
       "reatilla",
+      "re@tilla",
       "r3ata",
+      "r3@ta",
+      "r3@t@",
       "chingado",
+      "ching@do",
       "ch1ngado",
+      "ch1ng@do",
       "ch1ng4do",
       "ch1ng4d0",
       "chingad0",
@@ -273,7 +686,9 @@
       "ch1ng4",
       "ching4",
       "chingas",
+      "ching@s",
       "ch1ngas",
+      "ch1ng@s",
       "ch1ng4s",
       "imbécil",
       "imbecil",
@@ -287,6 +702,7 @@
       "p1nch3",
       "pinch3",
       "cabron",
+      "c@bron",
       "c4bron",
       "c4br0n",
       "cabr0n",
@@ -295,6 +711,7 @@
       "perr4",
       "p3rr4",
       "cabronazo",
+      "c@bronazo",
       "cabronaz0",
       "cabron4z0",
       "cabr0n4z0",
@@ -412,7 +829,40 @@
        "m4m3s",
        "inepto",
        "peña nieto",
-       "Cabroncito"
+       "Cabroncito",
+       "chingadamadre",
+       "gordo",
+       "insecto",
+       "bastardo",
+       "insect0",
+       "1nsect0",
+       "ins3ct0",
+       "b4stardo",
+       "b4st4rd0",
+       "bastardo",
+       "infeliz",
+       "desgraciado",
+       "maldito",
+       "n1gga",
+       "nigga",
+       "n1gg4",
+       "n1gger",
+       "n1gg3r",
+       "puteado",
+       "put3ad0",
+       "put3e@do",
+       "joder",
+       "jodido",
+       "jodida",
+       "j0dido",
+       "j0d1d0",
+       "j0dido",
+       "pendejito",
+       "pendejita",
+       "pend3jito",
+       "pend3jita",
+       "pendejit0",
+       "pendejit@"
 
       
       ],
