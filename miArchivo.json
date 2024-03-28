@@ -483,7 +483,7 @@
 
   ],
 
-  "mensajeBienvenida" : "Que tal. Soy BOTBUZO. Por favor, escribe como mensaje alguna de las siguientes opciones. No importa si está en mayusculas o minusculas, solo escríbelo bien: \n\nRECOMENDAR VIDEOJUEGO\nCONSEJO PERSONAL\nACERCA DE ELIAN\nCLIP DIVERTIDO\n\nEspero ser de ayuda :)"
+  "mensajeBienvenida" : "Que tal. Soy BOTBUZO. Por favor, escribe como mensaje alguna de las siguientes opciones. No importa si está en mayusculas o minusculas, solo escríbelo bien: \n\nRECOMENDAR VIDEOJUEGO\nCONSEJO PERSONAL\nACERCA DE ELIAN\nCLIP DIVERTIDO\nSALIR\n\nEspero ser de ayuda :)"
   ,
 
   "mensajesSalida" : [

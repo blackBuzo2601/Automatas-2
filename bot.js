@@ -58,6 +58,7 @@ var banderaPrimerMensajeRecibido=false;
 var banderaPregunta=0;
 var elVideo;
 var banderaVideoSinCensura=false;
+var salida=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -98,7 +99,7 @@ if(banderaNegativaDetectada==true){
   ctx.deleteMessage();
 }else{ //INICIO ELSE PRINCIPAL
   
-      //SWITCH DE BANDERA DE (S/N) 
+      //SWITCH de opciones de banderaPregunta
       switch(banderaPregunta){//start switch
         case 1: snFuncionjuegos();
           break;
@@ -113,6 +114,9 @@ if(banderaNegativaDetectada==true){
           break;
 
         case 5: snClipDivertido();
+          break;
+
+        case 10: noHacerNada();
           break;
         
         case 0:
@@ -150,6 +154,9 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
         break;
 
     case "clip divertido": clipDivertido();
+        break;
+
+    case "salir" : detenerInteraccion();
         break;
 
     default:
@@ -228,10 +235,14 @@ function clipDivertido(){
 
 function menuClipDivertido(){
   switch(mensajeRecibidoMinusculas){
-    case "sc": clipSinCensura();
+    case "sc":  ctx.reply("MODO SIN CENSURA");
+                ctx.reply("Enviando clip...");
+                clipSinCensura();
       break;
     
-    case "cs": clipConCensura();
+    case "cs":  ctx.reply("MODO FAMILY FRIENDLY");
+                ctx.reply("Enviando clip...");
+                clipConCensura();
       break;
 
     case "cancelar":
@@ -276,7 +287,7 @@ function clipConCensura(){
 }
 
 function snClipDivertido(){
-  if(banderaVideoSinCensura==true){
+  if(banderaVideoSinCensura==true){ //el flujo aqui varia si se envió anteriormente un video SC o CS
     switch(mensajeRecibidoMinusculas){
       case "s": clipSinCensura();
         break;
@@ -290,7 +301,7 @@ function snClipDivertido(){
       default: ctx.reply("Por favor, escribe bien. ¿Quieres otro clip? (S/N)");
         break;
     }
-  }else{//inicio else de filtro de video
+  }else{//inicio else de filtro de censura
     switch(mensajeRecibidoMinusculas){
       case "s": clipConCensura();
         break;
@@ -301,11 +312,18 @@ function snClipDivertido(){
                 mensajeInicial();
         break;
 
-      default: ctx.reply("Por favor, escribe bien.¿Quieres otro clip? (S/N)");
+      default: ctx.reply("Por favor, escribe bien. ¿Quieres otro clip? (S/N)");
         break;
     }
   }//fin else de filtro de video
 }//fin funcion de SI/NO de clipDivertido
+
+function detenerInteraccion(){
+  mensajeAleatorio(mensajesSalidaCantidad);
+  ctx.reply(dataParseada.mensajesSalida[randomEntero].mensaje);
+  banderaPregunta=10;
+  salida=true;
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
@@ -338,6 +356,13 @@ function contadorMsjRepetido(){
       contadorMensajesIguales=0; //Si el siguiente mensaje fue diferente, reiniciar contador de palabras repetidas
     }
 }
+
+function noHacerNada(){
+  while(salida=true){
+    //no hacer nada xd
+  }
+}
+
 
 
 
