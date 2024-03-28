@@ -58,12 +58,16 @@ var banderaPrimerMensajeRecibido=false;
 var banderaPregunta=0;
 var elVideo;
 var banderaVideoSinCensura=false;
-var salida=false;
 var imagenJuego="";
 var nombreVideo="";
 var idDelVideojuego="00";
-var cantidadClipsSinCensura=3;
-var cantidadClipsConCensura=1;
+var cantidadClipsSinCensura=4;
+var cantidadClipsConCensura=4;
+var contadorVideojuegos=0;
+var nombreJuegoMostrar="";
+var construirListaJuegosMostrar="";
+var posicionJuegoDetectado="";
+var banderaJuegoDetectado=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -124,9 +128,12 @@ if(banderaNegativaDetectada==true){
         case 6: snEnviarAvanceJuego();
           break;
 
-        case 10: noHacerNada();
+        case 7: snMandarListaJuegos();
           break;
-        
+
+        case 8: leerJuegoEscrito();
+          break;
+
         case 0:
           contadorMsjRepetido();      
           if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
@@ -164,8 +171,7 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
     case "clip divertido": clipDivertido();
         break;
 
-    case "salir" : detenerInteraccion();
-        break;
+
 
     default:
         ctx.reply("Lo siento. No entendí lo que quisiste decir. Por favor, revisa y escribe bien tu mensaje.");
@@ -174,13 +180,20 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
 }//fin funcion detectorDeClaves
 
 function recomiendaJuegos(){
-      mensajeAleatorio(listaVideojuegosCantidad);
-      ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
-      +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
-      "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma+"\n\n¿Quieres ver un avance del videojuego? (S/N)");
-      banderaPregunta=6;
-      imagenJuego=dataParseada.listaVideojuegos[randomEntero].imagen; //almacenar ruta de la imagen
-      ctx.replyWithPhoto({ source: imagenJuego });
+      contadorVideojuegos++;
+      if(contadorVideojuegos>=7){
+        ctx.reply("Ya me has pedido que te recomiende videojuegos "+(contadorVideojuegos-1)+" veces. ¿No quieres que mejor te comparta la lista y tu eliges el juego? (S/N)");
+        banderaPregunta=7;
+      }else{//inicia ELSE de si se llega al 7mo videojuego a recomendar
+        mensajeAleatorio(listaVideojuegosCantidad);
+        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
+        +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
+        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma);
+        banderaPregunta=6;
+        imagenJuego=dataParseada.listaVideojuegos[randomEntero].imagen; //almacenar ruta de la imagen
+        ctx.replyWithPhoto({ source: imagenJuego });
+        ctx.reply("¿Quieres ver un avance del videojuego?(S/N)");
+      }//concluye ELSE  
 }
 
 //las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
@@ -227,6 +240,7 @@ function snFuncionjuegos(){
 
     case "n": ctx.reply("Regresando al menu principal... ");
       banderaPregunta=0;
+      contadorVideojuegos=0; //reiniciar contador
       mensajeInicial();
       break;
     
@@ -235,6 +249,62 @@ function snFuncionjuegos(){
       break;
   }//fin switch
 }
+
+function snMandarListaJuegos(){
+  switch(mensajeRecibidoMinusculas){//inicio switch
+    case "s":
+      for(let i=0;i<listaVideojuegosCantidad;i++){
+        nombreJuegoMostrar=dataParseada.listaVideojuegos[i].titulo;
+        construirListaJuegosMostrar=construirListaJuegosMostrar+"\n"+nombreJuegoMostrar;
+      }
+      ctx.reply(construirListaJuegosMostrar);
+      ctx.reply("Escribe el nombre de un videojuego así como viene en la lista, no importa si es mayuscula o minuscula, para leer su información.\nEscribe 'cancelar' para regresar al menu principal");
+      banderaPregunta=8;
+      break;
+
+    case "n": ctx.reply("¿Quieres otra recomendación de otro videojuego? (S/N)");
+      bandera=1;
+      break;
+    
+    default:
+      ctx.reply("Por favor. Escribe bien. ¿Quieres ver la lista completa de videojuegos? (S/N)");
+      break;
+  }//fin switch
+}
+
+function leerJuegoEscrito(){//eee
+//EL siguiente for, evalua el mensaje recibido si es identico a el titulo de un videojuego de la lista.
+  for(i=0;i<listaVideojuegosCantidad;i++){//for inicia
+    if(mensajeRecibido.toString()==dataParseada.listaVideojuegos[i].titulo){
+      posicionJuegoDetectado=i;
+      banderaJuegoDetectado=true;
+      break; //detener for en el juego que se detecto
+    }
+  }//for concluye
+
+  //¿Se encontró un juego idéntico a la lista?
+  if(banderaJuegoDetectado==true){
+        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
+        +"\n\nAÑO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
+        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma);
+        banderaPregunta=6;
+        imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
+        ctx.replyWithPhoto({ source: imagenJuego });
+        ctx.reply("¿Quieres ver un avance del videojuego?(S/N)");
+  }
+  //No se encontró el juego, ¿entonces el usuario escribió 'cancelar?
+  else if(mensajeRecibidoMinusculas=="cancelar"){
+    ctx.reply("Regresando al menu principal...");
+    banderaPregunta=0;
+    contadorVideojuegos=0; //reiniciar contador
+    mensajeInicial();
+  }//Entonces el usuario no escribió correctamente un mensaje...
+  else{
+    ctx.reply("Por favor, escribe bien. Escribe un videojuego de la lista correctamente.\nEscribe 'cancelar' para regresar al menú principal.");
+  }
+
+}//eee
+
 
 function consejosPersonales(){
   mensajeAleatorio(mensajesConsejosPersonalesCantidad);
@@ -280,12 +350,10 @@ function clipDivertido(){
 function menuClipDivertido(){
   switch(mensajeRecibidoMinusculas){
     case "sc":  ctx.reply("MODO SIN CENSURA");
-      ctx.reply("Enviando clip...");
       clipSinCensura();
       break;
     
     case "cs":  ctx.reply("MODO FAMILY FRIENDLY");
-      ctx.reply("Enviando clip...");
       clipConCensura();
       break;
 
@@ -311,6 +379,7 @@ function clipSinCensura(){
           console.error('Error al leer el archivo de video:', err);
           ctx.reply('Error al detectar el video en pc.');
         }else {
+          ctx.reply("Enviando clip...");
           ctx.replyWithVideo({source:videoData});
       }
   }); //fin readFile que envia el video
@@ -330,6 +399,7 @@ function clipConCensura(){
           console.error('Error al leer el archivo de video:', err);
           ctx.reply('Error al detectar el video en pc.');
         }else {
+          ctx.reply("Enviando clip...");
           ctx.replyWithVideo({source:videoData});
       }
   }); //fin readFile que envia el video
@@ -370,12 +440,7 @@ function snClipDivertido(){
   }//fin else de filtro de video
 }//fin funcion de SI/NO de clipDivertido
 
-function detenerInteraccion(){
-  mensajeAleatorio(mensajesSalidaCantidad);
-  ctx.reply(dataParseada.mensajesSalida[randomEntero].mensaje);
-  banderaPregunta=10;
-  salida=true;
-}
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
@@ -411,11 +476,6 @@ function contadorMsjRepetido(){
     }
 }
 
-function noHacerNada(){
-  while(salida=true){
-    //no hacer nada xd
-  }
-}
 
 
 
