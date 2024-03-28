@@ -60,6 +60,7 @@ var elVideo;
 var banderaVideoSinCensura=false;
 var salida=false;
 var imagenJuego="";
+var nombreVideo="";
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -260,7 +261,10 @@ function menuClipDivertido(){
 }
 
 function clipSinCensura(){
-  elVideo = 'clipsSC/clip1sc.mp4';
+  mensajeAleatorio(3); //generar video aleatorio estableciendo como tope la cantidad de clips por el momento
+  nombreVideo="clipsc"+randomEntero;
+  nombreVideo=nombreVideo.toString();
+  elVideo = 'clipsSC/'+nombreVideo+'.mp4';
   fs.readFile(elVideo, (err, videoData) => {
       if(err){
           console.error('Error al leer el archivo de video:', err);
@@ -275,7 +279,7 @@ function clipSinCensura(){
 }
 
 function clipConCensura(){
-  elVideo = 'clipsCC/clip1cc.mp4';
+  elVideo = 'clipsCC/clipcc1.mp4';
   fs.readFile(elVideo, (err, videoData) => {
       if(err){
           console.error('Error al leer el archivo de video:', err);
@@ -333,6 +337,8 @@ function detenerInteraccion(){
 }); //FIN de metodo .on del objeto BOT
 
 console.log("PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS PRUEBAS \n");
+
+
 //===================================DECLARACION DE FUNCIONES ADICIONALES=========================0========================
 
 //FUNCION QUE ME PERMITIRÁ CALCULAR NUMEROS ALEATORIOS EN UN RANGO DEFINIDO para que mande un mensaje aleatorio

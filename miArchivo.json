@@ -7,7 +7,8 @@
         "edadRecomendada": "10+",
         "descripcionDelJuego": "The Legend of Zelda: Ocarina of Time es un clásico atemporal de la acción y la aventura. Los jugadores asumen el papel de Link, quien se embarca en una épica misión para salvar el reino de Hyrule y rescatar a la Princesa Zelda de las garras del malvado Ganondorf. Con una narrativa cautivadora, entornos vastos y mazmorras desafiantes, este juego estableció nuevos estándares en la industria de los videojuegos y sigue siendo ampliamente celebrado como uno de los mejores juegos de todos los tiempos.",
         "plataforma" : "Nintendo 64",
-        "imagen": "imagenes/zeldaoot.jpg"
+        "imagen": "imagenes/zeldaoot.jpg",
+        "video": "trailersjuegos/ootvideo.mp4"
       },
       {
         "titulo": "The Legend of Zelda: Majora's Mask",
