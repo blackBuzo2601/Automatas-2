@@ -86,6 +86,9 @@ mensajeRecibidoMinusculas=mensajeRecibido.toString(); //Convertir mensaje a tipo
 mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLowerCase(); //String a minusculas
 detectarGroserias();
 
+
+
+
 //CONDICIONAL DE BLACKLIST (groserias)
 if(banderaNegativaDetectada==true){
   mensajeAleatorio(mensajesBlacklistCantidad);
@@ -99,6 +102,9 @@ if(banderaNegativaDetectada==true){
           break;
 
         case 2: snConsejosPersonales();
+          break;
+
+        case 3: snInfoGeneral();
           break;
         
         case 0:
@@ -133,8 +139,7 @@ function detectorDeClaves(){
     case "consejo personal": consejosPersonales();
         break;   
 
-    case "acerca de elian":
-        ctx.reply("INFORMACIÓN GENERAL DE MI CREADOR\n\nNombre: Buzo Zamora Elian\nFecha de nacimiento: 26/01/2002\nNacionalidad: Mexicana\nSexo: Masculino\nCiudad de nacimiento: Ensenada\nEstado Civil: Soltero");
+    case "acerca de elian": infoGeneral();
         break;
 
     default:
@@ -191,6 +196,21 @@ function snConsejosPersonales(){
       break;
   }//fin switch
 }
+
+function infoGeneral(){
+  ctx.reply("INFORMACIÓN GENERAL DE MI CREADOR\n\nNombre: Buzo Zamora Elian\nFecha de nacimiento: 26/01/2002\nNacionalidad: Mexicana\nSexo: Masculino\nCiudad de nacimiento: Ensenada\nEstado Civil: Soltero\n\n¿Quieres algo más? Escribe cualquier cosa para regresar al menú principal.");
+  banderaPregunta=3;
+}
+
+function snInfoGeneral(){
+  switch(mensajeRecibidoMinusculas){
+    default: ctx.reply("Regresando al menu principal...");
+    banderaPregunta=0;
+    mensajeInicial();
+    break;
+  }
+}
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
