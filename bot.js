@@ -56,6 +56,8 @@ var contadorBlackList=10;
 var banderaMensajeInicial=0;
 var banderaPrimerMensajeRecibido=false;
 var banderaPregunta=0;
+var elVideo;
+var banderaVideoSinCensura=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -106,6 +108,12 @@ if(banderaNegativaDetectada==true){
 
         case 3: snInfoGeneral();
           break;
+
+        case 4: menuClipDivertido();
+          break;
+
+        case 5: snClipDivertido();
+          break;
         
         case 0:
           contadorMsjRepetido();      
@@ -130,8 +138,7 @@ function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍ
   ctx.reply(dataParseada.mensajeBienvenida);
 }
 
-//FUNCION QUE DETECTA SI EL MENSAJE CONTIENE LAS CLAVES QUE SOLICITA EL BOT
-function detectorDeClaves(){
+function detectorDeClaves(){ //inicio funcion detectorDeClaves
   switch(mensajeRecibidoMinusculas){
     case "recomendar videojuego": recomiendaJuegos();
         break;  
@@ -142,13 +149,15 @@ function detectorDeClaves(){
     case "acerca de elian": infoGeneral();
         break;
 
+    case "clip divertido": clipDivertido();
+        break;
+
     default:
         ctx.reply("Lo siento. No entendí lo que quisiste decir. Por favor, revisa y escribe bien tu mensaje.");
         break;
-  }//fin swich
+  }
 }//fin funcion detectorDeClaves
 
-//Funcion que devuelve un videojuego aleatorio en un mensaje con su informacion, ademas de activar bandera bien
 function recomiendaJuegos(){
       mensajeAleatorio(listaVideojuegosCantidad);
       ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
@@ -157,7 +166,9 @@ function recomiendaJuegos(){
       banderaPregunta=1;
 }
 
-//funcion para evaluar S/N en el mensaje recibido
+//las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
+//el siguiente mensaje, si es S, N o si es otro mensaje que no sea alguno de esos, para seguir una estructura
+//de menu principal.
 function snFuncionjuegos(){
   switch(mensajeRecibidoMinusculas){//inicio switch
     case "s": recomiendaJuegos();
@@ -174,7 +185,6 @@ function snFuncionjuegos(){
   }//fin switch
 }
 
-//funcion que devuelve un mensaje personal del JSON 
 function consejosPersonales(){
   mensajeAleatorio(mensajesConsejosPersonalesCantidad);
   ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje+"\n\n¿Quieres otro consejo? (S/N)");
@@ -211,6 +221,91 @@ function snInfoGeneral(){
   }
 }
 
+function clipDivertido(){
+  ctx.reply("Los clips divertidos contienen lenguaje vulgar. Para esto, puedes elegir ver los videos sin censura/con censura. \n¿Como prefieres verlo?\n(SC=Sin censura/CS=Con censura)\nCancelar=Volver al menú principal");
+  banderaPregunta=4;
+}
+
+function menuClipDivertido(){
+  switch(mensajeRecibidoMinusculas){
+    case "sc": clipSinCensura();
+      break;
+    
+    case "cs": clipConCensura();
+      break;
+
+    case "cancelar":
+      ctx.reply("Regresando al menu principal...");
+      banderaPregunta=0;
+      mensajeInicial();
+      break;
+
+    default: ctx.reply("Por favor. Escribe bien. ¿Quieres ver un clip? (SC/CS). Si quieres regresar escribe 'cancelar'");
+      break;
+  }
+}
+
+function clipSinCensura(){
+  elVideo = 'clipsSC/clip1sc.mp4';
+  fs.readFile(elVideo, (err, videoData) => {
+      if(err){
+          console.error('Error al leer el archivo de video:', err);
+          ctx.reply('Error al detectar el video en pc.');
+        }else {
+          ctx.replyWithVideo({source:videoData});
+      }
+  }); //fin readFile que envia el video
+  ctx.reply("¿Quieres otro clip? (S/N)");
+  banderaPregunta=5;
+  banderaVideoSinCensura=true;
+}
+
+function clipConCensura(){
+  elVideo = 'clipsCC/clip1cc.mp4';
+  fs.readFile(elVideo, (err, videoData) => {
+      if(err){
+          console.error('Error al leer el archivo de video:', err);
+          ctx.reply('Error al detectar el video en pc.');
+        }else {
+          ctx.replyWithVideo({source:videoData});
+      }
+  }); //fin readFile que envia el video
+  ctx.reply("¿Quieres otro clip? (S/N)");
+  banderaPregunta=5;
+  banderaVideoSinCensura=false;
+}
+
+function snClipDivertido(){
+  if(banderaVideoSinCensura==true){
+    switch(mensajeRecibidoMinusculas){
+      case "s": clipSinCensura();
+        break;
+
+      case "n": ctx.reply("Regresando al menu principal...");
+                banderaVideoSinCensura=false;
+                banderaPregunta=0;
+                mensajeInicial();
+        break;
+
+      default: ctx.reply("Por favor, escribe bien. ¿Quieres otro clip? (S/N)");
+        break;
+    }
+  }else{//inicio else de filtro de video
+    switch(mensajeRecibidoMinusculas){
+      case "s": clipConCensura();
+        break;
+
+      case "n": ctx.reply("Regresando al menu principal...");
+                banderaVideoSinCensura=false;
+                banderaPregunta=0;
+                mensajeInicial();
+        break;
+
+      default: ctx.reply("Por favor, escribe bien.¿Quieres otro clip? (S/N)");
+        break;
+    }
+  }//fin else de filtro de video
+}//fin funcion de SI/NO de clipDivertido
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
