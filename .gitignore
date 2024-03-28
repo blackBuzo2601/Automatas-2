@@ -132,3 +132,5 @@ dist
 #carpetas para no subir al git donde estan los clips random
 clipsCC/
 clipsSC/
+imagenes/
+trailersjuegos/

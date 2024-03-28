@@ -59,6 +59,7 @@ var banderaPregunta=0;
 var elVideo;
 var banderaVideoSinCensura=false;
 var salida=false;
+var imagenJuego="";
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -171,6 +172,8 @@ function recomiendaJuegos(){
       +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
       "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma+"\n\n¿Recomendar otro videojuego? (S/N)");
       banderaPregunta=1;
+      imagenJuego=dataParseada.listaVideojuegos[randomEntero].imagen; //almacenar ruta de la imagen
+      ctx.replyWithPhoto({ source: imagenJuego });
 }
 
 //las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
@@ -229,7 +232,7 @@ function snInfoGeneral(){
 }
 
 function clipDivertido(){
-  ctx.reply("Los clips divertidos contienen lenguaje vulgar. Para esto, puedes elegir ver los videos sin censura/con censura. \n¿Como prefieres verlo?\n(SC=Sin censura/CS=Con censura)\nCancelar=Volver al menú principal");
+  ctx.reply("Los clips divertidos contienen lenguaje vulgar. Para esto, puedes elegir ver los videos sin censura/con censura. ¿Como prefieres verlo?\n\n(SC=Sin censura/CS=Con censura)\n\nCancelar=Volver al menú principal");
   banderaPregunta=4;
 }
 
