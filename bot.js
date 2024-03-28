@@ -61,6 +61,9 @@ var banderaVideoSinCensura=false;
 var salida=false;
 var imagenJuego="";
 var nombreVideo="";
+var idDelVideojuego="00";
+var cantidadClipsSinCensura=3;
+var cantidadClipsConCensura=1;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -118,6 +121,9 @@ if(banderaNegativaDetectada==true){
         case 5: snClipDivertido();
           break;
 
+        case 6: snEnviarAvanceJuego();
+          break;
+
         case 10: noHacerNada();
           break;
         
@@ -171,8 +177,8 @@ function recomiendaJuegos(){
       mensajeAleatorio(listaVideojuegosCantidad);
       ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
       +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
-      "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma+"\n\n¿Recomendar otro videojuego? (S/N)");
-      banderaPregunta=1;
+      "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma+"\n\n¿Quieres ver un avance del videojuego? (S/N)");
+      banderaPregunta=6;
       imagenJuego=dataParseada.listaVideojuegos[randomEntero].imagen; //almacenar ruta de la imagen
       ctx.replyWithPhoto({ source: imagenJuego });
 }
@@ -180,18 +186,52 @@ function recomiendaJuegos(){
 //las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
 //el siguiente mensaje, si es S, N o si es otro mensaje que no sea alguno de esos, para seguir una estructura
 //de menu principal.
+function snEnviarAvanceJuego(){
+  switch(mensajeRecibidoMinusculas){
+    case "s": enviarAvanceJuego();
+      break;
+
+    case "n":  ctx.reply("¿Quieres otra recomendación de otro videojuego? (S/N)");
+      banderaPregunta=1;
+      break;
+  
+    default:
+      ctx.reply("Por favor. Escribe bien. ¿Quieres ver un avance del videojuego? (S/N)");
+      break;
+  }
+}
+
+function enviarAvanceJuego(){
+  idDelVideojuego=dataParseada.listaVideojuegos[randomEntero].id;
+  nombreVideo="avance"+idDelVideojuego;
+  nombreVideo=nombreVideo.toString();
+  elVideo = 'trailersjuegos/'+nombreVideo+'.mp4';
+
+  fs.readFile(elVideo, (err, videoData) => {
+      if(err){
+          ctx.reply('Error al detectar el video en pc o video no disponible para este juego.');
+        }else {
+          ctx.reply("Enviando avance...");
+          ctx.replyWithVideo({source:videoData});
+      }
+  }); //fin readFile que envia el video
+  ctx.reply("¿Quieres otra recomendación de otro videojuego? (S/N)");
+  banderaPregunta=1;
+}
+
+
 function snFuncionjuegos(){
   switch(mensajeRecibidoMinusculas){//inicio switch
     case "s": recomiendaJuegos();
       break;
 
     case "n": ctx.reply("Regresando al menu principal... ");
-    banderaPregunta=0;
-    mensajeInicial();
+      banderaPregunta=0;
+      mensajeInicial();
       break;
     
     default:
-    ctx.reply("Por favor. Escribe bien. ¿Quieres otra recomendación de videojuego? (S/N)");
+      ctx.reply("Por favor. Escribe bien. ¿Quieres otra recomendación de videojuego? (S/N)");
       break;
   }//fin switch
 }
@@ -208,12 +248,12 @@ function snConsejosPersonales(){
       break;
 
     case "n": ctx.reply("Regresando al menu principal... ");
-    banderaPregunta=0;
-    mensajeInicial();
+      banderaPregunta=0;
+      mensajeInicial();
       break;
     
     default:
-    ctx.reply("Por favor. Escribe bien. ¿Quieres otro consejo personal? (S/N)");
+      ctx.reply("Por favor. Escribe bien. ¿Quieres otro consejo personal? (S/N)");
       break;
   }//fin switch
 }
@@ -240,13 +280,13 @@ function clipDivertido(){
 function menuClipDivertido(){
   switch(mensajeRecibidoMinusculas){
     case "sc":  ctx.reply("MODO SIN CENSURA");
-                ctx.reply("Enviando clip...");
-                clipSinCensura();
+      ctx.reply("Enviando clip...");
+      clipSinCensura();
       break;
     
     case "cs":  ctx.reply("MODO FAMILY FRIENDLY");
-                ctx.reply("Enviando clip...");
-                clipConCensura();
+      ctx.reply("Enviando clip...");
+      clipConCensura();
       break;
 
     case "cancelar":
@@ -261,10 +301,11 @@ function menuClipDivertido(){
 }
 
 function clipSinCensura(){
-  mensajeAleatorio(3); //generar video aleatorio estableciendo como tope la cantidad de clips por el momento
+  mensajeAleatorio(cantidadClipsSinCensura); //generar video aleatorio estableciendo como tope la cantidad de clips por el momento
   nombreVideo="clipsc"+randomEntero;
   nombreVideo=nombreVideo.toString();
   elVideo = 'clipsSC/'+nombreVideo+'.mp4';
+
   fs.readFile(elVideo, (err, videoData) => {
       if(err){
           console.error('Error al leer el archivo de video:', err);
@@ -279,7 +320,11 @@ function clipSinCensura(){
 }
 
 function clipConCensura(){
-  elVideo = 'clipsCC/clipcc1.mp4';
+  mensajeAleatorio(cantidadClipsConCensura); //generar video aleatorio estableciendo como tope la cantidad de clips por el momento
+  nombreVideo="clipcc"+randomEntero;
+  nombreVideo=nombreVideo.toString();
+  elVideo = 'clipsCC/'+nombreVideo+'.mp4';
+
   fs.readFile(elVideo, (err, videoData) => {
       if(err){
           console.error('Error al leer el archivo de video:', err);

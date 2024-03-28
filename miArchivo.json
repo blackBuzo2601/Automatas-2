@@ -1,6 +1,7 @@
 {
   "listaVideojuegos": [
       {
+        "id": "00",
         "titulo": "The Legend of Zelda: Ocarina of Time",
         "genero": "Acción-Aventura",
         "año": "1998",
@@ -8,18 +9,21 @@
         "descripcionDelJuego": "The Legend of Zelda: Ocarina of Time es un clásico atemporal de la acción y la aventura. Los jugadores asumen el papel de Link, quien se embarca en una épica misión para salvar el reino de Hyrule y rescatar a la Princesa Zelda de las garras del malvado Ganondorf. Con una narrativa cautivadora, entornos vastos y mazmorras desafiantes, este juego estableció nuevos estándares en la industria de los videojuegos y sigue siendo ampliamente celebrado como uno de los mejores juegos de todos los tiempos.",
         "plataforma" : "Nintendo 64",
         "imagen": "imagenes/zeldaoot.jpg",
-        "video": "trailersjuegos/ootvideo.mp4"
+        "video": "trailersjuegos/avance00.mp4"
       },
       {
+        "id": "01",
         "titulo": "The Legend of Zelda: Majora's Mask",
         "genero": "Acción-Aventura",
         "año": "2000",
         "edadRecomendada": "10+",
         "descripcionDelJuego": "The Legend of Zelda: Majora's Mask es una aventura única y oscura que sigue a Link en su búsqueda para detener la luna que amenaza con destruir el mundo de Termina en tres días. Con un innovador sistema de tiempo, los jugadores deben explorar y manipular eventos para desentrañar los misterios de este mundo en constante peligro. Con su atmósfera inquietante y mecánicas de juego ingeniosas, Majora's Mask se destaca como uno de los títulos más originales de la serie Zelda.",
         "plataforma" : "Nintendo 64",
-        "imagen": "imagenes/zeldamm.jpg"
+        "imagen": "imagenes/zeldamm.jpg",
+        "video": "trailersjuegos/avance01.mp4"
       },
       {
+        "id": "02",
         "titulo": "Mario Party 3",
         "genero": "Fiesta",
         "año": "2000",
@@ -29,6 +33,7 @@
         "imagen": "imagenes/marioparty3.jpg"
       },
       {
+        "id": "03",
         "titulo": "Rayman 2",
         "genero": "Plataformas",
         "año": "1999",
@@ -38,6 +43,7 @@
         "imagen": "imagenes/rayman2.jpg"
       },
       {
+        "id": "04",
         "titulo": "Super Mario 64",
         "genero": "Plataformas",
         "año": "1996",
@@ -47,6 +53,7 @@
         "imagen": "imagenes/supermario64.jpg"
       },
       {
+        "id": "05",
         "titulo": "Super Smash Bros",
         "genero": "Lucha",
         "año": "1999",
@@ -56,6 +63,7 @@
         "imagen": "imagenes/supersmashbros.jpg"
       },
       {
+        "id": "06",
         "titulo": "Rayman 3",
         "genero": "Plataformas",
         "año": "2003",
@@ -65,6 +73,7 @@
         "imagen": "imagenes/rayman3.png"
       },
       {
+        "id": "07",
         "titulo": "Soulcalibur 2",
         "genero": "Lucha",
         "año": "2002",
@@ -74,6 +83,7 @@
         "imagen":"imagenes/soulcalibur2.jpg"
       },
       {
+        "id": "08",
         "titulo": "Star Fox Adventures",
         "genero": "Acción-Aventura",
         "año": "2002",
@@ -83,6 +93,7 @@
         "imagen":"imagenes/starfoxadventures.jpg"
       },
       {
+        "id": "09",
         "titulo": "Super Mario Strikers",
         "genero": "Deportes",
         "año": "2005",
@@ -92,6 +103,7 @@
         "imagen": "imagenes/supermariostrikers.jpg"
       },
       {
+        "id": "10",
         "titulo": "Super Mario Sunshine",
         "genero": "Plataformas",
         "año": "2002",
@@ -101,6 +113,7 @@
         "imagen":"imagenes/supermariosunshine.jpg"
       },
       {
+        "id": "11",
         "titulo": "Super Smash Bros Melee",
         "genero": "Lucha",
         "año": "2001",
@@ -110,6 +123,7 @@
         "imagen": "imagenes/ssbm.jpg"
       },
       {
+        "id": "12",
         "titulo": "The Legend of Zelda: Twilight Princess",
         "genero": "Acción-Aventura",
         "año": "2006",
@@ -119,6 +133,7 @@
         "imagen":"imagenes/zeldatp.jpg"
       },
       {
+        "id": "13",
         "titulo": "Luigi's Mansion",
         "genero": "Acción-Aventura",
         "año": "2001",
@@ -128,6 +143,7 @@
         "imagen": "imagenes/luigi.jpg"
       },
       {
+        "id": "14",
         "titulo": "Mario Kart: Double Dash",
         "genero": "Carreras",
         "año": "2003",
@@ -137,6 +153,7 @@
         "imagen" : "imagenes/mariokartdoubledash.jpg"
       },
       {
+        "id": "15",
         "titulo": "Mario Party 4",
         "genero": "Fiesta",
         "año": "2002",
@@ -146,6 +163,7 @@
         "imagen": "imagenes/marioparty4.jpg"
       },
       {
+        "id": "16",
         "titulo": "Mario Party 5",
         "genero": "Fiesta",
         "año": "2003",
@@ -155,6 +173,7 @@
         "imagen": "imagenes/marioparty5.jpg"
       },
       {
+        "id": "17",
         "titulo": "Mario Party 7",
         "genero": "Fiesta",
         "año": "2005",
@@ -164,6 +183,7 @@
         "imagen": "imagenes/marioparty7.jpg"
       },
       {
+        "id": "18",
         "titulo": "Capcom vs SNK 2",
         "genero": "Lucha",
         "año": "2001",
@@ -173,6 +193,7 @@
         "imagen":"imagenes/capcom.jpg"
       },
       {
+        "id": "19",
         "titulo": "Mario Kart Wii",
         "genero": "Carreras",
         "año": "2008",
@@ -182,6 +203,7 @@
         "imagen":"imagenes/mariokartwii.jpg"
       },
       {
+        "id": "20",
         "titulo": "Donkey Kong Country Returns",
         "genero": "Plataformas",
         "año": "2010",
@@ -191,6 +213,7 @@
         "imagen": "imagenes/dkcountryreturns.jpg"
       },
       {
+        "id": "21",
         "titulo": "Golden Eye 007 (Wii)",
         "genero": "Disparos en primera persona",
         "año": "2010",
@@ -200,6 +223,7 @@
         "imagen":"imagenes/007.jpg"
       },
       {
+        "id": "22",
         "titulo": "Mario Party 9",
         "genero": "Fiesta",
         "año": "2012",
@@ -209,6 +233,7 @@
         "imagen":"imagenes/marioparty9.jpg"
       },
       {
+        "id": "23",
         "titulo": "Mario Sports Mix",
         "genero": "Deportes",
         "año": "2011",
@@ -218,6 +243,7 @@
         "imagen":"imagenes/mariosports.jpg"
       },
       {
+        "id": "24",
         "titulo": "Mario Strikers Charged",
         "genero": "Deportes",
         "año": "2007",
@@ -227,6 +253,7 @@
         "imagen":"imagenes/mariostrikerscharged.jpg"
       },
       {
+        "id": "25",
         "titulo": "Metroid Other M",
         "genero": "Acción-Aventura",
         "año": "2010",
@@ -236,6 +263,7 @@
         "imagen":"imagenes/otherm.jpg"
       },
       {
+        "id": "26",
         "titulo": "Metroid Prime Trilogy",
         "genero": "Acción-Aventura",
         "año": "2009",
@@ -245,6 +273,7 @@
         "imagen":"imagenes/metroidprime.jpg"
       },
       {
+        "id": "27",
         "titulo": "Punch-Out!! (Wii)",
         "genero": "Deportes",
         "año": "2009",
@@ -254,6 +283,7 @@
         "imagen":"imagenes/punchout.jpg"
       },
       {
+        "id": "28",
         "titulo": "Rayman Origins",
         "genero": "Plataformas",
         "año": "2011",
@@ -263,6 +293,7 @@
         "imagen":"imagenes/raymanorigins.jpg"
       },
       {
+        "id": "29",
         "titulo": "Wii Sports Resort",
         "genero": "Deportes",
         "año": "2009",
@@ -272,6 +303,7 @@
         "imagen":"imagenes/wiisportsresort.jpg"
       },
       {
+        "id": "30",
         "titulo": "Super Mario Galaxy",
         "genero": "Plataformas",
         "año": "2007",
@@ -281,6 +313,7 @@
         "imagen":"imagenes/supermariogalaxy.jpg"
       },
       {
+        "id": "31",
         "titulo": "Super Mario Galaxy 2",
         "genero": "Plataformas",
         "año": "2010",
@@ -290,6 +323,7 @@
         "imagen":"imagenes/supermariogalaxy2.jpg"
       },
       {
+        "id": "32",
         "titulo": "Super Smash Bros Brawl",
         "genero": "Lucha",
         "año": "2008",
@@ -299,6 +333,7 @@
         "imagen":"imagenes/ssbb.jpg"
       },
       {
+        "id": "33",
         "titulo": "The Last Story",
         "genero": "RPG",
         "año": "2011",
@@ -308,6 +343,7 @@
         "imagen":"imagenes/thelaststory.jpg"
       },
       {
+        "id": "34",
         "titulo": "Dragon Ball Z Budokai Tenkaichi 3",
         "genero": "Lucha",
         "año": "2008",
@@ -317,6 +353,7 @@
         "imagen":"imagenes/dbz.jpg"
       },
       {
+        "id": "35",
         "titulo": "Dragon Ball Z Budokai 3",
         "genero": "Lucha",
         "año": "2004",
@@ -326,6 +363,7 @@
         "imagen":"imagenes/budokai3.jpg"
       },
       {
+        "id": "36",
         "titulo": "Call of Duty: Black Ops",
         "genero": "Disparos en primera persona",
         "año": "2010",
@@ -335,6 +373,7 @@
         "imagen":"imagenes/bo1.jpg"
       },
       {
+        "id": "37",
         "titulo": "Call of Duty: Black Ops 2",
         "genero": "Disparos en primera persona",
         "año": "2012",
@@ -344,6 +383,7 @@
         "imagen":"imagenes/bo2.jpg"
       },
       {
+        "id": "38",
         "titulo": "Call of Duty: Modern Warfare 3",
         "genero": "Disparos en primera persona",
         "año": "2011",
@@ -353,6 +393,7 @@
         "imagen":"imagenes/mw3.jpg"
       },
       {
+        "id": "39",
         "titulo": "Call of Duty: Black Ops 3",
         "genero": "Disparos en primera persona",
         "año": "2015",
@@ -362,6 +403,7 @@
         "imagen":"imagenes/bo3.jpg"
       },
       {
+        "id": "40",
         "titulo": "Call of Duty: Black Ops Cold War",
         "genero": "Disparos en primera persona",
         "año": "2020",
@@ -371,6 +413,7 @@
         "imagen":"imagenes/bocoldwar.jpg"
       },
       {
+        "id": "41",
         "titulo": "Star Wars Jedi: Fallen Order",
         "genero": "Acción-Aventura",
         "año": "2019",
@@ -380,6 +423,7 @@
         "imagen":"imagenes/fallenorder.jpg"
       },
       {
+        "id": "42",
         "titulo": "Marvel's Spider-Man (PS4)",
         "genero": "Acción-Aventura",
         "año": "2018",
@@ -389,6 +433,7 @@
         "imagen":"imagenes/spidermanps4.jpg"
       },
       {
+        "id": "43",
         "titulo": "Kingdom Hearts",
         "genero": "Acción-RPG",
         "año": "2002",
@@ -398,6 +443,7 @@
         "imagen":"imagenes/kh.jpg"
       },
       {
+        "id": "44",
         "titulo": "Kingdom Hearts 2",
         "genero": "Acción-RPG",
         "año": "2005",
@@ -407,6 +453,7 @@
         "imagen":"imagenes/kh2.jpg"
       },
       {
+        "id": "45",
         "titulo": "Kingdom Hearts 3",
         "genero": "Acción-RPG",
         "año": "2019",
@@ -416,6 +463,7 @@
         "imagen":"imagenes/kh3.jpg"
       },
       {
+        "id": "46",
         "titulo": "Metal Slug Anthology",
         "genero": "Shoot 'em up",
         "año": "2006",
@@ -425,6 +473,7 @@
         "imagen":"imagenes/metalslug.jpg"
       },
       {
+        "id": "47",
         "titulo": "Shadow of the Colossus",
         "genero": "Aventura",
         "año": "2005",
@@ -434,6 +483,7 @@
         "imagen":"imagenes/shadow.jpg"
       },
       {
+        "id": "48",
         "titulo": "The Last of Us",
         "genero": "Acción-Aventura",
         "año": "2013",
@@ -443,6 +493,7 @@
         "imagen":"imagenes/tlou.jpg"
       },
       {
+        "id": "49",
         "titulo": "The Last of Us Part II",
         "genero": "Acción-Aventura",
         "año": "2020",
@@ -452,6 +503,7 @@
         "imagen":"imagenes/tlou2.jpg"
       },
       {
+        "id": "50",
         "titulo": "Bloodborne",
         "genero": "Acción-RPG",
         "año": "2015",
@@ -461,6 +513,7 @@
         "imagen":"imagenes/bloodborne.jpg"
       },
       {
+        "id": "51",
         "titulo": "Uncharted 4: A Thief's End",
         "genero": "Acción-Aventura",
         "año": "2016",
@@ -470,6 +523,7 @@
         "imagen":"imagenes/uncharted4.jpg"
       },
       {
+        "id": "52",
         "titulo": "Dark Souls 3",
         "genero": "Acción-RPG",
         "año": "2016",
@@ -479,6 +533,7 @@
         "imagen":"imagenes/ds3.jpg"
       },
       {
+        "id": "53",
         "titulo": "Super Smash Bros for Wii U",
         "genero": "Lucha",
         "año": "2014",
@@ -488,6 +543,7 @@
         "imagen":"imagenes/smashu.jpg"
       },
       {
+        "id": "54",
         "titulo": "Super Smash Bros Ultimate",
         "genero": "Lucha",
         "año": "2018",
@@ -497,6 +553,7 @@
         "imagen":"imagenes/supersmashbrosultimate.jpg"
       },
       {
+        "id": "55",
         "titulo": "Mario Kart 8 Deluxe",
         "genero": "Carreras",
         "año": "2017",
@@ -506,6 +563,7 @@
         "imagen":"imagenes/mariokart8deluxe.jpg"
       },
       {
+        "id": "56",
         "titulo": "Mario Party Superstars",
         "genero": "Fiesta",
         "año": "2021",
@@ -515,6 +573,7 @@
         "imagen":"imagenes/mariopartysuperstar.jpg"
       },
       {
+        "id": "57",
         "titulo": "The Legend of Zelda: Breath of the Wild",
         "genero": "Acción-Aventura",
         "año": "2017",
@@ -524,6 +583,7 @@
         "imagen":"imagenes/botw.jpg"
       },
       {
+        "id": "58",
         "titulo": "The Legend of Zelda: Skyward Sword",
         "genero": "Acción-Aventura",
         "año": "2011",
@@ -533,6 +593,7 @@
         "imagen":"imagenes/sw.jpg"
       },
       {
+        "id": "59",
         "titulo": "Call of Duty: Modern Warfare (2019)",
         "genero": "Disparos en primera persona",
         "año": "2019",
