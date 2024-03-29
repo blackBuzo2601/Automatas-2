@@ -68,6 +68,7 @@ var nombreJuegoMostrar="";
 var construirListaJuegosMostrar="";
 var posicionJuegoDetectado="";
 var banderaJuegoDetectado=false;
+var banderaDeCompartirLista=false;
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -180,19 +181,22 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
 }//fin funcion detectorDeClaves
 
 function recomiendaJuegos(){
-      contadorVideojuegos++;
-      if(contadorVideojuegos>=7){
-        ctx.reply("Ya me has pedido que te recomiende videojuegos "+(contadorVideojuegos-1)+" veces. ¿No quieres que mejor te comparta la lista y tu eliges el juego? (S/N)");
+      if(contadorVideojuegos>=6 && banderaDeCompartirLista==false){
+        ctx.reply("Ya me has pedido que te recomiende videojuegos "+(contadorVideojuegos)+" veces. ¿No quieres que mejor te comparta la lista y tu eliges el juego? (S/N)");
         banderaPregunta=7;
+        banderaDeCompartirLista=true;
       }else{//inicia ELSE de si se llega al 7mo videojuego a recomendar
         mensajeAleatorio(listaVideojuegosCantidad);
-        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[randomEntero].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[randomEntero].genero
-        +"\n\nAÑO: "+dataParseada.listaVideojuegos[randomEntero].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[randomEntero].edadRecomendada+
-        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[randomEntero].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[randomEntero].plataforma);
+        posicionJuegoDetectado=randomEntero;
+        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
+        +"\n\nAÑO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
+        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma);
         banderaPregunta=6;
-        imagenJuego=dataParseada.listaVideojuegos[randomEntero].imagen; //almacenar ruta de la imagen
+        imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
         ctx.replyWithPhoto({ source: imagenJuego });
         ctx.reply("¿Quieres ver un avance del videojuego?(S/N)");
+        banderaDeCompartirLista=false;
+        contadorVideojuegos++;
       }//concluye ELSE  
 }
 
@@ -215,7 +219,7 @@ function snEnviarAvanceJuego(){
 }
 
 function enviarAvanceJuego(){
-  idDelVideojuego=dataParseada.listaVideojuegos[randomEntero].id;
+  idDelVideojuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].id;
   nombreVideo="avance"+idDelVideojuego;
   nombreVideo=nombreVideo.toString();
   elVideo = 'trailersjuegos/'+nombreVideo+'.mp4';
@@ -258,12 +262,12 @@ function snMandarListaJuegos(){
         construirListaJuegosMostrar=construirListaJuegosMostrar+"\n"+nombreJuegoMostrar;
       }
       ctx.reply(construirListaJuegosMostrar);
-      ctx.reply("Escribe el nombre de un videojuego así como viene en la lista, no importa si es mayuscula o minuscula, para leer su información.\nEscribe 'cancelar' para regresar al menu principal");
+      ctx.reply("Escribe el nombre de un videojuego así como viene en la lista para leer su información.\nEscribe 'cancelar' para regresar al menu principal");
       banderaPregunta=8;
       break;
 
     case "n": ctx.reply("¿Quieres otra recomendación de otro videojuego? (S/N)");
-      bandera=1;
+      banderaPregunta=1;
       break;
     
     default:
@@ -273,6 +277,7 @@ function snMandarListaJuegos(){
 }
 
 function leerJuegoEscrito(){//eee
+  banderaJuegoDetectado=false; //reiniciar para la proxima vez que se introduzca otro nombredejuego
 //EL siguiente for, evalua el mensaje recibido si es identico a el titulo de un videojuego de la lista.
   for(i=0;i<listaVideojuegosCantidad;i++){//for inicia
     if(mensajeRecibido.toString()==dataParseada.listaVideojuegos[i].titulo){
@@ -291,6 +296,7 @@ function leerJuegoEscrito(){//eee
         imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
         ctx.replyWithPhoto({ source: imagenJuego });
         ctx.reply("¿Quieres ver un avance del videojuego?(S/N)");
+        contadorVideojuegos++;
   }
   //No se encontró el juego, ¿entonces el usuario escribió 'cancelar?
   else if(mensajeRecibidoMinusculas=="cancelar"){
