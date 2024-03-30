@@ -15,6 +15,7 @@ const {Telegraf} = require('telegraf');
   2. Usamos el modulo require de NODE.JS para cargar el modulo fs (fileSystem). Que nos permite
   leer y escribir archivos*/
 const fs = require('fs');
+const { defaultMaxListeners } = require('events');
 
 //almacenamos toda la data de miArchivo.json en una const jsonData con el método readFileSync del modulo FS. 
 //especificamos el archivo que leeremos y el formato que este caso es el estándar UTF-8
@@ -69,6 +70,15 @@ var construirListaJuegosMostrar="";
 var posicionJuegoDetectado="";
 var banderaJuegoDetectado=false;
 var banderaDeCompartirLista=false;
+var tematicaSeleccionada="";
+var varibleDeTematica="";
+var numeroDePreguntaJuegoAdivina="";
+var jsonFrases="";
+var arrayFrases=[]; //guardará las frases de los juegos de adivinar
+var arrayPelicula=[];//guardará las peliculas 
+var objetoPreguntasOrdenadas={};
+var miString="";
+var miString2="";
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -77,7 +87,6 @@ const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
 const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
-
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
 
@@ -98,7 +107,6 @@ console.log("Mensaje recibido: "+mensajeRecibido);
 mensajeRecibidoMinusculas=mensajeRecibido.toString(); //Convertir mensaje a tipo STRING
 mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLowerCase(); //String a minusculas
 detectarGroserias();
-
 
 
 
@@ -134,6 +142,16 @@ if(banderaNegativaDetectada==true){
 
         case 8: leerJuegoEscrito();
           break;
+
+        case 9: elegirTematica();
+          break;
+
+        case 10: snEmpezarJuego();
+          break;
+
+        case 11: juegoComenzado();
+          break;
+
 
         case 0:
           contadorMsjRepetido();      
@@ -172,7 +190,8 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
     case "clip divertido": clipDivertido();
         break;
 
-
+    case "adivina la pelicula" : adivinaPelicula();
+        break;
 
     default:
         ctx.reply("Lo siento. No entendí lo que quisiste decir. Por favor, revisa y escribe bien tu mensaje.");
@@ -448,6 +467,89 @@ function snClipDivertido(){
 
 
 
+function adivinaPelicula(){
+  ctx.reply("Selecciona una temática. Escribe solamente el número. Para regresar al menú principal escribe 'cancelar'\n1. Star Wars");
+  banderaPregunta=9;
+}
+
+function elegirTematica(){
+  switch(mensajeRecibidoMinusculas){
+    case "1": 
+    ctx.reply("Seleccionaste la temática de Star Wars. Vamos a ver que tan buena memoria tienes para recordar las frases de algunas películas de la saga. ¿Estás listo?\n(S/N)");
+    tematicaSeleccionada="STAR WARS";
+    banderaPregunta=10;
+      break;
+
+    case "cancelar": 
+    ctx.reply("Regresando al menú principal...");
+    banderaPregunta=0;
+    mensajeInicial();
+    tematicaSeleccionada="";
+      break;
+
+    default: 
+    ctx.reply("Por favor, escribe bien.");
+    adivinaPelicula();
+      break;
+  }
+}
+
+function snEmpezarJuego(){
+  switch(mensajeRecibidoMinusculas){
+    case "s":
+      ctx.reply("Aceptaste jugar con la temática de: "+tematicaSeleccionada);
+      generarPreguntasJuego();
+      juegoComenzado();
+      break;
+
+    case "n":
+      adivinaPelicula();
+      break;
+
+    default:
+      ctx.reply("Por favor, escribe bien. ¿Quieres jugar con la temática de: "+tematicaSeleccionada+"? (S/N)");
+      break;
+  }
+}
+
+function generarPreguntasJuego(){//generarPreguntas
+  swFrases=dataParseada.frasesdestarwars;
+
+  switch(tematicaSeleccionada){//switch
+    case "STAR WARS":
+    //for que construye los array de acuerdo a lo introducido en el JSON
+    for(let i=0;i<swFrases.length;i++){ //meter en un array todas las preguntas en el mismo orden.
+      arrayFrases.splice(i,0,swFrases[i].frase); //en metodo splice los parametros son (posicion, cuantos quitar, valor a introducir)
+      arrayPelicula.splice(i,0,swFrases[i].pelicula);
+      objetoPreguntasOrdenadas[arrayFrases[i]]=[arrayPelicula[i]];
+    }
+    //For que construirá un objeto con preguntas en orden aleatorio
+    for(let i=0;i<objetoPreguntasOrdenadas.length;i++){
+      ctx.reply(objetoPreguntasOrdenadas[i]);
+    }
+
+    //for que generará las preguntas en orden aleatorio en otro array, cuidando que sea la pelicula correcta
+    
+    break;
+    
+  }//switch
+  
+  
+}//generarPreguntas
+
+
+
+function juegoComenzado(){
+  banderaPregunta=11;
+  numeroDePreguntaJuegoAdivina++; //1...2...3...
+  ctx.reply("Pregunta "+numeroDePreguntaJuegoAdivina+".\n¿De donde proviene el siguiente dialogo?\n\n");
+  
+  leerRespuestaJuegoComenzado();
+}
+
+function leerRespuestaJuegoComenzado(){
+
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 }); //FIN de metodo .on del objeto BOT
