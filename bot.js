@@ -77,8 +77,7 @@ var jsonFrases="";
 var arrayFrases=[]; //guardará las frases de los juegos de adivinar
 var arrayPelicula=[];//guardará las peliculas 
 var objetoPreguntasOrdenadas={};
-var miString="";
-var miString2="";
+var arrayPreguntasDesordenadas=[];
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -514,23 +513,29 @@ function snEmpezarJuego(){
 
 function generarPreguntasJuego(){//generarPreguntas
   swFrases=dataParseada.frasesdestarwars;
+  swFrasesCantidad=swFrases.length;
 
   switch(tematicaSeleccionada){//switch
     case "STAR WARS":
-    //for que construye los array de acuerdo a lo introducido en el JSON
+    //for que construye los array de acuerdo a lo introducido en el JSON y los almacena en un pbjeto
     for(let i=0;i<swFrases.length;i++){ //meter en un array todas las preguntas en el mismo orden.
       arrayFrases.splice(i,0,swFrases[i].frase); //en metodo splice los parametros son (posicion, cuantos quitar, valor a introducir)
       arrayPelicula.splice(i,0,swFrases[i].pelicula);
       objetoPreguntasOrdenadas[arrayFrases[i]]=[arrayPelicula[i]];
     }
-    //For que construirá un objeto con preguntas en orden aleatorio
-    for(let i=0;i<objetoPreguntasOrdenadas.length;i++){
-      ctx.reply(objetoPreguntasOrdenadas[i]);
-    }
-
-    //for que generará las preguntas en orden aleatorio en otro array, cuidando que sea la pelicula correcta
+    var paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
     
-    break;
+    
+    
+    //For que construirá un objeto con preguntas en orden aleatorio
+    for(let i=0;i<10;i++){ 
+      mensajeAleatorio(swFrasesCantidad); //generar un numero aleatorio valido entre la cantidad de frases
+
+      arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
+      paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar la posicion para que no se repita en otra iteración.
+      swFrasesCantidad--; //decrementar, para que si por casualidad genera aleatoriamente el valor maximo, pues que no exista el problema de que ese numero no existe en el array.
+    }
+    console.log(arrayPreguntasDesordenadas);
     
   }//switch
   
