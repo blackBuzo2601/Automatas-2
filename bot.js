@@ -80,6 +80,7 @@ var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
 var perro=0; //variable para hacer tiempo xd
 var respuestaCorrecta="";
+var parametroPosicionPregunta=-1; //para que empiece en 0...1...2...3...
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -531,7 +532,7 @@ function generarPreguntasJuego(){//generarPreguntas
     var paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
     
     //For que construirá un objeto con preguntas en orden aleatorio
-    for(let i=0;i<10;i++){ 
+    for(let i=0;i<12;i++){ 
       mensajeAleatorio(swFrasesCantidad); //generar un numero aleatorio valido entre la cantidad de frases
       arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
       paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar la posicion para que no se repita en otra iteración.
@@ -546,7 +547,6 @@ function generarPreguntasJuego(){//generarPreguntas
 
 
 function juegoComenzado(){//inicio funcion juegoComenzado
-  var parametroPosicionPregunta=-1; //para que empiece en 0...1...2...3...
   numeroDePreguntaJuegoAdivina++; //1...2...3...
   parametroPosicionPregunta++;
   ctx.reply("Pregunta "+numeroDePreguntaJuegoAdivina+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]);
@@ -556,8 +556,7 @@ function juegoComenzado(){//inicio funcion juegoComenzado
   
   //[posicion de las preguntas aleatorias [frase,pelicula] ]
   var almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
-  console.log("Imprimiendo variable almacenarpeliculasw: "+almacenarPeliculaSW);
-  var almacenarPeliculaSWbien=almacenarPeliculaSW.toString();
+  var almacenarPeliculaSWbien=almacenarPeliculaSW.toString(); //forzar a string para no tener problemas al comparar
  
   //Asignar la respuesta correcta...
   switch(almacenarPeliculaSWbien){
@@ -582,15 +581,11 @@ function juegoComenzado(){//inicio funcion juegoComenzado
  case "Obi-Wan Kenobi":
   respuestaCorrecta="7";
   break;
-    
   }
-  console.log("La respuesta correcta es: "+almacenarPeliculaSWbien);
-  console.log("La respuesta correcta en numero es: "+respuestaCorrecta);
   
 }//concluye funcionJuegoComenzado
 
-function leerRespuestaJuegoComenzado(){
-//asignación de tokens a las peliculas
+function leerRespuestaJuegoComenzado(){//inicio funcion leerRespuestaJuegoComenzado
 
 //funcion creada para no repetir codigo...
 function evaluaRespuesta(){
@@ -601,33 +596,40 @@ function evaluaRespuesta(){
   }
 }
 
-  switch(mensajeRecibidoMinusculas){
+  switch(mensajeRecibidoMinusculas){//switch que compara si la respuesta es correcta
     case "1":
       evaluaRespuesta();
+      juegoComenzado();
       break;
 
     case "2":
       evaluaRespuesta();
+      juegoComenzado();
       break;
 
     case "3":
       evaluaRespuesta();
+      juegoComenzado();
       break;
 
     case "4":
       evaluaRespuesta();
+      juegoComenzado();
       break;
 
     case "5":
       evaluaRespuesta();
+      juegoComenzado();
       break;
       
     case "6":
       evaluaRespuesta();
+      juegoComenzado();
       break;
 
     case "7":
       evaluaRespuesta();
+      juegoComenzado();
       break;
 
     case "cancelar":
@@ -642,8 +644,9 @@ function evaluaRespuesta(){
       
     default: ctx.reply("Por favor. introduce un número.");
       break;            
-  }
-}
+  }//concluye switch que compara respuesta si es correcta
+
+}//conluye funcion leerRespuestaJuegoComenzado
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 }); //FIN de metodo .on del objeto BOT
