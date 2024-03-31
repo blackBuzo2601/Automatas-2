@@ -78,6 +78,8 @@ var arrayFrases=[]; //guardará las frases de los juegos de adivinar
 var arrayPelicula=[];//guardará las peliculas 
 var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
+var perro=0; //variable para hacer tiempo xd
+var respuestaCorrecta="";
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -149,6 +151,9 @@ if(banderaNegativaDetectada==true){
           break;
 
         case 11: juegoComenzado();
+          break;
+
+        case 12: leerRespuestaJuegoComenzado();
           break;
 
 
@@ -496,7 +501,7 @@ function elegirTematica(){
 function snEmpezarJuego(){
   switch(mensajeRecibidoMinusculas){
     case "s":
-      ctx.reply("Aceptaste jugar con la temática de: "+tematicaSeleccionada);
+      ctx.reply("Aceptaste jugar con la temática de: "+tematicaSeleccionada+"\nSi quieres salir del juego, solo escribe 'cancelar'");
       generarPreguntasJuego();
       juegoComenzado();
       break;
@@ -525,35 +530,119 @@ function generarPreguntasJuego(){//generarPreguntas
     }
     var paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
     
-    
-    
     //For que construirá un objeto con preguntas en orden aleatorio
     for(let i=0;i<10;i++){ 
       mensajeAleatorio(swFrasesCantidad); //generar un numero aleatorio valido entre la cantidad de frases
-
       arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
       paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar la posicion para que no se repita en otra iteración.
       swFrasesCantidad--; //decrementar, para que si por casualidad genera aleatoriamente el valor maximo, pues que no exista el problema de que ese numero no existe en el array.
     }
-    console.log(arrayPreguntasDesordenadas);
-    
+    break;
+   
   }//switch
-  
   
 }//generarPreguntas
 
 
 
-function juegoComenzado(){
-  banderaPregunta=11;
+function juegoComenzado(){//inicio funcion juegoComenzado
+  var parametroPosicionPregunta=-1; //para que empiece en 0...1...2...3...
   numeroDePreguntaJuegoAdivina++; //1...2...3...
-  ctx.reply("Pregunta "+numeroDePreguntaJuegoAdivina+".\n¿De donde proviene el siguiente dialogo?\n\n");
+  parametroPosicionPregunta++;
+  ctx.reply("Pregunta "+numeroDePreguntaJuegoAdivina+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]);
+
+  ctx.reply("\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
+  banderaPregunta=12;
   
-  leerRespuestaJuegoComenzado();
-}
+  //[posicion de las preguntas aleatorias [frase,pelicula] ]
+  var almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
+  console.log("Imprimiendo variable almacenarpeliculasw: "+almacenarPeliculaSW);
+  var almacenarPeliculaSWbien=almacenarPeliculaSW.toString();
+ 
+  //Asignar la respuesta correcta...
+  switch(almacenarPeliculaSWbien){
+  case "Star Wars: La amenaza fantasma":
+    respuestaCorrecta="1";
+    break;
+  case "Star Wars: El ataque de los clones":
+    respuestaCorrecta="2";
+    break;
+  case "Star Wars: La venganza de los sith":
+    respuestaCorrecta="3";
+    break;
+  case "Star Wars: Una nueva esperanza":
+    respuestaCorrecta="4";
+    break;
+  case "Star Wars: El imperio contraataca":
+    respuestaCorrecta="5";
+    break;
+  case "Star Wars: El regreso del Jedi":
+    respuestaCorrecta="6";
+    break;
+ case "Obi-Wan Kenobi":
+  respuestaCorrecta="7";
+  break;
+    
+  }
+  console.log("La respuesta correcta es: "+almacenarPeliculaSWbien);
+  console.log("La respuesta correcta en numero es: "+respuestaCorrecta);
+  
+}//concluye funcionJuegoComenzado
 
 function leerRespuestaJuegoComenzado(){
+//asignación de tokens a las peliculas
 
+//funcion creada para no repetir codigo...
+function evaluaRespuesta(){
+  if(mensajeRecibidoMinusculas==respuestaCorrecta){
+    ctx.reply("Respuesta correcta.");
+  }else{
+    ctx.reply("Respuesta incorrecta.");
+  }
+}
+
+  switch(mensajeRecibidoMinusculas){
+    case "1":
+      evaluaRespuesta();
+      break;
+
+    case "2":
+      evaluaRespuesta();
+      break;
+
+    case "3":
+      evaluaRespuesta();
+      break;
+
+    case "4":
+      evaluaRespuesta();
+      break;
+
+    case "5":
+      evaluaRespuesta();
+      break;
+      
+    case "6":
+      evaluaRespuesta();
+      break;
+
+    case "7":
+      evaluaRespuesta();
+      break;
+
+    case "cancelar":
+      ctx.reply("Regresando al menú principal...");
+      numeroDePreguntaJuegoAdivina=0;
+      parametroPosicionPregunta=0;
+      perro=0;
+      banderaPregunta=0;
+      tematicaSeleccionada="";
+      mensajeInicial();
+      break;
+      
+    default: ctx.reply("Por favor. introduce un número.");
+      break;            
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
