@@ -158,6 +158,9 @@ if(banderaNegativaDetectada==true){
         case 12: leerRespuestaJuegoComenzado();
           break;
 
+        case 13: snVolverAJugar();
+          break;
+
 
         case 0:
           contadorMsjRepetido();      
@@ -596,9 +599,9 @@ function leerRespuestaJuegoComenzado(){//inicio funcion leerRespuestaJuegoComenz
 function evaluaRespuesta(){
   if(mensajeRecibidoMinusculas==respuestaCorrecta){
     puntuacion++;
-    ctx.reply("¡SI! ¡ACERTASTE! LA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
+    ctx.reply("¡SI! ¡ACERTASTE!\n LA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
   }else{
-    ctx.reply("¡NO! ¡INCORRECTO!.LA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
+    ctx.reply("¡NO! ¡INCORRECTO!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
   }
 }
 
@@ -666,13 +669,29 @@ function finDelJuego(){
 }//conluye funcion leerRespuestaJuegoComenzado
 
 function mostrarResultadosJuego(){
-  ctx.reply("JUEGO CONCLUIDO.\n\nTEMÁTICA: "+tematicaSeleccionada+".\n\nPUNTUACIÓN: ["+puntuacion+"/"+cantidadPreguntasDeJuego+"]");
-  banderaPregunta=0;
+  ctx.reply("JUEGO CONCLUIDO.\n\nTEMÁTICA: "+tematicaSeleccionada+".\n\nPUNTUACIÓN: ["+puntuacion+"/"+cantidadPreguntasDeJuego+"]\n\n¿Volver a jugar? (S/N)");
+  banderaPregunta=13;
   numeroDePreguntaJuegoAdivina=0;
   parametroPosicionPregunta=0;
   tematicaSeleccionada="";
   puntuacion=0;
-  mensajeInicial();
+}
+
+function snVolverAJugar(){
+  switch(mensajeRecibidoMinusculas){
+    case "s": 
+      adivinaPelicula();
+      break;
+
+    case "n": 
+      ctx.reply("Regresando al menú principal...");
+      banderaPregunta=0;
+      mensajeInicial();
+      break;
+
+    default: ctx.reply("Por favor, escribe bien. ¿Quieres volver a jugar? (S/N)");
+      break;
+  }
 }
 
 
