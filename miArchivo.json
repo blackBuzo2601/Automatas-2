@@ -716,7 +716,14 @@
     },
     {
       "mensaje" : "Come mas frutas y verduras. "
+    },
+    {
+      "mensaje" : "Star Wars es mejor que Star Trek. Que la fuerza te acompañe."
+    },
+    {
+      "mensaje" : "La competencia del lenguaje ensamblador, es poner a prueba tu forma de pensar en un lenguaje de bajo nivel."
     }
+    
   ],
 
   "blackList" : [

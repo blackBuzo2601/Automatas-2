@@ -573,7 +573,7 @@ function juegoComenzado(){//inicio funcion juegoComenzado
   n++;
   numeroDePreguntaJuegoAdivina++; //1...2...3...
   parametroPosicionPregunta++;
-  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
+  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenob");
 
   
   banderaPregunta=12;
@@ -616,13 +616,10 @@ function evaluaRespuesta(){
   if(mensajeRecibidoMinusculas==respuestaCorrecta){
     puntuacion++;
     ctx.reply("¡SI! ¡ACERTASTE!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
-    console.log("variable n: "+n);
-    console.log("variable es: "+tituloEscena);
+  
   }else{
     ctx.reply("¡NO! ¡INCORRECTO!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").\nEnviando escena...");
     enviaEscenaPelicula();
-    console.log("variable n: "+n);
-    console.log("variable es: "+tituloEscena);
   }
 }
 
@@ -630,7 +627,7 @@ function evaluaRespuesta(){
 function enviaEscenaPelicula(){
   tituloEscena="escena"+arrayEscenasElegidas[n];
   tituloEscena=tituloEscena.toString();
-  elVideo = 'escenasPeliculas/'+tituloEscena+'.mp4';
+  elVideo = 'starwarsEscenas/'+tituloEscena+'.mp4';
 
   fs.readFile(elVideo, (err, videoData) => {
       if(err){
