@@ -53,9 +53,7 @@ var mensajeAnterior="";  //almacenara el mensaje recibido anteriormente para com
 var parametroNumerico=0; //esta variable hace referencia a que en una función se usa para pasar parametros numericos
 var banderaNegativaDetectada=false;
 var mensajeRecibidoMinusculas="";
-var contadorBlackList=10;
 var banderaMensajeInicial=0;
-var banderaPrimerMensajeRecibido=false;
 var banderaPregunta=0;
 var elVideo;
 var banderaVideoSinCensura=false;
@@ -71,16 +69,18 @@ var posicionJuegoDetectado="";
 var banderaJuegoDetectado=false;
 var banderaDeCompartirLista=false;
 var tematicaSeleccionada="";
-var varibleDeTematica="";
-var numeroDePreguntaJuegoAdivina="";
-var jsonFrases="";
+var numeroDePreguntaJuegoAdivina=0;
 var arrayFrases=[]; //guardará las frases de los juegos de adivinar
 var arrayPelicula=[];//guardará las peliculas 
 var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
-var perro=0; //variable para hacer tiempo xd
 var respuestaCorrecta="";
+var paresClaveValorDelObjeto="";
 var parametroPosicionPregunta=-1; //para que empiece en 0...1...2...3...
+var puntuacion=0;
+var cantidadPreguntasDeJuego=0;
+var almacenarPeliculaSW="";
+var almacenarPeliculaSWbien="";
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -106,6 +106,7 @@ mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaj
 //text= es una propiedad de message que contiene el texto especifico
 //del mensaje.
 console.log("Mensaje recibido: "+mensajeRecibido); 
+//console.log("Mensaje recibido detallado: "+ctx.message.message_id); (mensaje ID, lo utilizaré para cuando varias personas abran el chat)
 mensajeRecibidoMinusculas=mensajeRecibido.toString(); //Convertir mensaje a tipo STRING
 mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLowerCase(); //String a minusculas
 detectarGroserias();
@@ -480,9 +481,9 @@ function adivinaPelicula(){
 function elegirTematica(){
   switch(mensajeRecibidoMinusculas){
     case "1": 
-    ctx.reply("Seleccionaste la temática de Star Wars. Vamos a ver que tan buena memoria tienes para recordar las frases de algunas películas de la saga. ¿Estás listo?\n(S/N)");
     tematicaSeleccionada="STAR WARS";
     banderaPregunta=10;
+    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+". Vamos a ver que tan buena memoria tienes para recordar las frases de algunas películas de la saga. ¿Estás listo?\n(S/N)");
       break;
 
     case "cancelar": 
@@ -518,28 +519,32 @@ function snEmpezarJuego(){
 }
 
 function generarPreguntasJuego(){//generarPreguntas
-  swFrases=dataParseada.frasesdestarwars;
-  swFrasesCantidad=swFrases.length;
+  swFrases=dataParseada.frasesdestarwars; //almacenar todo lo que hay en el objeto frasesdestarwars del JSON, que son distintos objetos con distintas frases
+  swFrasesCantidad=swFrases.length; //obtener longitud de todos los objetos dentro de frasesdestarwars del JSON
 
   switch(tematicaSeleccionada){//switch
     case "STAR WARS":
-    //for que construye los array de acuerdo a lo introducido en el JSON y los almacena en un pbjeto
-    for(let i=0;i<swFrases.length;i++){ //meter en un array todas las preguntas en el mismo orden.
+    //for que construye los array de acuerdo a lo introducido en el JSON y los almacena en un objeto
+    for(let i=0;i<swFrasesCantidad;i++){ //meter en un array todas las preguntas en el mismo orden.
       arrayFrases.splice(i,0,swFrases[i].frase); //en metodo splice los parametros son (posicion, cuantos quitar, valor a introducir)
       arrayPelicula.splice(i,0,swFrases[i].pelicula);
       objetoPreguntasOrdenadas[arrayFrases[i]]=[arrayPelicula[i]];
     }
-    var paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
+    paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
     
-    //For que construirá un objeto con preguntas en orden aleatorio
-    for(let i=0;i<12;i++){ 
-      mensajeAleatorio(swFrasesCantidad); //generar un numero aleatorio valido entre la cantidad de frases
+    //FOR QUE CONSTRUIRÁ UN ARRAY CON PREGUNTAS ALEATORIAS 'SIN REPETIR' LA MISMA PREGUNTA EN OTRA POSICIÓN.
+    cantidadPreguntasDeJuego=10;
+    for(let i=0;i<cantidadPreguntasDeJuego;i++){ //Generamos 10 preguntas
+
+      //Generamos un numero aleatorio valido entre la cantidad de objetos de frasesdestarwars(JSON)
+      mensajeAleatorio(swFrasesCantidad); 
       arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
-      paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar la posicion para que no se repita en otra iteración.
-      swFrasesCantidad--; //decrementar, para que si por casualidad genera aleatoriamente el valor maximo, pues que no exista el problema de que ese numero no existe en el array.
+      paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar dicha posición, para que no lo vuelva a generar.
+      swFrasesCantidad--; //decrementar el valor del parametro del generador aleatorio, porque como eliminamos 
+      //una posición del array, no sigue teniendo el mismo largo que el parametro.
     }
     break;
-   
+   //siguientes cases del switch aqui enseguida
   }//switch
   
 }//generarPreguntas
@@ -549,14 +554,14 @@ function generarPreguntasJuego(){//generarPreguntas
 function juegoComenzado(){//inicio funcion juegoComenzado
   numeroDePreguntaJuegoAdivina++; //1...2...3...
   parametroPosicionPregunta++;
-  ctx.reply("Pregunta "+numeroDePreguntaJuegoAdivina+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]);
+  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
 
-  ctx.reply("\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
+  
   banderaPregunta=12;
   
   //[posicion de las preguntas aleatorias [frase,pelicula] ]
-  var almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
-  var almacenarPeliculaSWbien=almacenarPeliculaSW.toString(); //forzar a string para no tener problemas al comparar
+  almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
+  almacenarPeliculaSWbien=almacenarPeliculaSW.toString(); //forzar a string para no tener problemas al comparar
  
   //Asignar la respuesta correcta...
   switch(almacenarPeliculaSWbien){
@@ -578,75 +583,99 @@ function juegoComenzado(){//inicio funcion juegoComenzado
   case "Star Wars: El regreso del Jedi":
     respuestaCorrecta="6";
     break;
- case "Obi-Wan Kenobi":
-  respuestaCorrecta="7";
-  break;
+  case "Obi-Wan Kenobi":
+    respuestaCorrecta="7";
+    break;
   }
   
 }//concluye funcionJuegoComenzado
 
 function leerRespuestaJuegoComenzado(){//inicio funcion leerRespuestaJuegoComenzado
 
-//funcion creada para no repetir codigo...
+//funciones creadas para no repetir código.
 function evaluaRespuesta(){
   if(mensajeRecibidoMinusculas==respuestaCorrecta){
-    ctx.reply("Respuesta correcta.");
+    puntuacion++;
+    ctx.reply("¡SI! ¡ACERTASTE! LA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
   }else{
-    ctx.reply("Respuesta incorrecta.");
+    ctx.reply("¡NO! ¡INCORRECTO!.LA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
   }
 }
+
+function finDelJuego(){
+  if(numeroDePreguntaJuegoAdivina==cantidadPreguntasDeJuego){ //para considerar la ultima pregunta, antes de saltar a esta instruccion
+    mostrarResultadosJuego();
+  }else{
+    juegoComenzado();
+  }
+}
+
 
   switch(mensajeRecibidoMinusculas){//switch que compara si la respuesta es correcta
     case "1":
       evaluaRespuesta();
-      juegoComenzado();
+      finDelJuego();
       break;
 
     case "2":
       evaluaRespuesta();
-      juegoComenzado();
+      finDelJuego();
       break;
 
     case "3":
       evaluaRespuesta();
-      juegoComenzado();
+      finDelJuego();
       break;
 
     case "4":
       evaluaRespuesta();
-      juegoComenzado();
+      finDelJuego();
       break;
 
     case "5":
       evaluaRespuesta();
-      juegoComenzado();
+      finDelJuego();
       break;
       
     case "6":
       evaluaRespuesta();
-      juegoComenzado();
+      finDelJuego();
       break;
 
     case "7":
       evaluaRespuesta();
-      juegoComenzado();
+      finDelJuego();
       break;
 
     case "cancelar":
       ctx.reply("Regresando al menú principal...");
       numeroDePreguntaJuegoAdivina=0;
       parametroPosicionPregunta=0;
-      perro=0;
       banderaPregunta=0;
       tematicaSeleccionada="";
+      puntuacion=0;
       mensajeInicial();
       break;
+
       
-    default: ctx.reply("Por favor. introduce un número.");
+      
+    default: ctx.reply("Por favor. Introduce un número válido.");
       break;            
   }//concluye switch que compara respuesta si es correcta
 
 }//conluye funcion leerRespuestaJuegoComenzado
+
+function mostrarResultadosJuego(){
+  ctx.reply("JUEGO CONCLUIDO.\n\nTEMÁTICA: "+tematicaSeleccionada+".\n\nPUNTUACIÓN: ["+puntuacion+"/"+cantidadPreguntasDeJuego+"]");
+  banderaPregunta=0;
+  numeroDePreguntaJuegoAdivina=0;
+  parametroPosicionPregunta=0;
+  tematicaSeleccionada="";
+  puntuacion=0;
+  mensajeInicial();
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 }); //FIN de metodo .on del objeto BOT
@@ -695,4 +724,4 @@ bot.launch(); //comando para que se inicie el bot con toda la "configuración" a
 
 
 
-// ESTA LINEA ES LA QUE ME HIZO VER LA INFO DEL MENSAJE ctx.deleteMessage(message_id,idChat);
+// ESTA LINEA ES LA QUE ME HIZO VER LA INFO DEL MENSAJE ctx.deleteMessage(message_d,idChat);
