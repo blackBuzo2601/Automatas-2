@@ -627,7 +627,7 @@ function evaluaRespuesta(){
 function enviaEscenaPelicula(){
   tituloEscena="escena"+arrayEscenasElegidas[n];
   tituloEscena=tituloEscena.toString();
-  elVideo = 'starwarsEscenas/'+tituloEscena+'.mp4';
+  elVideo = 'escenasdestarwars/'+tituloEscena+'.mp4';
 
   fs.readFile(elVideo, (err, videoData) => {
       if(err){
