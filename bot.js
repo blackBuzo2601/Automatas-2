@@ -72,8 +72,11 @@ var tematicaSeleccionada="";
 var numeroDePreguntaJuegoAdivina=0;
 var arrayFrases=[]; //guardará las frases de los juegos de adivinar
 var arrayPelicula=[];//guardará las peliculas 
+var arrayEscenas=[]; //guardará el nombre de las escenas;
+var arrayEscenasElegidas=[];
 var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
+
 var respuestaCorrecta="";
 var paresClaveValorDelObjeto="";
 var parametroPosicionPregunta=-1; //para que empiece en 0...1...2...3...
@@ -81,6 +84,9 @@ var puntuacion=0;
 var cantidadPreguntasDeJuego=0;
 var almacenarPeliculaSW="";
 var almacenarPeliculaSWbien="";
+var escenaPelicula="escena";
+var tituloEscena="";
+var n=-1; //para las escenas de las peliculas, ya que la primera empieza con 0
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -531,10 +537,12 @@ function generarPreguntasJuego(){//generarPreguntas
     for(let i=0;i<swFrasesCantidad;i++){ //meter en un array todas las preguntas en el mismo orden.
       arrayFrases.splice(i,0,swFrases[i].frase); //en metodo splice los parametros son (posicion, cuantos quitar, valor a introducir)
       arrayPelicula.splice(i,0,swFrases[i].pelicula);
+      arrayEscenas.splice(i,0,swFrases[i].escena); //?
       objetoPreguntasOrdenadas[arrayFrases[i]]=[arrayPelicula[i]];
     }
     paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
-    
+  
+
     //FOR QUE CONSTRUIRÁ UN ARRAY CON PREGUNTAS ALEATORIAS 'SIN REPETIR' LA MISMA PREGUNTA EN OTRA POSICIÓN.
     cantidadPreguntasDeJuego=10;
     for(let i=0;i<cantidadPreguntasDeJuego;i++){ //Generamos 10 preguntas
@@ -542,10 +550,17 @@ function generarPreguntasJuego(){//generarPreguntas
       //Generamos un numero aleatorio valido entre la cantidad de objetos de frasesdestarwars(JSON)
       mensajeAleatorio(swFrasesCantidad); 
       arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
+      arrayEscenasElegidas.splice(i,0,arrayEscenas[randomEntero])
+
       paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar dicha posición, para que no lo vuelva a generar.
+      arrayEscenas.splice(randomEntero,1);             //ekiminar dicha posición, para que no lo vuelva a generar.
+
       swFrasesCantidad--; //decrementar el valor del parametro del generador aleatorio, porque como eliminamos 
       //una posición del array, no sigue teniendo el mismo largo que el parametro.
     }
+
+
+
     break;
    //siguientes cases del switch aqui enseguida
   }//switch
@@ -555,6 +570,7 @@ function generarPreguntasJuego(){//generarPreguntas
 
 
 function juegoComenzado(){//inicio funcion juegoComenzado
+  n++;
   numeroDePreguntaJuegoAdivina++; //1...2...3...
   parametroPosicionPregunta++;
   ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
@@ -599,11 +615,32 @@ function leerRespuestaJuegoComenzado(){//inicio funcion leerRespuestaJuegoComenz
 function evaluaRespuesta(){
   if(mensajeRecibidoMinusculas==respuestaCorrecta){
     puntuacion++;
-    ctx.reply("¡SI! ¡ACERTASTE!\n LA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
+    ctx.reply("¡SI! ¡ACERTASTE!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
+    console.log("variable n: "+n);
+    console.log("variable es: "+tituloEscena);
   }else{
-    ctx.reply("¡NO! ¡INCORRECTO!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
+    ctx.reply("¡NO! ¡INCORRECTO!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").\nEnviando escena...");
+    enviaEscenaPelicula();
+    console.log("variable n: "+n);
+    console.log("variable es: "+tituloEscena);
   }
 }
+
+//-----------------------------------------------------------------------------------------------------
+function enviaEscenaPelicula(){
+  tituloEscena="escena"+arrayEscenasElegidas[n];
+  tituloEscena=tituloEscena.toString();
+  elVideo = 'escenasPeliculas/'+tituloEscena+'.mp4';
+
+  fs.readFile(elVideo, (err, videoData) => {
+      if(err){
+          ctx.reply('Error al detectar el video en pc o video no disponible.');
+        }else {
+          ctx.replyWithVideo({source:videoData});
+      }
+  });
+}
+//-------------------------------------------------------------------------------------------------------
 
 function finDelJuego(){
   if(numeroDePreguntaJuegoAdivina==cantidadPreguntasDeJuego){ //para considerar la ultima pregunta, antes de saltar a esta instruccion
@@ -658,10 +695,10 @@ function finDelJuego(){
       tematicaSeleccionada="";
       puntuacion=0;
       mensajeInicial();
+      n=-1;
+      reiniciarArraysJuegos();
       break;
 
-      
-      
     default: ctx.reply("Por favor. Introduce un número válido.");
       break;            
   }//concluye switch que compara respuesta si es correcta
@@ -675,6 +712,16 @@ function mostrarResultadosJuego(){
   parametroPosicionPregunta=0;
   tematicaSeleccionada="";
   puntuacion=0;
+  tituloEscena="";
+  n=-1;
+  reiniciarArraysJuegos();//eliminar todos los elementos del array y dejarlos vacios por si usuario vuelve a jugar
+}
+
+function reiniciarArraysJuegos(){
+  paresClaveValorDelObjeto.splice(0,paresClaveValorDelObjeto.length);
+  arrayPreguntasDesordenadas.splice(0,arrayPreguntasDesordenadas.length);
+  arrayEscenasElegidas.splice(0,arrayEscenasElegidas.length);
+  arrayEscenas.splice(0,arrayEscenas.length);
 }
 
 function snVolverAJugar(){

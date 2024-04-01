@@ -1003,147 +1003,147 @@
     {
       "pelicula": "Star Wars: La amenaza fantasma",
       "frase": "-El niño no pasará la prueba del consejo, maestro. Ya no tiene la edad.\n-Anakin se convertirá en Jedi, te lo prometo.",
-      "escena": "1"
+      "escena": "0"
     },
     {
       "pelicula": "Star Wars: La amenaza fantasma",
       "frase": "-Finalmente nos revelaremos ante los jedi. Al fin la venganza será nuestra.",
-      "escena": "2"
+      "escena": "1"
     },
     {
       "pelicula": "Star Wars: La amenaza fantasma",
       "frase": "-Obi-Wan. Promete... Promete que entrenarás al muchacho.\n-Si maestro.\n",
-      "escena": "3"
+      "escena": "2"
     },
     {
       "pelicula": "Star Wars: El ataque de los clones",
       "frase": "-¿Puedo saber que hace un caballero Jedi, en estas tierras lejanas de Geonosis?\n-Busco a un cazarrecompensas llamado Jango Fett. ¿Lo conoces?.",
-      "escena": "4"
+      "escena": "3"
     },
     {
       "pelicula": "Star Wars: El ataque de los clones",
       "frase": "-¿Que pensarías si te dijera que la república está bajo el control del señor oscuro de sith?\n-Eso es imposible, los jedi se habrían dado cuenta.\n-El lado oscuro de la fuerza, nubla su visión amigo.",
-      "escena": "5"
+      "escena": "4"
     },
     {
       "pelicula": "Star Wars: El ataque de los clones",
       "frase": "-Pagarás por todos los Jedi que asesinaste Dooku.\n-Lo haremos juntos. Tú acercate por la der...\n-¡NO! LO MATARÉ AHORA!\n-¡NO ANAKIN! ¡NO! NO¡",
-      "escena": "6"
+      "escena": "5"
     },
     {
       "pelicula": "Star Wars: El ataque de los clones",
       "frase": "-Como verás, mis poderes jedi son superiores a los tuyos... Ahora... Apártate.",
-      "escena": "7"
+      "escena": "6"
     },
     {
       "pelicula": "Star Wars: El ataque de los clones",
       "frase": "-Maestro Windu. Ha peleado como los grandes. Digno de un reconocimiento en los expedientes de la orden de los jedi.",
-      "escena": "8"
+      "escena": "7"
     },
     {
       "pelicula": "Star Wars: La venganza de los sith",
       "frase" : "-Esta vez no escaparás Dooku.",
-      "escena" :"9"
+      "escena" :"8"
     },
     {
       "pelicula": "Star Wars: La venganza de los sith",
       "frase" : "-¡Eso anakin! ¡Eso!...Acábalo...Acábalo ya.\n-No es correcto.\n-¡Hazlo!",
-      "escena" :"10"
+      "escena" :"9"
     },
     {
       "pelicula": "Star Wars: La venganza de los sith",
       "frase" : "-Ha llegado el momento...Ejecute la orden 66.",
-      "escena" :"11"
+      "escena" :"10"
     },
     {
       "pelicula": "Star Wars: La venganza de los sith",
       "frase" : "-Maestro Skywalker. Son demasiados ¿Qué vamos a hacer ahora?",
-      "escena" :"12"
+      "escena" :"11"
     },
     {
       "pelicula": "Star Wars: La venganza de los sith",
       "frase" : "-!Se acabó anakin¡ ¡Llevo la delantera!",
-      "escena" :"13"
+      "escena" :"12"
     },
     {
       "pelicula": "Star Wars: La venganza de los sith",
       "frase" : "-¡Tú eras el elegido!. ¡Debías destruir a los sith, no unirte a su fuerza!",
-      "escena" :"14"
+      "escena" :"13"
     },
     {
       "pelicula": "Star Wars: Una nueva esperanza",
       "frase" : "-El círculo está completo. Cuando te dejé, yo era el alumno. Ahora soy el maestro.",
-      "escena" :"15"
+      "escena" :"14"
     },
     {
       "pelicula": "Star Wars: Una nueva esperanza",
       "frase" : "-Tu poder es débil anciano.\n-No podrás ganar. Si me abates me volveré mas poderoso de lo que puedas imaginar.",
-      "escena" :"16"
+      "escena" :"15"
     },
     {
       "pelicula": "Star Wars: Una nueva esperanza",
       "frase" : "-Usa la fuerza luke. Déjala fluir.",
-      "escena" :"17"
+      "escena" :"16"
     },
     {
       "pelicula": "Star Wars: El imperio contraataca",
       "frase" : "-Te amo.\n-Lo sé",
-      "escena" :"18"
+      "escena" :"17"
     },
     {
       "pelicula": "Star Wars: El imperio contraataca",
       "frase" : "-Mi aliada es la fuerza. Y una poderosa aliada es.",
-      "escena" :"19"
+      "escena" :"18"
     },
     {
       "pelicula": "Star Wars: El imperio contraataca",
       "frase" : "-Tu destino es a mi lado Skywalker. Obi-Wan sabía que eso es cierto.",
-      "escena" :"20"
+      "escena" :"19"
     },
     {
       "pelicula": "Star Wars: El imperio contraataca",
       "frase" : "-Obi-wan nunca te dijo que pasó con tu padre.\n-Me dijo lo suficiente. Él me dijo que tú lo mataste.\n-No. Yo soy tu padre.",
-      "escena" :"21"
+      "escena" :"20"
     },
     {
       "pelicula": "Star Wars: El regreso del Jedi",
       "frase" : "-Estoy indefenso. Toma tu arma. Atácame con todo tu odio y tu jornada hacia el lado oscuro estará por fin completa.",
-      "escena" :"22"
+      "escena" :"21"
     },
     {
       "pelicula": "Star Wars: El regreso del Jedi",
       "frase" : "-Obi-wan te ha enseñado bien.\n-No combatiré contigo.",
-      "escena" :"23"
+      "escena" :"22"
     },
     {
       "pelicula": "Star Wars: El regreso del Jedi",
       "frase" : "-No es prudente bajar tus defensas.",
-      "escena" :"24"
+      "escena" :"23"
     },
     {
       "pelicula": "Star Wars: El regreso del Jedi",
       "frase" : "-No quisiste matarme anteriormente y no creo que me destruyas ahora.\n-Subestimas el poder del lado oscuro. Si no peleas, te encontrarás con tu destino.",
-      "escena" :"25"
+      "escena" :"24"
     },
     {
       "pelicula": "Star Wars: El regreso del Jedi",
       "frase" : "-Ha fallado su alteza. Soy un jedi. Tal como mi padre antes de mi.",
-      "escena" :"26"
+      "escena" :"25"
     },
     {
       "pelicula": "Obi-Wan Kenobi",
       "frase" : "-Anakin...\n-Anakin murió. Yo soy lo que queda",
-      "escena" :"27"
+      "escena" :"26"
     },
     {
       "pelicula": "Obi-Wan Kenobi",
       "frase" : "-Perdón...Perdón Anakin...Por todo lo que pasó",
-      "escena" :"28"
+      "escena" :"27"
     },
     {
       "pelicula": "Obi-Wan Kenobi",
       "frase" : "-Yo no soy tu fracaso, Obi-Wan...Tú no mataste a Anakin Skywalker...Yo lo hice.",
-      "escena" :"29"
+      "escena" :"28"
     }
 
   ]
