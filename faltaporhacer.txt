@@ -1,0 +1,31 @@
+-Cuando el usuario quiera escribir un juego una vez que el bot le arroje la lista completa, implementar 
+para que solamente escriba el juego sin importar mayusculas o minusculas, o bien, lo mas sencillo seria que
+cuando se despliegue la lista, la arroje junto con un numero a cada uno de los videojuegos, para que el usuario solo
+introduzca el numero para el juego que quiere.
+
+-Que cuando el usuario se equivoque y escriba unas 3 veces y el bot le diga que no le entiende, el bot le mande
+otra vez el menú o lo que tiene que escoger, por ejemplo el menu principal, que actualmente solo se despliega el mensaje 
+1 vez y es cuando el usuario manda el primer mensaje al bot, o cuando regresa al menu principal:
+
+-Calculadora IPV4 (Una calculadora que dado una direccion IP valida, calcule los parametros como: cantidad de subredes
+de ese segmento, broadcast, default gateway, ID de red etc)
+
+-aprender sobre ASYNCAWAIT o eso, que permite que el bot se detenga tantito en una parte del flujo, esto con el objetivo
+de que no mande los mensajes al reves o muy rapido.
+
+-Corregir problema de que cuando el usuario vuelve a jugar el videojuego de adivinar la pelicula, cuando llega a un
+numero de pregunta determinado, el programa falla otra vez... Quiero corregir eso, es importante y no debe de ser
+muy grande pues ese error...
+
+-De la misma manera que implemente en el juego de adivinarpelicula, que no arroja la misma frase 2 veces en el mismo juego,
+implementar eso mismo en los consejos personales o recomendaciones de videojuegos para que si el usuario sigue deseando
+solicitar recomendaciones o consejos que el bot no le arroje uno que ya haya arrojado anteriormente, lo mismo para
+CLIP DIVERTIDO
+
+-Por ultimo pero menos importante, colocar estilos en el texto que resalten para distintas situaciones, por ejemplo,
+(S/N), ACERTASTES, INCORRECTO, etc...
+
+-Una vez que funcione correctamente la funcion de adivinarPelicula para cuando el usuario quiera jugar n cantidad
+de veces y que el codigo no siga dando error, darle la oportunidad del usuario de establecer la cantidad de preguntas 
+con las que quiere jugar... "¿Con cuantas preguntas quieres jugar?". De esta manera, ese valor almacenarlo en la variable
+de cantidadPreguntasDeJuego para que ese sea el tope.

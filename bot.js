@@ -573,7 +573,7 @@ function juegoComenzado(){//inicio funcion juegoComenzado
   n++;
   numeroDePreguntaJuegoAdivina++; //1...2...3...
   parametroPosicionPregunta++;
-  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenob");
+  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
 
   
   banderaPregunta=12;
