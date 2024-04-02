@@ -77,6 +77,7 @@ var arrayEscenasElegidas=[];
 var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
 var arrayProvisionalNoPosibleSW=[]; //este array almacenará todos los numeros que puede introducir el usuario como cantidad de preguntas para jugar
+var arrayProvisionalNoPosibleDB=[]; //mismo caso que arriba pero para dragon ball
 var contarEquivocaciones=0;
 var respuestaCorrecta="";
 var paresClaveValorDelObjeto="";
@@ -85,10 +86,15 @@ var puntuacion=0;
 var cantidadPreguntasDeJuego=0;
 var almacenarPeliculaSW="";
 var almacenarPeliculaSWbien="";
-var escenaPelicula="escena";
+var almacenarPeliculaDB="";
+var parametroAlmacenarPeliculaBien="";
+var almacenarPeliculaDBbien="";
 var tituloEscena="";
 var n=-1; //para las escenas de las peliculas, ya que la primera empieza con 0
 var numeroIntroducido=""; //variable que almacenará la cantidad que introduzca el usuario para las preguntas
+
+var tematicaSeleccionadaCantidad=0;
+
 
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
@@ -500,7 +506,7 @@ function snClipDivertido(){
 
 
 function adivinaPelicula(){
-  ctx.reply("Selecciona una temática. Escribe solamente el número. Para regresar al menú principal escribe 'cancelar'\n1. Star Wars");
+  ctx.reply("Selecciona una temática. Escribe solamente el número. Para regresar al menú principal escribe 'cancelar'\n\n1. STAR WARS\n2. DRAGON BALL");
   banderaPregunta=9;
 }
 
@@ -511,10 +517,16 @@ function elegirTematica(){
   switch(mensajeRecibidoMinusculas){
     case "1": 
     tematicaSeleccionada="STAR WARS";
-    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 0 y "+(swFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(swFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
     banderaPregunta=14;
       break;
 
+    case "2":
+    tematicaSeleccionada="DRAGON BALL";
+    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(dbFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    banderaPregunta=14;
+      break;
+    
     case "cancelar": 
     ctx.reply("Regresando al menú principal...");
     banderaPregunta=0;
@@ -527,23 +539,45 @@ function elegirTematica(){
     adivinaPelicula();
       break;
   }
+
 }
 
 //banderaPregunta=14
-function establecerCantidadPreguntas(){
-
-  for(let i=0;i<swFrasesCantidad;i++){ //generar numeros válidos para STAR WARS
-    arrayProvisionalNoPosibleSW.splice(i,0,i);  //posicion,cuantosquitar,valorintroducir
-    arrayProvisionalNoPosibleSW[i].toString();  //para no tener problemas porque lo comparamos con caracteres
-  }
-
-  //comprobar si es un numero valido para casos de STAR WARS
-  for(let l=0;l<arrayProvisionalNoPosibleSW.length;l++){ 
-    if(arrayProvisionalNoPosibleSW[l]==(mensajeRecibidoMinusculas)){
+function establecerCantidadPreguntas(){//inicio funcion establecerCantidadPreguntas
+//segun sea el caso, se establece el paraemtro para el usuario, segun haya escogido en el menu de tematica
+switch(tematicaSeleccionada){
+  case "STAR WARS":
+    tematicaSeleccionadaCantidad=swFrasesCantidad-1;
+    for(let i=0;i<swFrasesCantidad;i++){ //generar numeros válidos para STAR WARS
+      arrayProvisionalNoPosibleSW.splice(i,0,i);  //posicion,cuantosquitar,valorintroducir
+      arrayProvisionalNoPosibleSW[i].toString();  //para no tener problemas porque lo comparamos con caracteres
+    }
+    
+    for(let l=0;l<arrayProvisionalNoPosibleSW.length;l++){ //comprobar si es un numero valido para casos de STAR WARS
+      if(arrayProvisionalNoPosibleSW[l]==(mensajeRecibidoMinusculas)){
       numeroIntroducido=mensajeRecibidoMinusculas;
       break;
+      }
+    } 
+    break;
+    
+  case "DRAGON BALL":
+    tematicaSeleccionadaCantidad=dbFrasesCantidad-1;
+    for(let m=0;m<dbFrasesCantidad;m++){ //generar numeros válidos para DRAGON BALL
+      arrayProvisionalNoPosibleDB.splice(m,0,m);  //posicion,cuantosquitar,valorintroducir
+      arrayProvisionalNoPosibleDB[m].toString();  //para no tener problemas porque lo comparamos con caracteres
     }
-  }
+    //comprobar si es un numero valido para casos de DRAGON BALL
+    for(let n=0;n<arrayProvisionalNoPosibleDB.length;n++){ 
+      if(arrayProvisionalNoPosibleSW[n]==(mensajeRecibidoMinusculas)){
+        numeroIntroducido=mensajeRecibidoMinusculas;
+        break;
+      }
+    }
+    break;
+}
+//-----------------------------------------------------------------------------------------------------------
+//Ciclos For que construyen los números válidos a introducir para el usuario
 
   switch(mensajeRecibidoMinusculas){
 
@@ -563,10 +597,11 @@ function establecerCantidadPreguntas(){
     tematicaSeleccionada="";
     break;
 
-    default: ctx.reply("Por favor, escribe bien. Elige un valor entre 0 y "+(swFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    default: ctx.reply("Por favor, escribe bien. Elige un valor entre 1 y "+tematicaSeleccionadaCantidad+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
       break;
   }
-}
+
+}//concluye funcion establecerCantidadPreguntas
 
 function snEmpezarJuego(){ //banderaPregunta = 10;
   switch(mensajeRecibidoMinusculas){
@@ -585,7 +620,7 @@ function snEmpezarJuego(){ //banderaPregunta = 10;
   }
 }
 
-function generarPreguntasJuego(){//generarPreguntas
+function generarPreguntasJuego(){
 
   switch(tematicaSeleccionada){//switch
     case "STAR WARS":
@@ -613,11 +648,32 @@ function generarPreguntasJuego(){//generarPreguntas
       swFrasesCantidad--; //decrementar el valor del parametro del generador aleatorio, porque como eliminamos 
       //una posición del array, no sigue teniendo el mismo largo que el parametro.
     }
-
-
-
     break;
-   //siguientes cases del switch aqui enseguida
+//--------------------------------------------------------------------------------------------------------------------
+    case "DRAGON BALL": 
+    
+    for(let i=0;i<dbFrasesCantidad;i++){ 
+      arrayFrases.splice(i,0,dbFrases[i].frase); 
+      arrayPelicula.splice(i,0,dbFrases[i].pelicula);
+      arrayEscenas.splice(i,0,dbFrases[i].escena);
+      objetoPreguntasOrdenadas[arrayFrases[i]]=[arrayPelicula[i]];
+    }
+    paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); 
+    
+    cantidadPreguntasDeJuego=numeroIntroducido;
+    for(let i=0;i<cantidadPreguntasDeJuego;i++){ //Generamos 10 preguntas
+
+      //Generamos un numero aleatorio valido entre la cantidad de objetos de frasesdestarwars(JSON)
+      mensajeAleatorio(dbFrasesCantidad); 
+      arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
+      arrayEscenasElegidas.splice(i,0,arrayEscenas[randomEntero]);
+    
+      paresClaveValorDelObjeto.splice(randomEntero,1); 
+      arrayEscenas.splice(randomEntero,1);           
+      dbFrasesCantidad--; 
+      
+    }
+    break;
   }//switch
   
 }//generarPreguntas
@@ -625,62 +681,104 @@ function generarPreguntasJuego(){//generarPreguntas
 
 
 function juegoComenzado(){//inicio funcion juegoComenzado
+  
+  switch(tematicaSeleccionada){ //INICIO SWITCH GENERAL
+    case "STAR WARS":
+      n++;
+      numeroDePreguntaJuegoAdivina++; //1...2...3...
+      parametroPosicionPregunta++;
+      
+      ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
+    
+      banderaPregunta=12;
+      
+      //[posicion de las preguntas aleatorias [frase,pelicula] ]
+      almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
+      almacenarPeliculaSWbien=almacenarPeliculaSW.toString(); //forzar a string para no tener problemas al comparar
+      parametroAlmacenarPeliculaBien=almacenarPeliculaSWbien;
+      //Asignar la respuesta correcta...
+      switch(almacenarPeliculaSWbien){
+      case "Star Wars: La amenaza fantasma":
+        respuestaCorrecta="1";
+        break;
+      case "Star Wars: El ataque de los clones":
+        respuestaCorrecta="2";
+        break;
+      case "Star Wars: La venganza de los sith":
+        respuestaCorrecta="3";
+        break;
+      case "Star Wars: Una nueva esperanza":
+        respuestaCorrecta="4";
+        break;
+      case "Star Wars: El imperio contraataca":
+        respuestaCorrecta="5";
+        break;
+      case "Star Wars: El regreso del Jedi":
+        respuestaCorrecta="6";
+        break;
+      case "Obi-Wan Kenobi":
+        respuestaCorrecta="7";
+        break;
+      }
+    break;
+    
+//CASO PARA DRAGON BALL :)
+  case "DRAGON BALL":
   n++;
   numeroDePreguntaJuegoAdivina++; //1...2...3...
   parametroPosicionPregunta++;
   
-  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
+  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Dragon Ball Z\n2. Dragon Ball Z: La batalla de los dioses\n3. Dragon Ball Z: El poder invencible\n4.Dragon Ball Z: La batalla mas grande de este mundo esta por comenzar\n5.Dragon Ball Z: La fusion de goku y vegeta\n6.Dragon Ball Z: La resurreccion de freezer\n7.Dragon Ball Super\n");
 
-  
   banderaPregunta=12;
   
   //[posicion de las preguntas aleatorias [frase,pelicula] ]
-  almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
-  almacenarPeliculaSWbien=almacenarPeliculaSW.toString(); //forzar a string para no tener problemas al comparar
-  
-
+  almacenarPeliculaDB=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
+  almacenarPeliculaDBbien=almacenarPeliculaDB.toString(); //forzar a string para no tener problemas al comparar
+  parametroAlmacenarPeliculaBien=almacenarPeliculaDBbien;
   //Asignar la respuesta correcta...
-  switch(almacenarPeliculaSWbien){
-  case "Star Wars: La amenaza fantasma":
+  switch(almacenarPeliculaDBbien){
+  case "Dragon Ball Z":
     respuestaCorrecta="1";
     break;
-  case "Star Wars: El ataque de los clones":
+  case "Dragon Ball Z: La batalla de los dioses":
     respuestaCorrecta="2";
     break;
-  case "Star Wars: La venganza de los sith":
+  case "Dragon Ball Z: El poder invencible":
     respuestaCorrecta="3";
     break;
-  case "Star Wars: Una nueva esperanza":
+  case "Dragon Ball Z: La batalla mas grande de este mundo esta por comenzar":
     respuestaCorrecta="4";
     break;
-  case "Star Wars: El imperio contraataca":
+  case "Dragon Ball Z: La fusion de goku y vegeta":
     respuestaCorrecta="5";
     break;
-  case "Star Wars: El regreso del Jedi":
+  case "Dragon Ball Z: La resurreccion de freezer":
     respuestaCorrecta="6";
     break;
-  case "Obi-Wan Kenobi":
+  case "Dragon Ball Super":
     respuestaCorrecta="7";
     break;
   }
+
+}//CONCLUYE SWITCH GENERAL
   
 }//concluye funcionJuegoComenzado
 
+//banderaPregunta=12
 function leerRespuestaJuegoComenzado(){//inicio funcion leerRespuestaJuegoComenzado
 
-//funciones creadas para no repetir código.
+//funcion creada para no repetir código.
 function evaluaRespuesta(){
   if(mensajeRecibidoMinusculas==respuestaCorrecta){
     puntuacion++;
-    ctx.reply("¡SI! ¡ACERTASTE!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
-  
+    ctx.reply("¡SI! ¡ACERTASTE!\nLA RESPUESTA CORRECTA ES: "+parametroAlmacenarPeliculaBien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").");
   }else{
-    ctx.reply("¡NO! ¡INCORRECTO!\nLA RESPUESTA CORRECTA ES: "+almacenarPeliculaSWbien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").\nEnviando escena...");
+    ctx.reply("¡NO! ¡INCORRECTO!\nLA RESPUESTA CORRECTA ES: "+parametroAlmacenarPeliculaBien+"\nPuntuación total: ("+puntuacion+"/"+cantidadPreguntasDeJuego+").\nEnviando escena...");
     enviaEscenaPelicula();
   }
 }
-
-//-----------------------------------------------------------------------------------------------------
+//otra funcion creada para no repetir código.
 function enviaEscenaPelicula(){
   tituloEscena="escena"+arrayEscenasElegidas[n];
   tituloEscena=tituloEscena.toString();
@@ -694,8 +792,7 @@ function enviaEscenaPelicula(){
       }
   });
 }
-//-------------------------------------------------------------------------------------------------------
-
+//otra funcion mas para no repetir codigo
 function finDelJuego(){
   if(numeroDePreguntaJuegoAdivina==cantidadPreguntasDeJuego){ //para considerar la ultima pregunta, antes de saltar a esta instruccion
     mostrarResultadosJuego();
@@ -703,7 +800,6 @@ function finDelJuego(){
     juegoComenzado();
   }
 }
-
 
   switch(mensajeRecibidoMinusculas){//switch que compara si la respuesta es correcta
     case "1":
@@ -772,6 +868,7 @@ function mostrarResultadosJuego(){
 }
 
 function reiniciarArraysJuegos(){
+  objetoPreguntasOrdenadas
   paresClaveValorDelObjeto.splice(0,paresClaveValorDelObjeto.length);
   arrayPreguntasDesordenadas.splice(0,arrayPreguntasDesordenadas.length);
   arrayEscenasElegidas.splice(0,arrayEscenasElegidas.length);
