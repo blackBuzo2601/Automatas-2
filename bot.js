@@ -76,6 +76,7 @@ var arrayEscenas=[]; //guardará el nombre de las escenas;
 var arrayEscenasElegidas=[];
 var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
+var arrayProvisionalNoPosibleSW=[]; //este array almacenará todos los numeros que puede introducir el usuario como cantidad de preguntas para jugar
 var contarEquivocaciones=0;
 var respuestaCorrecta="";
 var paresClaveValorDelObjeto="";
@@ -87,6 +88,8 @@ var almacenarPeliculaSWbien="";
 var escenaPelicula="escena";
 var tituloEscena="";
 var n=-1; //para las escenas de las peliculas, ya que la primera empieza con 0
+var numeroIntroducido=""; //variable que almacenará la cantidad que introduzca el usuario para las preguntas
+
 //LAS SIGUIENTES CONSTANTES ALMACENAN LA CANTIDAD DE OBJETOS QUE HAY EN CADA CLAVE DEL archivo arreglojuegos.JSON
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
@@ -95,6 +98,11 @@ const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
 const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
+
+const swFrases=dataParseada.frasesdestarwars; 
+var swFrasesCantidad=swFrases.length; //variable porque la iremos decrementando para no repetir misma frase
+const dbFrases=dataParseada.frasesdedragonball;
+var dbFrasesCantidad=dbFrases.length; //variable porque la iremos decrementando para no repetir misma frase
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
 
@@ -167,6 +175,9 @@ if(banderaNegativaDetectada==true){
         case 13: snVolverAJugar();
           break;
 
+        case 14: establecerCantidadPreguntas();
+          break;
+
 
         case 0:
           contadorMsjRepetido();      
@@ -221,7 +232,7 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
 }//fin funcion detectorDeClaves
 
 function recomiendaJuegos(){
-      if(contadorVideojuegos>=6 && banderaDeCompartirLista==false){
+      if(contadorVideojuegos>=5 && banderaDeCompartirLista==false){
         ctx.reply("Ya me has pedido que te recomiende videojuegos "+(contadorVideojuegos)+" veces. ¿No quieres que mejor te comparta la lista y tu eliges el juego? (S/N)");
         banderaPregunta=7;
         banderaDeCompartirLista=true;
@@ -494,11 +505,14 @@ function adivinaPelicula(){
 }
 
 function elegirTematica(){
+  swFrasesCantidad=swFrases.length; //reiniciar variables
+  dbFrasesCantidad=dbFrases.length;
+
   switch(mensajeRecibidoMinusculas){
     case "1": 
     tematicaSeleccionada="STAR WARS";
-    banderaPregunta=10;
-    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+". Vamos a ver que tan buena memoria tienes para recordar las frases de algunas películas de la saga. ¿Estás listo?\n(S/N)");
+    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 0 y "+(swFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    banderaPregunta=14;
       break;
 
     case "cancelar": 
@@ -515,10 +529,48 @@ function elegirTematica(){
   }
 }
 
-function snEmpezarJuego(){
+//banderaPregunta=14
+function establecerCantidadPreguntas(){
+
+  for(let i=0;i<swFrasesCantidad;i++){ //generar numeros válidos para STAR WARS
+    arrayProvisionalNoPosibleSW.splice(i,0,i);  //posicion,cuantosquitar,valorintroducir
+    arrayProvisionalNoPosibleSW[i].toString();  //para no tener problemas porque lo comparamos con caracteres
+  }
+
+  //comprobar si es un numero valido para casos de STAR WARS
+  for(let l=0;l<arrayProvisionalNoPosibleSW.length;l++){ 
+    if(arrayProvisionalNoPosibleSW[l]==(mensajeRecibidoMinusculas)){
+      numeroIntroducido=mensajeRecibidoMinusculas;
+      break;
+    }
+  }
+
+  switch(mensajeRecibidoMinusculas){
+
+    case numeroIntroducido:
+      ctx.reply("Estableciste un juego de "+numeroIntroducido+" preguntas.\nTemática: "+tematicaSeleccionada+"\n¿Es correcto? (S/N)");
+      banderaPregunta=10;
+      break;
+
+    case "regresar": 
+    adivinaPelicula();
+      break;
+
+    case "cancelar":
+    ctx.reply("Regresando al menú principal...");
+    banderaPregunta=0;
+    mensajeInicial();
+    tematicaSeleccionada="";
+    break;
+
+    default: ctx.reply("Por favor, escribe bien. Elige un valor entre 0 y "+(swFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+      break;
+  }
+}
+
+function snEmpezarJuego(){ //banderaPregunta = 10;
   switch(mensajeRecibidoMinusculas){
     case "s":
-      ctx.reply("Aceptaste jugar con la temática de: "+tematicaSeleccionada+"\nSi quieres salir del juego, solo escribe 'cancelar'");
       generarPreguntasJuego();
       juegoComenzado();
       break;
@@ -528,15 +580,13 @@ function snEmpezarJuego(){
       break;
 
     default:
-      ctx.reply("Por favor, escribe bien. ¿Quieres jugar con la temática de: "+tematicaSeleccionada+"? (S/N)");
+      ctx.reply("Por favor, escribe bien.\nEstableciste un juego de "+numeroIntroducido+" preguntas.\nTemática: "+tematicaSeleccionada+"\n¿Es correcto? (S/N)");
       break;
   }
 }
 
 function generarPreguntasJuego(){//generarPreguntas
-  swFrases=dataParseada.frasesdestarwars; //almacenar todo lo que hay en el objeto frasesdestarwars del JSON, que son distintos objetos con distintas frases
-  swFrasesCantidad=swFrases.length; //obtener longitud de todos los objetos dentro de frasesdestarwars del JSON
-  
+
   switch(tematicaSeleccionada){//switch
     case "STAR WARS":
     //for que construye los array de acuerdo a lo introducido en el JSON y los almacena en un objeto
@@ -549,7 +599,7 @@ function generarPreguntasJuego(){//generarPreguntas
     paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
     
     //FOR QUE CONSTRUIRÁ UN ARRAY CON PREGUNTAS ALEATORIAS 'SIN REPETIR' LA MISMA PREGUNTA EN OTRA POSICIÓN.
-    cantidadPreguntasDeJuego=5;
+    cantidadPreguntasDeJuego=numeroIntroducido;
     for(let i=0;i<cantidadPreguntasDeJuego;i++){ //Generamos 10 preguntas
 
       //Generamos un numero aleatorio valido entre la cantidad de objetos de frasesdestarwars(JSON)
@@ -575,12 +625,9 @@ function generarPreguntasJuego(){//generarPreguntas
 
 
 function juegoComenzado(){//inicio funcion juegoComenzado
-  
   n++;
   numeroDePreguntaJuegoAdivina++; //1...2...3...
-  console.log("variable parametroPosicionPregunta antes de incrementar: "+parametroPosicionPregunta);
   parametroPosicionPregunta++;
-  console.log("variable parametroPosicionPregunta despues de incrementar: "+parametroPosicionPregunta);
   
   ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
 
