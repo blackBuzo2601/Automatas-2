@@ -76,7 +76,7 @@ var arrayEscenas=[]; //guardará el nombre de las escenas;
 var arrayEscenasElegidas=[];
 var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
-
+var contarEquivocaciones=0;
 var respuestaCorrecta="";
 var paresClaveValorDelObjeto="";
 var parametroPosicionPregunta=-1; //para que empiece en 0...1...2...3...
@@ -173,6 +173,7 @@ if(banderaNegativaDetectada==true){
           if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
             mensajeAleatorio(mensajesMensajeRepetidoCantidad); 
             ctx.reply(dataParseada.mensajesMensajeRepetido[randomEntero].mensaje); 
+            mensajeInicial();
           }else{ //INICIO ELSE 1.1.1
             if(banderaMensajeInicial>=2){
             detectorDeClaves();
@@ -209,6 +210,11 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
         break;
 
     default:
+        contarEquivocaciones++;
+        if(contarEquivocaciones==3){
+          mensajeInicial();
+          contarEquivocaciones=0;
+        }
         ctx.reply("Lo siento. No entendí lo que quisiste decir. Por favor, revisa y escribe bien tu mensaje.");
         break;
   }
@@ -544,7 +550,7 @@ function generarPreguntasJuego(){//generarPreguntas
   
 
     //FOR QUE CONSTRUIRÁ UN ARRAY CON PREGUNTAS ALEATORIAS 'SIN REPETIR' LA MISMA PREGUNTA EN OTRA POSICIÓN.
-    cantidadPreguntasDeJuego=10;
+    cantidadPreguntasDeJuego=2;
     for(let i=0;i<cantidadPreguntasDeJuego;i++){ //Generamos 10 preguntas
 
       //Generamos un numero aleatorio valido entre la cantidad de objetos de frasesdestarwars(JSON)

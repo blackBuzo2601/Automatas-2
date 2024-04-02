@@ -722,6 +722,66 @@
     },
     {
       "mensaje" : "La competencia del lenguaje ensamblador, es poner a prueba tu forma de pensar en un lenguaje de bajo nivel."
+    },
+    {
+      "mensaje":"Compra tus videojuegos digitales de Playstation Network con una cuenta de USA. Así ahorras hasta el 10% de lo que pagarías normalmente comprándolo en una cuenta mexicana."
+    },
+    {
+      "mensaje":"Elige bien quienes quieres que sean tus compañeros de trabajo en un proyecto en equipo."
+    },
+    {
+      "mensaje":"No dejes todo para el último. Si tienes tiempo de realizar tus tareas, o dedicarle aunque sea una parte de tu tiempo hazlo."
+    },
+    {
+      "mensaje":"Si quieres empezar a jugar una saga de videojuegos nueva, te recomiendo The Legend of Zelda. ¿Por cual empezar? Empieza por Ocarina of time 3D, que es un remake del legendario juego de Nintendo 64."
+    },
+    {
+      "mensaje":"Siempre es bueno aprender algo nuevo. Cuando tengas oportunidad, aprende algo nuevo. Práctica un nuevo idioma, un nuevo lenguaje de programación. Todo es beneficioso."
+    },
+    {
+      "mensaje":"Compra un Playstation 5 y no un Xbox Series S. En Playstation 5 hay variedad de exclusivos. Cambia de gamepass a Playstation Plus."
+    },
+    {
+      "mensaje":"Al menos en Cinepolis Macroplaza del Mar estaba esta promoción. En taquilla, muestra tu tarjeta ROMA para que te hagan promoción de 2x1 en boletos."
+    },
+    {
+      "mensaje":"Saca tu tarjeta Club Cinepolis. Es gratis y todos pueden conseguirla con la aplicación de móviles de CINEPOLIS. Con dicha tarjeta puedes ir todos los martes para comprar boletos al 2x1. Hasta 8 personas pueden ir y pagar por el precio de 4."
+    },
+    {
+      "mensaje":"Ve la serie 'The Mandalorian'. Es parte del universo de Star Wars y es la mejor serie de dicho universo. Puedes verla incluso sin haber visto las peliculas de Star Wars."
+    },
+    {
+      "mensaje":"Si tienes una cuenta de Amazon Japón y una cuenta de Nintendo con una suscripción activa de Nintendo Switch Online puedes comprar 2 juegos AAA por casi el precio de 1. Solo tienes que comprar una tarjeta de 10000 yenes japoneses (la versión que te arroja el codigo en linea, no la versión de tarjeta física). Luego colocas el codigo en la Eshop de Nintendo en tu Nintendo Switch. Ahora con los 10000 yenes cargados, compra los vouchers de 'NINTENDO SWITCH GAME VOUCHERS'. Ahora con tus vouchers puedes canjearlos por dos juegos buenísimos de Nintendo, los que prefieras. Todo por la suma de 1200 pesos aproximadamente. ¿Que tal?"
+    },
+    {
+      "mensaje":"No compres los boneless de Little Caesars. Carísimos y de mala calidad"
+    },
+    {
+      "mensaje":"Aprovecha tus vacaciones de semana santa para hacer tareas pendientes. Tienes un montón de tiempo para hacer tareas. Aprovéchalo."
+    },
+    {
+      "mensaje":"Ve la serie de 'The Last of Us' disponible en MAX. Es buena serie y te entretenerá."
+    },
+    {
+      "mensaje": "No seas una persona vengativa. Puedes demostrarle a las personas que eres mejor que eso. Demuestra que tienes la madurez para ignorar comentarios negativos."
+    },
+    {
+      "mensaje":"No veas el estudio como algo que dé pereza. Véelo mejor como una manera de acercarte más a nuevas y mejores oportunidades de trabajo."
+    },
+    {
+      "mensaje":"No dejes para el último el inglés de la universidad. Luego se acumulan las cosas."
+    },
+    {
+      "mensaje":"Siempre da el máximo en tus materias. No busques sacar un 70. Busca maximizar tus probabilidades de obtener una mejor calificación."
+    },
+    {
+      "mensaje":"Si tienes un mal momento, recuerda que hay personas que usan su dinero para ir a conciertos de Bad Bunny. Me vale madre si él gana más dinero que yo. Por lo menos tengo conciencia de que eso no es música."
+    },
+    {
+      "mensaje":"Si tienes una tarjeta bancaria que no utilices, dependiendo de la situación, a veces es mejor ir a cancelarla, porque cuando menos crees...Te empiezan a cobrar cada cierto tiempo y si no la cancelas todavía, al momento de querer ir a cancelarla, te cobrarán lo que debes."
+    },
+    {
+      "mensaje":"Hay que trabajar, hay que aprender, hay que comer, hay que descansar, y también hay que jugar; esas son las bases del entrenamiento para tener una buena condición.\n-Maestro Roshi-"
     }
     
   ],
@@ -984,7 +1044,8 @@
         "culear",
         "culero",
         "culer0",
-        "gordo"
+        "gordo",
+        "maricon"
 
       ],
   "mensajesBlacklist" : [
@@ -1152,6 +1213,211 @@
       "frase" : "-Yo no soy tu fracaso, Obi-Wan...Tú no mataste a Anakin Skywalker...Yo lo hice.",
       "escena" :"28"
     }
+
+  ],
+
+  "frasesdedragonball": [
+    {
+      "pelicula": "Dragon Ball Z",
+      "frase": "-Kakaroto. Eres el número uno.",
+      "escena" : "0"
+    },
+    {
+      "pelicula" :"Dragon Ball Z: La batalla de los dioses",
+      "frase": "-Valio la pena esperar con tanta paciencia.\n-¿Enserio? ¿Entonces me voy a transformar en un dios super saiyajin?\nEso lo sabremos cuando empecemos a pelear... Ahora. Ven y enfréntame.",
+      "escena":"1"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Parece que...Llegó la hora porque hoy es tu último día...Saiyajin",
+      "escena": "2"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Ya no es necesario que sigas reprimiendo tu fuerza. Comienza por hacer pedazos a Son Goku...Ignora a los más debiles.\nEntendido.",
+      "escena": "3"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-No me digas que eso es todo. Es lamentable que una raza guerrera tan honorable como la suya acabe de ésta manera",
+      "escena": "4"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-No te preocupes. Podrás reunirte con ella en poco tiempo. Después de todo la muerte es una dicha para los seres humanos.\n-¡AAAAAAAAAAAAAAAAAAAAHHHH!",
+      "escena": "5"
+    },
+    {
+      "pelicula":"Dragon Ball Z: El poder invencible",
+      "frase":"-Kakaroto. Tu serás el primero en morir. Más vale que estés preparado.",
+      "escena": "6"
+    },
+    {
+      "pelicula":"Dragon Ball Z: La batalla mas grande de este mundo esta por comenzar",
+      "frase":"-Tú lo pediste. ¡Muere!",
+      "escena": "7"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Ese aspecto. Ese brillo. Esa es... Sin duda alguna...La forma completa, del ultra instinto.",
+      "escena": "8"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Toda esa fuerza en la que tanto confías, desaparece fácilmente, como eso de ahí.",
+      "escena": "9"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Yo no me considero...A mi mismo como un héroe de la justicia...Pero si alguien se atreve a lastimar a mis amigos...¡NO LO PERDONARÉ!",
+      "escena": "10"
+    },
+    {
+      "pelicula":"Dragon Ball Z",
+      "frase":"-¡Noooo! ¡Maldiciooooooooon!",
+      "escena": "11"
+    },
+    { 
+    "pelicula":"Dragon Ball Z",
+    "frase":"-Gohan, escúchame. No es pecado pelear por la justicia... Al contrario, eso es una buena obra. Recuerda que existen oponentes que jamás entenderán con las palabras.",
+    "escena": "12"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Ya que tu te fusionaste en uno, nosotros también hicimos lo mismo. Cuando Vegeta y Kakaroto se fusionan aparece...Vegetto.",
+      "escena": "13"
+    },
+    {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-¿Que pasa? ¿Este es todo el poder que tiene un dios?\n-¡Deja de fanfarronear!",
+      "escena": "14"
+    },
+   {
+    "pelicula":"Dragon Ball Z: La fusion de goku y vegeta",
+    "frase":"-Yo no soy Goku ni tampoco Vegeta. Ahora mi deber es acabar contigo.",
+    "escena": "15"
+   },
+   {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Sorpresa. Yo también se hacer lo mismo que tú. Y ahora, no me digas que te dolió",
+      "escena": "16"
+   },
+   {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Sacrificarse por los demás. Es un final muy humano.",
+      "escena": "17"
+   },
+   {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Kakaroto. El resto está en tus manos.",
+      "escena": "18"
+   },
+   {
+      "pelicula":"Dragon Ball Z",
+      "frase":"-Freezer. Sal de ahí maldito.",
+      "escena": "19"
+   },
+   {
+     "pelicula":"Dragon Ball Z: La batalla de los dioses",
+      "frase":"-¿Sigues molesto por ser un dios?\nUn poco.\n-Ese orgullo será tu perdición.",
+      "escena": "20"
+   },
+   {
+     "pelicula":"Dragon Ball Z: La batalla de los dioses",
+      "frase":"-¿Que pasa? ¿Porque te detuviste?\n-Solo queria hacer que dijeras 'Me rindo'",
+      "escena": "21"
+   },
+   {
+     "pelicula":"Dragon Ball Z: La batalla de los dioses",
+      "frase":"-Eso no es cierto. Es un hecho que Vegeta es más orgulloso que yo. Todos mis amigos lo saben.\n-Puede ser, pero renunció a su orgullo hace un momento para proteger a los demás.\nLo sé. También renunció a su orgullo como principe...¿No es increíble? Creo que lo respeto más por eso.",
+      "escena": "22"
+   },
+   {
+     "pelicula":"Dragon Ball Z",
+      "frase":"-¡Ya basta Freezer!\n¡GOKUUUUUUUUUUUUU! ¡OAAAAAAAAAAAH!",
+      "escena": "23"
+   },
+   {
+    "pelicula":"Dragon Ball Z: La resurreccion de freezer",
+      "frase":"-Que curioso. Nunca pensaste que yo también pudiera transformarme en aquel legendario super saiyajin.",
+      "escena": "24"
+   },
+   {
+    "pelicula":"Dragon Ball Z: La resurreccion de freezer",
+      "frase":"-Freezer me conoces muy bien y sabes que no soy tan flexible como aquel insecto. Más vale que te prepares",
+      "escena": "25"
+   },
+   {
+      "pelicula":"Dragon Ball Z: La resurreccion de freezer",
+      "frase":"-Admítelo. Este es tu fin Freezer. Ni se te ocurra volver a resucitar.\n-Pues entonces...¡SE IRÁN CONMIGO!",
+      "escena": "26"
+   },
+   {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Devuelve a la normalidad a todos los universo que fueron eliminados",
+      "escena": "27"
+   },
+   {
+     "pelicula":"Dragon Ball Z: La batalla de los dioses",
+      "frase":"-¿Tu también lo presientes verdad Kai-Shin?\n-Si. Parece que esta vez despertó antes de tiempo.\n-Vaya vaya. La paz y la tranquilidad no duraron demasiado.",
+      "escena": "28"
+   },
+   {
+      "pelicula":"Dragon Ball Z: La batalla de los dioses",
+      "frase":"-Nadie toca a mi BULMAAAAAAAAA!",
+      "escena": "29"
+   },
+   {
+      "pelicula":"Dragon Ball Z: La batalla de los dioses",
+      "frase":"-Ahora viene la destrucción.\n-Mmm. Será un honor ser eliminado por bills el destructor.\n-Vaya... Eso fue muy alagador. Ahora tendrás tu deseo.",
+      "escena": "30"
+   },
+   {
+      "pelicula":"Dragon Ball Super",
+      "frase":"-Ay que interesante. Eso quiere decir que logré cumplir mi sueño. Si es así entonces no permitiré que alguno de ustedes me detenga.\n-No te quieras pasar de listo...¡Hakai!\n-¡AAAAAAAAHHHHHH!",
+      "escena": "31"
+   },
+   {
+      "pelicula":"Dragon Ball Super: Broly",
+      "frase":"-Siempre me la paso en el campo de batalla. Por lo que quisiera por lo menos una vez en mi vida preservar algo. Sobretodo si se trata de alguien que está destinado a ser un guerrero de clase baja. Me refiero a mi hijo.",
+      "escena": "32"
+   },
+   {
+      "pelicula":"Dragon Ball Super: Broly",
+      "frase":"-Escucha. Pase lo que pase tienes que sobrevivir.\n-Nos volveremos a ver.\n-Adiós hijo.",
+      "escena": "33"
+   },
+   {
+      "pelicula":"Dragon Ball Super: Broly",
+      "frase":"-Me llamo Son Goku... O también... ¡Kakaroto!",
+      "escena": "34"
+   },
+   {
+    "pelicula":"Dragon Ball Super: Broly",
+    "frase":"-¿Quién demonios eres?\n-Yo soy Gogeta. Goku y Vegeta acaban de hacer la técnica de la fusión",
+    "escena": "35"
+   },
+   {
+    "pelicula":"Dragon Ball Z",
+    "frase":"-¡Eres un grandísimo estúpido! Te dí una oportunidad más y no la aprovechaste",
+    "escena": "36"
+   },
+   {
+    "pelicula":"Dragon Ball Z",
+    "frase":"-Adiós...Bulma...Trunks...Y también...Kakaroto",
+    "escena": "37"
+   },
+   {
+    "pelicula":"Dragon Ball Super",
+    "frase":"-Vaya vaya. Todo indica que el monstruo ha comenzado a moverse.",
+    "escena": "38"
+   },
+   {
+    "pelicula":"Dragon Ball Super",
+    "frase":"-Que patético eres. Esperaba más de ti.\n-¡Oye! ¿Que estás diciendo?",
+    "escena": "39"
+   }
+
 
   ]
 

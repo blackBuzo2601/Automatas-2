@@ -29,3 +29,9 @@ CLIP DIVERTIDO
 de veces y que el codigo no siga dando error, darle la oportunidad del usuario de establecer la cantidad de preguntas 
 con las que quiere jugar... "¿Con cuantas preguntas quieres jugar?". De esta manera, ese valor almacenarlo en la variable
 de cantidadPreguntasDeJuego para que ese sea el tope.
+
+-Juego de adivinar la musica. El bot arrojará un mensaje de audio con un fragmento de una musica que pertenece
+a un videojuego. Igual esta seccion será por temáticas.
+
+-Separar los videojuegos por Retro. Medio-Moderno. Moderno o TODOMEZCLADO cuando el usuario quiera recomendacion de
+videojuegos.
