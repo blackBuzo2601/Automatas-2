@@ -56,6 +56,7 @@ var mensajeRecibidoMinusculas="";
 var banderaMensajeInicial=0;
 var banderaPregunta=0;
 var elVideo;
+var rutaCarpeta;
 var banderaVideoSinCensura=false;
 var imagenJuego="";
 var nombreVideo="";
@@ -791,9 +792,15 @@ function evaluaRespuesta(){
 }
 //otra funcion creada para no repetir código.
 function enviaEscenaPelicula(){
+  
+  switch(tematicaSeleccionada){
+    case "STAR WARS":
+    rutaCarpeta='escenasdestarwars/'
+    break;
+  }
   tituloEscena="escena"+arrayEscenasElegidas[n];
   tituloEscena=tituloEscena.toString();
-  elVideo = 'escenasdestarwars/'+tituloEscena+'.mp4';
+  elVideo = rutaCarpeta+tituloEscena+'.mp4';
 
   fs.readFile(elVideo, (err, videoData) => {
       if(err){
