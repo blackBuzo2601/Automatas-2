@@ -536,7 +536,7 @@ function snEmpezarJuego(){
 function generarPreguntasJuego(){//generarPreguntas
   swFrases=dataParseada.frasesdestarwars; //almacenar todo lo que hay en el objeto frasesdestarwars del JSON, que son distintos objetos con distintas frases
   swFrasesCantidad=swFrases.length; //obtener longitud de todos los objetos dentro de frasesdestarwars del JSON
-
+  
   switch(tematicaSeleccionada){//switch
     case "STAR WARS":
     //for que construye los array de acuerdo a lo introducido en el JSON y los almacena en un objeto
@@ -547,8 +547,7 @@ function generarPreguntasJuego(){//generarPreguntas
       objetoPreguntasOrdenadas[arrayFrases[i]]=[arrayPelicula[i]];
     }
     paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
-  
-
+    
     //FOR QUE CONSTRUIRÁ UN ARRAY CON PREGUNTAS ALEATORIAS 'SIN REPETIR' LA MISMA PREGUNTA EN OTRA POSICIÓN.
     cantidadPreguntasDeJuego=2;
     for(let i=0;i<cantidadPreguntasDeJuego;i++){ //Generamos 10 preguntas
@@ -556,8 +555,8 @@ function generarPreguntasJuego(){//generarPreguntas
       //Generamos un numero aleatorio valido entre la cantidad de objetos de frasesdestarwars(JSON)
       mensajeAleatorio(swFrasesCantidad); 
       arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
-      arrayEscenasElegidas.splice(i,0,arrayEscenas[randomEntero])
-
+      arrayEscenasElegidas.splice(i,0,arrayEscenas[randomEntero]);
+      //console.log("iteracion "+i+" arrayPreguntasDesordenadas: "+arrayPreguntasDesordenadas);
       paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar dicha posición, para que no lo vuelva a generar.
       arrayEscenas.splice(randomEntero,1);             //ekiminar dicha posición, para que no lo vuelva a generar.
 
@@ -576,9 +575,13 @@ function generarPreguntasJuego(){//generarPreguntas
 
 
 function juegoComenzado(){//inicio funcion juegoComenzado
+  
   n++;
   numeroDePreguntaJuegoAdivina++; //1...2...3...
+  console.log("variable parametroPosicionPregunta antes de incrementar: "+parametroPosicionPregunta);
   parametroPosicionPregunta++;
+  console.log("variable parametroPosicionPregunta despues de incrementar: "+parametroPosicionPregunta);
+  
   ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Star Wars: La amenaza fantasma\n2. Star Wars: El ataque de los clones. \n3. Star Wars: La venganza de los sith. \n4. Star Wars: Una nueva esperanza.\n5. Star Wars: El imperio contraataca.\n6. Star Wars: El regreso del jedi.\n7. Obi-Wan Kenobi");
 
   
@@ -587,7 +590,8 @@ function juegoComenzado(){//inicio funcion juegoComenzado
   //[posicion de las preguntas aleatorias [frase,pelicula] ]
   almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
   almacenarPeliculaSWbien=almacenarPeliculaSW.toString(); //forzar a string para no tener problemas al comparar
- 
+  
+
   //Asignar la respuesta correcta...
   switch(almacenarPeliculaSWbien){
   case "Star Wars: La amenaza fantasma":
@@ -693,7 +697,7 @@ function finDelJuego(){
     case "cancelar":
       ctx.reply("Regresando al menú principal...");
       numeroDePreguntaJuegoAdivina=0;
-      parametroPosicionPregunta=0;
+      parametroPosicionPregunta=-1;
       banderaPregunta=0;
       tematicaSeleccionada="";
       puntuacion=0;
@@ -712,7 +716,7 @@ function mostrarResultadosJuego(){
   ctx.reply("JUEGO CONCLUIDO.\n\nTEMÁTICA: "+tematicaSeleccionada+".\n\nPUNTUACIÓN: ["+puntuacion+"/"+cantidadPreguntasDeJuego+"]\n\n¿Volver a jugar? (S/N)");
   banderaPregunta=13;
   numeroDePreguntaJuegoAdivina=0;
-  parametroPosicionPregunta=0;
+  parametroPosicionPregunta=-1;
   tematicaSeleccionada="";
   puntuacion=0;
   tituloEscena="";
