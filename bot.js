@@ -549,7 +549,7 @@ function generarPreguntasJuego(){//generarPreguntas
     paresClaveValorDelObjeto = Object.entries(objetoPreguntasOrdenadas); //meter en un array los pares clave y valor del objeto preguntasOrdenadas
     
     //FOR QUE CONSTRUIRÁ UN ARRAY CON PREGUNTAS ALEATORIAS 'SIN REPETIR' LA MISMA PREGUNTA EN OTRA POSICIÓN.
-    cantidadPreguntasDeJuego=2;
+    cantidadPreguntasDeJuego=5;
     for(let i=0;i<cantidadPreguntasDeJuego;i++){ //Generamos 10 preguntas
 
       //Generamos un numero aleatorio valido entre la cantidad de objetos de frasesdestarwars(JSON)
@@ -706,7 +706,7 @@ function finDelJuego(){
       reiniciarArraysJuegos();
       break;
 
-    default: ctx.reply("Por favor. Introduce un número válido.");
+    default: ctx.reply("Por favor. Introduce un número válido o escribe 'cancelar' para salir del juego.");
       break;            
   }//concluye switch que compara respuesta si es correcta
 
