@@ -78,6 +78,7 @@ var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
 var arrayProvisionalNoPosibleSW=[]; //este array almacenará todos los numeros que puede introducir el usuario como cantidad de preguntas para jugar
 var arrayProvisionalNoPosibleDB=[]; //mismo caso que arriba pero para dragon ball
+var arrayProvisionalNoPosibleParam;
 var contarEquivocaciones=0;
 var respuestaCorrecta="";
 var paresClaveValorDelObjeto="";
@@ -510,6 +511,7 @@ function adivinaPelicula(){
   banderaPregunta=9;
 }
 
+//banderaPregunta=9
 function elegirTematica(){
   swFrasesCantidad=swFrases.length; //reiniciar variables
   dbFrasesCantidad=dbFrases.length;
@@ -517,13 +519,13 @@ function elegirTematica(){
   switch(mensajeRecibidoMinusculas){
     case "1": 
     tematicaSeleccionada="STAR WARS";
-    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(swFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(swFrasesCantidad)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
     banderaPregunta=14;
       break;
 
     case "2":
     tematicaSeleccionada="DRAGON BALL";
-    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(dbFrasesCantidad-1)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(dbFrasesCantidad)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
     banderaPregunta=14;
       break;
     
@@ -545,37 +547,40 @@ function elegirTematica(){
 //banderaPregunta=14
 function establecerCantidadPreguntas(){//inicio funcion establecerCantidadPreguntas
 //segun sea el caso, se establece el paraemtro para el usuario, segun haya escogido en el menu de tematica
-switch(tematicaSeleccionada){
-  case "STAR WARS":
-    tematicaSeleccionadaCantidad=swFrasesCantidad-1;
+console.log("variable tematicaseleccionada es:  "+tematicaSeleccionada);
+
+  if(tematicaSeleccionada=="STAR WARS"){
+   
+    tematicaSeleccionadaCantidad=swFrasesCantidad;
     for(let i=0;i<swFrasesCantidad;i++){ //generar numeros válidos para STAR WARS
       arrayProvisionalNoPosibleSW.splice(i,0,i);  //posicion,cuantosquitar,valorintroducir
       arrayProvisionalNoPosibleSW[i].toString();  //para no tener problemas porque lo comparamos con caracteres
     }
-    
     for(let l=0;l<arrayProvisionalNoPosibleSW.length;l++){ //comprobar si es un numero valido para casos de STAR WARS
       if(arrayProvisionalNoPosibleSW[l]==(mensajeRecibidoMinusculas)){
       numeroIntroducido=mensajeRecibidoMinusculas;
       break;
       }
     } 
-    break;
+  }
+  else if(tematicaSeleccionada=="DRAGON BALL"){
     
-  case "DRAGON BALL":
-    tematicaSeleccionadaCantidad=dbFrasesCantidad-1;
+    tematicaSeleccionadaCantidad=dbFrasesCantidad;
     for(let m=0;m<dbFrasesCantidad;m++){ //generar numeros válidos para DRAGON BALL
       arrayProvisionalNoPosibleDB.splice(m,0,m);  //posicion,cuantosquitar,valorintroducir
       arrayProvisionalNoPosibleDB[m].toString();  //para no tener problemas porque lo comparamos con caracteres
     }
     //comprobar si es un numero valido para casos de DRAGON BALL
     for(let n=0;n<arrayProvisionalNoPosibleDB.length;n++){ 
-      if(arrayProvisionalNoPosibleSW[n]==(mensajeRecibidoMinusculas)){
+      if(arrayProvisionalNoPosibleDB[n]==(mensajeRecibidoMinusculas)){
         numeroIntroducido=mensajeRecibidoMinusculas;
         break;
       }
     }
-    break;
-}
+  }
+    
+    
+
 //-----------------------------------------------------------------------------------------------------------
 //Ciclos For que construyen los números válidos a introducir para el usuario
 
@@ -603,7 +608,8 @@ switch(tematicaSeleccionada){
 
 }//concluye funcion establecerCantidadPreguntas
 
-function snEmpezarJuego(){ //banderaPregunta = 10;
+//banderaPregunta=10
+function snEmpezarJuego(){
   switch(mensajeRecibidoMinusculas){
     case "s":
       generarPreguntasJuego();
@@ -624,6 +630,7 @@ function generarPreguntasJuego(){
 
   switch(tematicaSeleccionada){//switch
     case "STAR WARS":
+    console.log("ENTRANDO AL SWITCH DE STAR WARS: ");
     //for que construye los array de acuerdo a lo introducido en el JSON y los almacena en un objeto
     for(let i=0;i<swFrasesCantidad;i++){ //meter en un array todas las preguntas en el mismo orden.
       arrayFrases.splice(i,0,swFrases[i].frase); //en metodo splice los parametros son (posicion, cuantos quitar, valor a introducir)
@@ -641,17 +648,18 @@ function generarPreguntasJuego(){
       mensajeAleatorio(swFrasesCantidad); 
       arrayPreguntasDesordenadas.splice(i,0,paresClaveValorDelObjeto[randomEntero]);
       arrayEscenasElegidas.splice(i,0,arrayEscenas[randomEntero]);
-      //console.log("iteracion "+i+" arrayPreguntasDesordenadas: "+arrayPreguntasDesordenadas);
+     
       paresClaveValorDelObjeto.splice(randomEntero,1); //eliminar dicha posición, para que no lo vuelva a generar.
       arrayEscenas.splice(randomEntero,1);             //ekiminar dicha posición, para que no lo vuelva a generar.
 
       swFrasesCantidad--; //decrementar el valor del parametro del generador aleatorio, porque como eliminamos 
       //una posición del array, no sigue teniendo el mismo largo que el parametro.
     }
+    console.log("arrayPreguntas desordenadas PRUEBA: "+arrayPreguntasDesordenadas);
     break;
 //--------------------------------------------------------------------------------------------------------------------
     case "DRAGON BALL": 
-    
+    console.log("ENTRANDO AL SWITCH DE DRAGON BALL: ");
     for(let i=0;i<dbFrasesCantidad;i++){ 
       arrayFrases.splice(i,0,dbFrases[i].frase); 
       arrayPelicula.splice(i,0,dbFrases[i].pelicula);
@@ -673,6 +681,7 @@ function generarPreguntasJuego(){
       dbFrasesCantidad--; 
       
     }
+    console.log("arrayPreguntas desordenadas PRUEBA: "+arrayPreguntasDesordenadas);
     break;
   }//switch
   
@@ -696,6 +705,7 @@ function juegoComenzado(){//inicio funcion juegoComenzado
       almacenarPeliculaSW=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
       almacenarPeliculaSWbien=almacenarPeliculaSW.toString(); //forzar a string para no tener problemas al comparar
       parametroAlmacenarPeliculaBien=almacenarPeliculaSWbien;
+      console.log("respuesta "+parametroAlmacenarPeliculaBien);
       //Asignar la respuesta correcta...
       switch(almacenarPeliculaSWbien){
       case "Star Wars: La amenaza fantasma":
@@ -728,7 +738,7 @@ function juegoComenzado(){//inicio funcion juegoComenzado
   numeroDePreguntaJuegoAdivina++; //1...2...3...
   parametroPosicionPregunta++;
   
-  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Dragon Ball Z\n2. Dragon Ball Z: La batalla de los dioses\n3. Dragon Ball Z: El poder invencible\n4.Dragon Ball Z: La batalla mas grande de este mundo esta por comenzar\n5.Dragon Ball Z: La fusion de goku y vegeta\n6.Dragon Ball Z: La resurreccion de freezer\n7.Dragon Ball Super\n");
+  ctx.reply("NIVEL "+numeroDePreguntaJuegoAdivina+" de "+cantidadPreguntasDeJuego+".\n¿De donde proviene el siguiente dialogo?\n\n"+arrayPreguntasDesordenadas[parametroPosicionPregunta][0]+"\n\n1. Dragon Ball Z\n2. Dragon Ball Z: La batalla de los dioses\n3. Dragon Ball Z: El poder invencible\n4. Dragon Ball Z: La batalla mas grande de este mundo esta por comenzar\n5. Dragon Ball Z: La fusion de goku y vegeta\n6. Dragon Ball Z: La resurreccion de freezer\n7. Dragon Ball Super\n");
 
   banderaPregunta=12;
   
@@ -736,6 +746,7 @@ function juegoComenzado(){//inicio funcion juegoComenzado
   almacenarPeliculaDB=arrayPreguntasDesordenadas[parametroPosicionPregunta][1];
   almacenarPeliculaDBbien=almacenarPeliculaDB.toString(); //forzar a string para no tener problemas al comparar
   parametroAlmacenarPeliculaBien=almacenarPeliculaDBbien;
+  console.log("respuesta "+almacenarPeliculaDB);
   //Asignar la respuesta correcta...
   switch(almacenarPeliculaDBbien){
   case "Dragon Ball Z":
@@ -868,13 +879,15 @@ function mostrarResultadosJuego(){
 }
 
 function reiniciarArraysJuegos(){
-  objetoPreguntasOrdenadas
   paresClaveValorDelObjeto.splice(0,paresClaveValorDelObjeto.length);
   arrayPreguntasDesordenadas.splice(0,arrayPreguntasDesordenadas.length);
   arrayEscenasElegidas.splice(0,arrayEscenasElegidas.length);
   arrayEscenas.splice(0,arrayEscenas.length);
+  Object.keys(objetoPreguntasOrdenadas).forEach(key => delete objetoPreguntasOrdenadas[key]);
+  paresClaveValorDelObjeto = [];
 }
 
+//banderPregunta=13
 function snVolverAJugar(){
   switch(mensajeRecibidoMinusculas){
     case "s": 
