@@ -34,3 +34,9 @@ videojuegos.
 Lo dejaré para después. Quiero hacer que el bot permita poner el numero maximo de frases que hay. Por ejemplo
 en star wars hay 29. El bot pregunta que si cuantas preguntas en un rango de 1 a 29. pero lo maximo que permite
 es 28. Debo corregir eso pero lo dejo para despues
+
+
+(Prioritario como avance para la proxima clase):
+ClipsSC y ClipsCC listos en las carpetas
+poner las escenas de dragon ball en la carpeta
+intentar que elimine a alguien cuando diga 3 groserias 

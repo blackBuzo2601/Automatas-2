@@ -605,9 +605,6 @@
 
   ],
 
-  "mensajeBienvenida" : "El camino así es. Soy El Mandaloriano. Por favor, escribe como mensaje alguna de las siguientes opciones. No importa si está en mayusculas o minusculas, solo escríbelo bien: \n\nRECOMENDAR VIDEOJUEGO\nCONSEJO PERSONAL\nACERCA DE ELIAN\nCLIP DIVERTIDO\nADIVINA LA PELICULA\n\nEspero ser de ayuda :)"
-  ,
-
   "mensajesSalida" : [
     {
       "mensaje" : "Gracias por hablar conmigo. Hasta la próxima."
@@ -1045,7 +1042,15 @@
         "culero",
         "culer0",
         "gordo",
-        "maricon"
+        "maricon",
+        "pendejisimo",
+        "tetas",
+        "tetona",
+        "tetita",
+        "penecito",
+        "ereccion",
+        "eyaculacion",
+        "reaton"
 
       ],
   "mensajesBlacklist" : [
@@ -1219,7 +1224,7 @@
   "frasesdedragonball": [
     {
       "pelicula": "Dragon Ball Z",
-      "frase": "-Kakaroto. Eres el número uno.",
+      "frase": "-Tu puedes Kakaroto. Eres el número uno.",
       "escena" : "0"
     },
     {
@@ -1234,7 +1239,7 @@
     },
     {
       "pelicula":"Dragon Ball Super",
-      "frase":"-Ya no es necesario que sigas reprimiendo tu fuerza. Comienza por hacer pedazos a Son Goku...Ignora a los más debiles.\nEntendido.",
+      "frase":"-Ya no es necesario que sigas reprimiendo tu fuerza. Comienza por hacer pedazos a Son Goku...Ignora a los más debiles.\n-Entendido.",
       "escena": "3"
     },
     {
@@ -1254,12 +1259,12 @@
     },
     {
       "pelicula":"Dragon Ball Z: La batalla mas grande de este mundo esta por comenzar",
-      "frase":"-Tú lo pediste. ¡Muere!",
+      "frase":"-¿Que decides Kakaroto?\n-Ya te dije que mi nombre es Goku\n-Tú lo pediste ¡Muere!",
       "escena": "7"
     },
     {
       "pelicula":"Dragon Ball Super",
-      "frase":"-Ese aspecto. Ese brillo. Esa es... Sin duda alguna...La forma completa, del ultra instinto.",
+      "frase":"-Ese aspecto. Ese brillo. Eso es... Sin duda alguna...La forma completa, del ultra instinto.",
       "escena": "8"
     },
     {
@@ -1269,7 +1274,7 @@
     },
     {
       "pelicula":"Dragon Ball Super",
-      "frase":"-Yo no me considero...A mi mismo como un héroe de la justicia...Pero si alguien se atreve a lastimar a mis amigos...¡NO LO PERDONARÉ!",
+      "frase":"-Yo no me considero...A mí mismo como un héroe de la justicia...Pero si alguien se atreve a lastimar a mis amigos...¡NO LO PERDONARÉ!",
       "escena": "10"
     },
     {
@@ -1284,7 +1289,7 @@
     },
     {
       "pelicula":"Dragon Ball Super",
-      "frase":"-Ya que tu te fusionaste en uno, nosotros también hicimos lo mismo. Cuando Vegeta y Kakaroto se fusionan aparece...Vegetto.",
+      "frase":"-Ya que tú te fusionaste en uno, nosotros también hicimos lo mismo. Cuando Vegeta y Kakaroto se fusionan aparece...Vegetto.",
       "escena": "13"
     },
     {
@@ -1304,7 +1309,7 @@
    },
    {
       "pelicula":"Dragon Ball Super",
-      "frase":"-Sacrificarse por los demás. Es un final muy humano.",
+      "frase":"-Sacrificarse por el bien de los demás. Es un final muy humano.",
       "escena": "17"
    },
    {
@@ -1314,7 +1319,7 @@
    },
    {
       "pelicula":"Dragon Ball Z",
-      "frase":"-Freezer. Sal de ahí maldito.",
+      "frase":"-Freezer. Sal de ahí maldito.Nunca te perdonaré lo que haz hecho. Vamos freezer. ¿Que esperas? Pelea conmigo.",
       "escena": "19"
    },
    {
@@ -1324,7 +1329,7 @@
    },
    {
      "pelicula":"Dragon Ball Z: La batalla de los dioses",
-      "frase":"-¿Que pasa? ¿Porque te detuviste?\n-Solo queria hacer que dijeras 'Me rindo'",
+      "frase":"-¿Que sucede? ¿Porque te detuviste?\n-Solo quería hacer que dijeras 'Me rindo'",
       "escena": "21"
    },
    {
@@ -1339,7 +1344,7 @@
    },
    {
     "pelicula":"Dragon Ball Z: La resurreccion de freezer",
-      "frase":"-Que curioso. Nunca pensaste que yo también pudiera transformarme en aquel legendario super saiyajin.",
+      "frase":"-Que curioso. Nunca sospechaste que yo también pudiera transformarme en aquel legendario super saiyajin.",
       "escena": "24"
    },
    {
@@ -1354,7 +1359,7 @@
    },
    {
       "pelicula":"Dragon Ball Super",
-      "frase":"-Devuelve a la normalidad a todos los universo que fueron eliminados",
+      "frase":"-Devuelve a la normalidad a todos los universos que desaparecieron.",
       "escena": "27"
    },
    {
@@ -1369,7 +1374,7 @@
    },
    {
       "pelicula":"Dragon Ball Z: La batalla de los dioses",
-      "frase":"-Ahora viene la destrucción.\n-Mmm. Será un honor ser eliminado por bills el destructor.\n-Vaya... Eso fue muy alagador. Ahora tendrás tu deseo.",
+      "frase":"-Ahora viene la destrucción.\n-Mmm. Será un honor ser eliminado por bills el destructor.\n-Vaya...Eso fue muy alagador. Ahora tendrás tu deseo.",
       "escena": "30"
    },
    {
@@ -1379,12 +1384,12 @@
    },
    {
     "pelicula":"Dragon Ball Z",
-    "frase":"-¡Eres un grandísimo estúpido! Te dí una oportunidad más y no la aprovechaste",
+    "frase":"-¡Eres un grandísimo estúpido! Te dí una última oportunidad y no la aprovechaste.",
     "escena": "32"
    },
    {
     "pelicula":"Dragon Ball Z",
-    "frase":"-Adiós...Bulma...Trunks...Y también...Kakaroto",
+    "frase":"-Adiós Bulma...Adiós Trunks...Y también...Kakaroto",
     "escena": "33"
    },
    {
@@ -1396,6 +1401,16 @@
     "pelicula":"Dragon Ball Super",
     "frase":"-Que patético eres. Esperaba más de ti.\n-¡Oye! ¿Que estás diciendo?",
     "escena": "35"
+   },
+   {
+    "pelicula":"Dragon Ball Z: La batalla de los dioses",
+    "frase":"-Dime. ¿Que se siente ser un dios?\n-Increíble.\n-Claro. Lo sabía. Porque eso es justo lo que siento yo.",
+    "escena": "36"
+   },
+   {
+    "pelicula":"Dragon Ball Z: La batalla de los dioses",
+    "frase":"-Dices cosas muy interesantes. ¿No te gusta depender de tus amigos para ser un dios? ¡¿Eso te enoja?!",
+    "escena": "37"
    }
 
 

@@ -66,6 +66,7 @@ var cantidadClipsConCensura=4;
 var contadorVideojuegos=0;
 var nombreJuegoMostrar="";
 var construirListaJuegosMostrar="";
+var construirListaJuegosMostrar2="";
 var posicionJuegoDetectado="";
 var banderaJuegoDetectado=false;
 var banderaDeCompartirLista=false;
@@ -94,7 +95,6 @@ var almacenarPeliculaDBbien="";
 var tituloEscena="";
 var n=-1; //para las escenas de las peliculas, ya que la primera empieza con 0
 var numeroIntroducido=""; //variable que almacenará la cantidad que introduzca el usuario para las preguntas
-
 var tematicaSeleccionadaCantidad=0;
 
 
@@ -102,6 +102,8 @@ var tematicaSeleccionadaCantidad=0;
 //Estas serán util para poder implementar una función para escoger un mensaje aleatorio estableciendo un tope maximo
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
 const listaVideojuegosCantidad = dataParseada.listaVideojuegos.length;
+var listaVideojuegosCantidadDivision=listaVideojuegosCantidad;
+var listaVideojuegosCantidadDivision2=listaVideojuegosCantidad;
 const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;                         
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
@@ -111,6 +113,7 @@ const swFrases=dataParseada.frasesdestarwars;
 var swFrasesCantidad=swFrases.length; //variable porque la iremos decrementando para no repetir misma frase
 const dbFrases=dataParseada.frasesdedragonball;
 var dbFrasesCantidad=dbFrases.length; //variable porque la iremos decrementando para no repetir misma frase
+
 ///------------------------------------------AREA DE LA MAGIA DEL BOT----------------------------------------------
 //ctx (context) hace referencia a los datos que se usan en un chat
 
@@ -127,7 +130,9 @@ mensajeRecibido = ctx.message.text; //ctx= contiene información sobre el mensaj
 //un id, el nombre y ultimo nombre (de quien lo envio) etc
 //text= es una propiedad de message que contiene el texto especifico
 //del mensaje.
-console.log("Mensaje recibido: "+mensajeRecibido); 
+console.log("\nMensaje recibido: "+mensajeRecibido); 
+console.log("Primer nombre: "+ctx.message.from.first_name+"\nApellidos: "+ctx.message.from.last_name+"\nID: "+ctx.message.from.id); 
+
 //console.log("Mensaje recibido detallado: "+ctx.message.message_id); (mensaje ID, lo utilizaré para cuando varias personas abran el chat)
 mensajeRecibidoMinusculas=mensajeRecibido.toString(); //Convertir mensaje a tipo STRING
 mensajeRecibidoMinusculas=mensajeRecibidoMinusculas.toLowerCase(); //String a minusculas
@@ -208,7 +213,8 @@ if(banderaNegativaDetectada==true){
 //$$$$$$$$$$$$$$$$$$$$$$$FUNCIONES QUE SON NECESARIO QUE SE DECLAREN AQUI EN bot.on (message)$$$$$$$$$$$$$$$$$$$$$
 //$$$$$$$$$$$$$$$$$$$$$$$FUNCIONES QUE SON NECESARIO QUE SE DECLAREN AQUI EN bot.on (message)$$$$$$$$$$$$$$$$$$$$$
 function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍA EL PRIMER MENSAJE AL BOT
-  ctx.reply(dataParseada.mensajeBienvenida);
+  
+  ctx.reply("<b>MENÚ PRINCIPAL</b>\nEl camino así es. Soy El Mandaloriano. Por favor, escribe como mensaje alguna de las siguientes opciones. No importa si está en mayusculas o minusculas, solo escríbelo bien: \n\n<b>RECOMENDAR VIDEOJUEGO</b>\n<b>CONSEJO PERSONAL</b>\n<b>ACERCA DE ELIAN</b>\n<b>CLIP DIVERTIDO</b>\n<b>ADIVINA LA FRASE</b>\n\nEspero ser de ayuda :)", {parse_mode: "HTML"});
 }
 
 function detectorDeClaves(){ //inicio funcion detectorDeClaves
@@ -225,7 +231,7 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
     case "clip divertido": clipDivertido();
         break;
 
-    case "adivina la pelicula" : adivinaPelicula();
+    case "adivina la frase" : adivinaPelicula();
         break;
 
     default:
@@ -241,19 +247,19 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
 
 function recomiendaJuegos(){
       if(contadorVideojuegos>=5 && banderaDeCompartirLista==false){
-        ctx.reply("Ya me has pedido que te recomiende videojuegos "+(contadorVideojuegos)+" veces. ¿No quieres que mejor te comparta la lista y tu eliges el juego? (S/N)");
+        ctx.reply("Ya me has pedido que te recomiende videojuegos "+(contadorVideojuegos)+" veces. ¿No quieres que mejor te comparta la lista y tu eliges el juego? <b>(S/N)</b>",{parse_mode:"HTML"});
         banderaPregunta=7;
         banderaDeCompartirLista=true;
       }else{//inicia ELSE de si se llega al 7mo videojuego a recomendar
         mensajeAleatorio(listaVideojuegosCantidad);
-        posicionJuegoDetectado=randomEntero;
-        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
-        +"\n\nAÑO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
-        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma);
+        posicionJuegoDetectado=randomEntero; 
+        ctx.reply("<b>TITULO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
+        +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
+        "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
         banderaPregunta=6;
         imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
         ctx.replyWithPhoto({ source: imagenJuego });
-        ctx.reply("¿Quieres ver un avance del videojuego?(S/N)");
+        ctx.reply("¿Quieres ver un avance del videojuego? <b>(S/N)</b>", {parse_mode:"HTML"});
         banderaDeCompartirLista=false;
         contadorVideojuegos++;
       }//concluye ELSE  
@@ -267,12 +273,12 @@ function snEnviarAvanceJuego(){
     case "s": enviarAvanceJuego();
       break;
 
-    case "n":  ctx.reply("¿Quieres otra recomendación de otro videojuego? (S/N)");
+    case "n":  ctx.reply("¿Quieres otra recomendación de videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
       banderaPregunta=1;
       break;
   
     default:
-      ctx.reply("Por favor. Escribe bien. ¿Quieres ver un avance del videojuego? (S/N)");
+      ctx.reply("Por favor, escribe bien ¿Quieres ver un avance del videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
       break;
   }
 }
@@ -287,11 +293,11 @@ function enviarAvanceJuego(){
       if(err){
           ctx.reply('Error al detectar el video en pc o video no disponible para este juego.');
         }else {
-          ctx.reply("Enviando avance...");
+          ctx.reply("<b>Enviando avance...</b>",{parse_mode:"HTML"});
           ctx.replyWithVideo({source:videoData});
       }
   }); //fin readFile que envia el video
-  ctx.reply("¿Quieres otra recomendación de otro videojuego? (S/N)");
+  ctx.reply("¿Quieres otra recomendación de videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
   banderaPregunta=1;
 }
 
@@ -308,29 +314,38 @@ function snFuncionjuegos(){
       break;
     
     default:
-      ctx.reply("Por favor. Escribe bien. ¿Quieres otra recomendación de videojuego? (S/N)");
+      ctx.reply("Por favor. Escribe bien. ¿Quieres otra recomendación de videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
       break;
   }//fin switch
 }
 
+//banderaPregunta=7
 function snMandarListaJuegos(){
   switch(mensajeRecibidoMinusculas){//inicio switch
     case "s":
-      for(let i=0;i<listaVideojuegosCantidad;i++){
+      listaVideojuegosCantidadDivision=(listaVideojuegosCantidadDivision/2); //30
+      for(let i=0;i<listaVideojuegosCantidadDivision;i++){ //0--29
         nombreJuegoMostrar=dataParseada.listaVideojuegos[i].titulo;
         construirListaJuegosMostrar=construirListaJuegosMostrar+"\n"+nombreJuegoMostrar;
       }
+      for(let i=listaVideojuegosCantidadDivision;i<listaVideojuegosCantidad;i++){ //30--60 
+        nombreJuegoMostrar=dataParseada.listaVideojuegos[i].titulo;
+        construirListaJuegosMostrar2=construirListaJuegosMostrar2+"\n"+nombreJuegoMostrar;
+      }
       ctx.reply(construirListaJuegosMostrar);
-      ctx.reply("Escribe el nombre de un videojuego así como viene en la lista para leer su información.\nEscribe 'cancelar' para regresar al menu principal");
+      ctx.reply(construirListaJuegosMostrar2);
+      construirListaJuegosMostrar="";
+      construirListaJuegosMostrar2="";
+      ctx.reply("Escribe el nombre de un videojuego así como viene en la lista para leer su información.\nEscribe '<b>cancelar</b>' para regresar al menu principal",{parse_mode:"HTML"});
       banderaPregunta=8;
       break;
 
-    case "n": ctx.reply("¿Quieres otra recomendación de otro videojuego? (S/N)");
+    case "n": ctx.reply("¿Quieres otra recomendación de videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
       banderaPregunta=1;
       break;
     
     default:
-      ctx.reply("Por favor. Escribe bien. ¿Quieres ver la lista completa de videojuegos? (S/N)");
+      ctx.reply("Por favor. Escribe bien. ¿Quieres ver la lista completa de videojuegos? <b>(S/N)</b>",{parse_mode:"HTML"});
       break;
   }//fin switch
 }
@@ -365,7 +380,7 @@ function leerJuegoEscrito(){//eee
     mensajeInicial();
   }//Entonces el usuario no escribió correctamente un mensaje...
   else{
-    ctx.reply("Por favor, escribe bien. Escribe un videojuego de la lista correctamente.\nEscribe 'cancelar' para regresar al menú principal.");
+    ctx.reply("Por favor, escribe bien. Escribe un videojuego de la lista correctamente.\nEscribe '<b>cancelar</b>' para regresar al menú principal.",{parse_mode:"HTML"});
   }
 
 }//eee
@@ -373,7 +388,7 @@ function leerJuegoEscrito(){//eee
 
 function consejosPersonales(){
   mensajeAleatorio(mensajesConsejosPersonalesCantidad);
-  ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje+"\n\n¿Quieres otro consejo? (S/N)");
+  ctx.reply(dataParseada.mensajesConsejosPersonales[randomEntero].mensaje+"\n\n¿Quieres otro consejo? <b>(S/N)</b>",{parse_mode:"HTML"});
   banderaPregunta=2;
 }
 
@@ -388,13 +403,13 @@ function snConsejosPersonales(){
       break;
     
     default:
-      ctx.reply("Por favor. Escribe bien. ¿Quieres otro consejo personal? (S/N)");
+      ctx.reply("Por favor. Escribe bien. ¿Quieres otro consejo personal? <b>(S/N)</b>",{parse_mode:"HTML"});
       break;
   }//fin switch
 }
 
 function infoGeneral(){
-  ctx.reply("INFORMACIÓN GENERAL DE MI CREADOR\n\nNombre: Buzo Zamora Elian\nFecha de nacimiento: 26/01/2002\nNacionalidad: Mexicana\nSexo: Masculino\nCiudad de nacimiento: Ensenada\nEstado Civil: Soltero\n\n¿Quieres algo más? Escribe cualquier cosa para regresar al menú principal.");
+  ctx.reply("<b>INFORMACIÓN GENERAL DE MI CREADOR</b>\n\n<b>Nombre:</b> Buzo Zamora Elian\n<b>Fecha de nacimiento:</b> 26/01/2002\n<b>Nacionalidad:</b> Mexicana\n<b>Sexo:</b> Masculino\n<b>Ciudad de nacimiento:</b> Ensenada\n<b>Estado Civil:</b> Soltero\n\n¿Quieres algo más? <b>Escribe cualquier cosa</b> para regresar al menú principal.", {parse_mode: "HTML"});
   banderaPregunta=3;
 }
 
@@ -408,22 +423,22 @@ function snInfoGeneral(){
 }
 
 function clipDivertido(){
-  ctx.reply("Los clips divertidos contienen lenguaje vulgar. Para esto, puedes elegir ver los videos sin censura/con censura. ¿Como prefieres verlo?\n\n(SC=Sin censura/CS=Con censura)\n\nCancelar=Volver al menú principal");
+  ctx.reply("Los clips divertidos contienen <b>lenguaje vulgar</b>. Para esto, puedes elegir ver los videos <b>sin censura/con censura</b>. ¿Como prefieres verlo?\n\n(<b>SC</b>=Sin censura/<b>CS</b>=Con censura)\n\n<b>Cancelar</b>=Volver al menú principal",{parse_mode:"HTML"});
   banderaPregunta=4;
 }
 
 function menuClipDivertido(){
   switch(mensajeRecibidoMinusculas){
-    case "sc":  ctx.reply("MODO SIN CENSURA");
+    case "sc":  ctx.reply("<b>MODO SIN CENSURA</b>",{parse_mode:"HTML"});
       clipSinCensura();
       break;
     
-    case "cs":  ctx.reply("MODO FAMILY FRIENDLY");
+    case "cs":  ctx.reply("<b>MODO FAMILY FRIENDLY</b>",{parse_mode:"HTML"});
       clipConCensura();
       break;
 
     case "cancelar":
-      ctx.reply("Regresando al menu principal...");
+      ctx.reply("Regresando al menú principal...");
       banderaPregunta=0;
       mensajeInicial();
       break;
@@ -444,11 +459,11 @@ function clipSinCensura(){
           console.error('Error al leer el archivo de video:', err);
           ctx.reply('Error al detectar el video en pc.');
         }else {
-          ctx.reply("Enviando clip...");
+          ctx.reply("<b>Enviando clip...</b>",{parse_mode:"HTML"});
           ctx.replyWithVideo({source:videoData});
       }
   }); //fin readFile que envia el video
-  ctx.reply("¿Quieres otro clip? (S/N)");
+  ctx.reply("¿Quieres otro clip? <b>(S/N)</b>",{parse_mode:"HTML"});
   banderaPregunta=5;
   banderaVideoSinCensura=true;
 }
@@ -464,11 +479,11 @@ function clipConCensura(){
           console.error('Error al leer el archivo de video:', err);
           ctx.reply('Error al detectar el video en pc.');
         }else {
-          ctx.reply("Enviando clip...");
+          ctx.reply("<b>Enviando clip...</b>",{parse_mode:"HTML"});
           ctx.replyWithVideo({source:videoData});
       }
   }); //fin readFile que envia el video
-  ctx.reply("¿Quieres otro clip? (S/N)");
+  ctx.reply("¿Quieres otro clip? <b>(S/N)</b>",{parse_mode:"HTML"});
   banderaPregunta=5;
   banderaVideoSinCensura=false;
 }
@@ -485,7 +500,7 @@ function snClipDivertido(){
                 mensajeInicial();
         break;
 
-      default: ctx.reply("Por favor, escribe bien. ¿Quieres otro clip? (S/N)");
+      default: ctx.reply("Por favor, escribe bien. ¿Quieres otro clip? <b>(S/N)</b>",{parse_mode:"HTML"});
         break;
     }
   }else{//inicio else de filtro de censura
@@ -499,7 +514,7 @@ function snClipDivertido(){
                 mensajeInicial();
         break;
 
-      default: ctx.reply("Por favor, escribe bien. ¿Quieres otro clip? (S/N)");
+      default: ctx.reply("Por favor, escribe bien. ¿Quieres otro clip? <b>(S/N)</b>",{parse_mode:"HTML"});
         break;
     }
   }//fin else de filtro de video
@@ -508,7 +523,7 @@ function snClipDivertido(){
 
 
 function adivinaPelicula(){
-  ctx.reply("Selecciona una temática. Escribe solamente el número. Para regresar al menú principal escribe 'cancelar'\n\n1. STAR WARS\n2. DRAGON BALL");
+  ctx.reply("Selecciona una temática. <b>Escribe solamente el número</b>. Para regresar al menú principal escribe '<b>cancelar</b>'\n\n\n1. <b>STAR WARS</b>\n\n2. <b>DRAGON BALL</b>",{parse_mode:"HTML"});
   banderaPregunta=9;
 }
 
@@ -520,13 +535,13 @@ function elegirTematica(){
   switch(mensajeRecibidoMinusculas){
     case "1": 
     tematicaSeleccionada="STAR WARS";
-    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(swFrasesCantidad)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    ctx.reply("Seleccionaste la temática de: <b>"+tematicaSeleccionada+"</b>.\nPor favor. <b>Establece la cantidad de preguntas para el juego</b>. Elige un valor entre <b>1 y "+(swFrasesCantidad)+" </b>.\nEscribe '<b>regresar</b>' para ver el menú de temáticas o '<b>cancelar</b>' para ir al menú principal.",{parse_mode:"HTML"});
     banderaPregunta=14;
       break;
 
     case "2":
     tematicaSeleccionada="DRAGON BALL";
-    ctx.reply("Seleccionaste la temática de: "+tematicaSeleccionada+".\nPor favor. Establece la cantidad de preguntas para el juego. Elige un valor entre 1 y "+(dbFrasesCantidad)+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    ctx.reply("Seleccionaste la temática de: <b>"+tematicaSeleccionada+"</b>.\nPor favor. <b>Establece la cantidad de preguntas para el juego</b>. Elige un valor entre <b>1 y "+(dbFrasesCantidad)+" </b>.\nEscribe '<b>regresar</b>' para ver el menú de temáticas o '<b>cancelar</b>' para ir al menú principal.",{parse_mode:"HTML"});
     banderaPregunta=14;
       break;
     
@@ -548,7 +563,6 @@ function elegirTematica(){
 //banderaPregunta=14
 function establecerCantidadPreguntas(){//inicio funcion establecerCantidadPreguntas
 //segun sea el caso, se establece el paraemtro para el usuario, segun haya escogido en el menu de tematica
-console.log("variable tematicaseleccionada es:  "+tematicaSeleccionada);
 
   if(tematicaSeleccionada=="STAR WARS"){
    
@@ -588,7 +602,7 @@ console.log("variable tematicaseleccionada es:  "+tematicaSeleccionada);
   switch(mensajeRecibidoMinusculas){
 
     case numeroIntroducido:
-      ctx.reply("Estableciste un juego de "+numeroIntroducido+" preguntas.\nTemática: "+tematicaSeleccionada+"\n¿Es correcto? (S/N)");
+      ctx.reply("Estableciste un juego de <b>"+numeroIntroducido+"</b> preguntas.\n<b>Temática:</b> "+tematicaSeleccionada+"\n¿Es correcto? <b>(S/N)</b>",{parse_mode:"HTML"});
       banderaPregunta=10;
       break;
 
@@ -603,7 +617,7 @@ console.log("variable tematicaseleccionada es:  "+tematicaSeleccionada);
     tematicaSeleccionada="";
     break;
 
-    default: ctx.reply("Por favor, escribe bien. Elige un valor entre 1 y "+tematicaSeleccionadaCantidad+" .\nEscribe 'regresar para ver el menú de temáticas o 'cancelar' para ir al menú principal.");
+    default: ctx.reply("Por favor, escribe bien. Elige un valor entre <b>1 y "+tematicaSeleccionadaCantidad+" .</b>\nEscribe '<b>regresar</b>' para ver el menú de temáticas o '<b>cancelar</b>' para ir al menú principal.",{parse_mode:"HTML"});
       break;
   }
 
@@ -622,7 +636,7 @@ function snEmpezarJuego(){
       break;
 
     default:
-      ctx.reply("Por favor, escribe bien.\nEstableciste un juego de "+numeroIntroducido+" preguntas.\nTemática: "+tematicaSeleccionada+"\n¿Es correcto? (S/N)");
+      ctx.reply("Por favor, escribe bien.\nEstableciste un juego de <b>"+numeroIntroducido+" preguntas.</b>\n<b>Temática:</b> "+tematicaSeleccionada+"\n¿Es correcto? <b>(S/N)</b>",{parse_mode:"HTML"});
       break;
   }
 }
@@ -631,7 +645,6 @@ function generarPreguntasJuego(){
 
   switch(tematicaSeleccionada){//switch
     case "STAR WARS":
-    console.log("ENTRANDO AL SWITCH DE STAR WARS: ");
     //for que construye los array de acuerdo a lo introducido en el JSON y los almacena en un objeto
     for(let i=0;i<swFrasesCantidad;i++){ //meter en un array todas las preguntas en el mismo orden.
       arrayFrases.splice(i,0,swFrases[i].frase); //en metodo splice los parametros son (posicion, cuantos quitar, valor a introducir)
@@ -656,11 +669,9 @@ function generarPreguntasJuego(){
       swFrasesCantidad--; //decrementar el valor del parametro del generador aleatorio, porque como eliminamos 
       //una posición del array, no sigue teniendo el mismo largo que el parametro.
     }
-    console.log("arrayPreguntas desordenadas PRUEBA: "+arrayPreguntasDesordenadas);
     break;
 //--------------------------------------------------------------------------------------------------------------------
     case "DRAGON BALL": 
-    console.log("ENTRANDO AL SWITCH DE DRAGON BALL: ");
     for(let i=0;i<dbFrasesCantidad;i++){ 
       arrayFrases.splice(i,0,dbFrases[i].frase); 
       arrayPelicula.splice(i,0,dbFrases[i].pelicula);
@@ -682,7 +693,6 @@ function generarPreguntasJuego(){
       dbFrasesCantidad--; 
       
     }
-    console.log("arrayPreguntas desordenadas PRUEBA: "+arrayPreguntasDesordenadas);
     break;
   }//switch
   
@@ -796,6 +806,10 @@ function enviaEscenaPelicula(){
   switch(tematicaSeleccionada){
     case "STAR WARS":
     rutaCarpeta='escenasdestarwars/'
+    break;
+
+    case "DRAGON BALL":
+    rutaCarpeta='escenasdedragonball/'
     break;
   }
   tituloEscena="escena"+arrayEscenasElegidas[n];
