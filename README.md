@@ -38,5 +38,12 @@ le mande mensaje, el bot lo saludará amistosamente otorgándole un menú con di
 * CLIP DIVERTIDO: El bot arrojará videos desde una carpeta cuando el usuario entre a esta opcion, a su vez que le preguntará si quiere ver los videos originales o con un filtro de vulgaridad, debido a que los clips contienen lenguaje vulgar.
 * Juego de adivinar frases: De la misma manera que se envía un vídeo en la opción anterior, aquí el bot arrojará la escena en particular de la pregunta cuando el usuario indique una respuesta incorrecta a dicha pregunta.
 
+# Instrucciones de uso
+*El bot no soporta fotos ni audios, no enviar fotos ni audios porque por el momento no funciona.
+*El bot le otorgará un menú principal con todas las cosas que puede hacer por el momento. Un total de 5 opciones. Para acceder a cada una de ellas, EL USUARIO DEBE INGRESAR LA OPCIÓN DEL MENÚ TAL CUAL VIENE, sea mayúscula o minuscula, pero tiene que escribirlo correctamente, de modo que si se introduce algo incorrecto el bot arrojará un mensaje de que no fue detectado un texto referente para las opciones del menú. 
+*El bot arrojará un mensaje de S/N, donde dependiendo la situación, si el usuario elige N, regresará al menú principal o realizará otra acción.
+Solo cuando el bot lo indique, el usuario debe responder con s o n, si escribe otra cosa, el bot no saldrá de ese ciclo hasta que el usuario escriba un mensaje válido.
+*Si el bot lo indica, el usuario puede escribir cancelar para regresar al menú principal.
+
 
 
