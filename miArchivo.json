@@ -1050,7 +1050,10 @@
         "penecito",
         "ereccion",
         "eyaculacion",
-        "reaton"
+        "reaton",
+        "porno",
+        "pornito",
+        "pornografia"
 
       ],
   "mensajesBlacklist" : [
@@ -1229,7 +1232,7 @@
     },
     {
       "pelicula" :"Dragon Ball Z: La batalla de los dioses",
-      "frase": "-Valio la pena esperar con tanta paciencia.\n-¿Enserio? ¿Entonces me voy a transformar en un dios super saiyajin?\nEso lo sabremos cuando empecemos a pelear... Ahora. Ven y enfréntame.",
+      "frase": "-Valio la pena esperar con tanta paciencia.\n-¿Enserio? ¿Entonces me voy a transformar en un dios super saiyajin?\n-Eso lo sabremos cuando empecemos a pelear... Ahora. Ven y enfréntame.",
       "escena":"1"
     },
     {
@@ -1334,7 +1337,7 @@
    },
    {
      "pelicula":"Dragon Ball Z: La batalla de los dioses",
-      "frase":"-Eso no es cierto. Es un hecho que Vegeta es más orgulloso que yo. Todos mis amigos lo saben.\n-Puede ser, pero renunció a su orgullo hace un momento para proteger a los demás.\nLo sé. También renunció a su orgullo como principe...¿No es increíble? Creo que lo respeto más por eso.",
+      "frase":"-Eso no es cierto. Es un hecho que Vegeta es más orgulloso que yo. Todos mis amigos lo saben.\n-Puede ser, pero renunció a su orgullo hace un momento para proteger a los demás.\n-Lo sé. También renunció a su orgullo como principe...¿No es increíble? Creo que lo respeto más por eso.",
       "escena": "22"
    },
    {
@@ -1399,7 +1402,7 @@
    },
    {
     "pelicula":"Dragon Ball Super",
-    "frase":"-Que patético eres. Esperaba más de ti.\n-¡Oye! ¿Que estás diciendo?",
+    "frase":"-Que patético eres. Esperaba más de ti.",
     "escena": "35"
    },
    {
@@ -1412,12 +1415,10 @@
     "frase":"-Dices cosas muy interesantes. ¿No te gusta depender de tus amigos para ser un dios? ¡¿Eso te enoja?!",
     "escena": "37"
    }
-
-
   ]
 
 
-  
+
 }
 
 

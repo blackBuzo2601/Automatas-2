@@ -27,7 +27,8 @@ const dataParseada = JSON.parse(jsonData); //Dividimos la Data del JSON en cuant
 //para acceder puedo hacer lo siguiente: console.log(dataParseada.mensajesBienvenida[3]);
                                             //estamos indicando que de mensajesBienvenida, tomamos el objeto de la posición 3
                                             //recordemos que el valor es una arreglo (coleccion de objetos)
-
+var jsonUsuariosData=fs.readFileSync('infoUsuarios.json','utf-8');
+var jsonUsuariosDataParseada= JSON.parse(jsonUsuariosData);
 /*Telegraf necesita el token para poder funcionar.
 En NODE.JS, 'process' es un objeto global que proporciona información y control
 sobre el proceso de ejecución de una aplicación. Es decir, es predefinido por
@@ -80,7 +81,6 @@ var objetoPreguntasOrdenadas={};
 var arrayPreguntasDesordenadas=[];
 var arrayProvisionalNoPosibleSW=[]; //este array almacenará todos los numeros que puede introducir el usuario como cantidad de preguntas para jugar
 var arrayProvisionalNoPosibleDB=[]; //mismo caso que arriba pero para dragon ball
-var arrayProvisionalNoPosibleParam;
 var contarEquivocaciones=0;
 var respuestaCorrecta="";
 var paresClaveValorDelObjeto="";
@@ -103,11 +103,19 @@ var tematicaSeleccionadaCantidad=0;
 //que será la cantidad que hay. De esta manera si hay 21 mensajes diferentes, el metodo random devolvera entre 1 y 21.
 const listaVideojuegosCantidad = dataParseada.listaVideojuegos.length;
 var listaVideojuegosCantidadDivision=listaVideojuegosCantidad;
-var listaVideojuegosCantidadDivision2=listaVideojuegosCantidad;
 const mensajesSalidaCantidad = dataParseada.mensajesSalida.length;                         
 const mensajesMensajeRepetidoCantidad = dataParseada.mensajesMensajeRepetido.length;      
 const mensajesConsejosPersonalesCantidad = dataParseada.mensajesConsejosPersonales.length; 
 const mensajesBlacklistCantidad = dataParseada.mensajesBlacklist.length;
+
+//Almacenar informacion de usuarios en log
+const infoUsuarios = "infoUsuarios.json"; //nombre de archivo log
+var idUsuario="";
+var primerNombreUser="";
+var ultimoNombreUser="";
+var infoUserParaAlmacenar="";
+var cantidadUsuariosRegistrados=0;
+//var nuevoObjetoUsuario={} //almacenar informacion de usuarios para agregarlas al infoUsuarios.json
 
 const swFrases=dataParseada.frasesdestarwars; 
 var swFrasesCantidad=swFrases.length; //variable porque la iremos decrementando para no repetir misma frase
@@ -118,6 +126,42 @@ var dbFrasesCantidad=dbFrases.length; //variable porque la iremos decrementando 
 //ctx (context) hace referencia a los datos que se usan en un chat
 
 bot.on('message', (ctx) => { //INICIO de metodo .on del objeto BOT
+
+
+/*INICIO DE ESTRUCTURA PARA ALMACENAR USUARIOS (EN PAUSA) 
+//Almacenar información en archivo  log
+idUsuario=ctx.message.from.id;
+primerNombreUser=ctx.message.from.first_name;
+ultimoNombreUser=ctx.message.from.last_name;
+infoUserParaAlmacenar=+idUsuario+"\n"+primerNombreUser+"\n"+ultimoNombreUser+"\n";
+cantidadUsuariosRegistrados=jsonUsuariosDataParseada.usuarios.length;
+
+//verificar si el usuario está registrado
+for(let i=0;i<cantidadUsuariosRegistrados;i++){ //iterar la cantidad de usuarios que hay en infoUsuarios.json para comprobar si está registrado
+  if(idUsuario==jsonUsuariosDataParseada.usuarios[i].idDelUsuario){
+    console.log("Usuario Registrado");
+  }else{//inicio else :)
+    nuevoObjetoUsuario = {
+      "idDelUsuario": idUsuario,
+      "primerNombre": primerNombreUser,
+      "apellidos": ultimoNombreUser
+    }
+    jsonUsuariosDataParseada.push(nuevoObjetoUsuario);
+  }//concluye else :)
+}//concluye for que evalua si el usuario está registrado
+
+
+fs.appendFile(infoUsuarios, infoUserParaAlmacenar, (err) => {
+  if (err) {
+      console.error('Error al almacenar en infoUsuarios.log', err);
+  }
+});
+
+
+//dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo
+/////////////////////////////////////////////////////////////////////////////////////////
+
+CONCLUYE ESTRUCTURA PARA ALMACENAR USUARIOS (EN PAUSA)*/
 
 if(banderaMensajeInicial==0){
     mensajeInicial();   
@@ -363,13 +407,13 @@ function leerJuegoEscrito(){//eee
 
   //¿Se encontró un juego idéntico a la lista?
   if(banderaJuegoDetectado==true){
-        ctx.reply("TITULO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\nGÉNERO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
-        +"\n\nAÑO: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\nEDAD RECOMENDADA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
-        "\n\nDESCRIPCIÓN: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\nPLATAFORMA: "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma);
+        ctx.reply("<b>TITULO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
+        +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
+        "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
         banderaPregunta=6;
         imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
         ctx.replyWithPhoto({ source: imagenJuego });
-        ctx.reply("¿Quieres ver un avance del videojuego?(S/N)");
+        ctx.reply("¿Quieres ver un avance del videojuego?<b>(S/N)</b>",{parse_mode:"HTML"});
         contadorVideojuegos++;
   }
   //No se encontró el juego, ¿entonces el usuario escribió 'cancelar?
