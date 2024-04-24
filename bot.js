@@ -235,6 +235,8 @@ if(banderaNegativaDetectada==true){
         case 14: establecerCantidadPreguntas();
           break;
 
+        case 15: establecerEraJuegos();
+          break;
 
         case 0:
           contadorMsjRepetido();      
@@ -263,7 +265,7 @@ function mensajeInicial(){//FUNCION QUE SERÁ LLAMADA UNICAMENTE CUANDO SE ENVÍ
 
 function detectorDeClaves(){ //inicio funcion detectorDeClaves
   switch(mensajeRecibidoMinusculas){
-    case "recomendar videojuego": recomiendaJuegos();
+    case "recomendar videojuego": preguntaSortearJuegos();
         break;  
     
     case "consejo personal": consejosPersonales();
@@ -289,6 +291,35 @@ function detectorDeClaves(){ //inicio funcion detectorDeClaves
   }
 }//fin funcion detectorDeClaves
 
+function preguntaSortearJuegos(){//inicia funcion preguntaSortearJuegos
+  ctx.reply("Te puedo recomendar los videjuegos por era como también puedo hacerlo aleatoriamente. Para regresar al menú principal escribe 'cancelar'.\nElige una opción indicando el número por favor:\n\n1. Era Retro\n\n2. Era Medio Moderna\n\n3. Era Moderna\n\n4. Recomendar aleatoriamente");
+  banderaPregunta=15;
+}//concluye funcion preguntaSortearJuegos
+
+
+//banderaPregunta=15
+function establecerEraJuegos(){//inicia funcion establecerEraJuegos
+  switch(mensajeRecibidoMinusculas){
+    case "1": recomiendaJuegosRetro();
+      break;
+    case "2":
+      break;
+    case "3":
+      break;
+    case "4": recomiendaJuegos();
+      break;
+    
+    case "cancelar": 
+    ctx.reply("Regresando al menú principal...");
+    banderaPregunta=0;
+    mensajeInicial();  
+      break;
+
+    default: ctx.reply("Por favor, introduce un número válido.\nTe puedo recomendar los videjuegos por era como también puedo hacerlo aleatoriamente. Elige una opción indicando el número por favor:\n\n1. Era Retro\n\n2. Era Medio Moderna\n\n3. Era Moderna\n\n4. Recomendar aleatoriamente");
+      break;
+  }
+}//concluye funcion establecerEraJuegos
+
 function recomiendaJuegos(){
       if(contadorVideojuegos>=5 && banderaDeCompartirLista==false){
         ctx.reply("Ya me has pedido que te recomiende videojuegos "+(contadorVideojuegos)+" veces. ¿No quieres que mejor te comparta la lista y tu eliges el juego? <b>(S/N)</b>",{parse_mode:"HTML"});
@@ -307,6 +338,20 @@ function recomiendaJuegos(){
         banderaDeCompartirLista=false;
         contadorVideojuegos++;
       }//concluye ELSE  
+}
+
+function recomiendaJuegosRetro(){ //1996-2000
+    var miNuevoArray=[];
+
+    for (let i=0;i<listaVideojuegosCantidad;i++){
+        if(dataParseada.listaVideojuegos[i].año.includes("2008")){
+          miNuevoArray.push(dataParseada.listaVideojuegos[i]);
+        }
+    }
+    for (let i=0;i<miNuevoArray.length;i++){
+      console.log("JUEGOS ENCONTRADOS CON ERA RETRO: "+miNuevoArray[i].titulo);
+    }
+    
 }
 
 //las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
