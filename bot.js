@@ -61,6 +61,11 @@ var rutaCarpeta;
 var banderaVideoSinCensura=false;
 var imagenJuego="";
 var nombreVideo="";
+var inicioEraJuego="";
+var finEraJuego="";
+var arrayJuegosEras=[];
+var diferenciaAños=0;
+
 var idDelVideojuego="00";
 var cantidadClipsSinCensura=4;
 var cantidadClipsConCensura=4;
@@ -300,12 +305,24 @@ function preguntaSortearJuegos(){//inicia funcion preguntaSortearJuegos
 //banderaPregunta=15
 function establecerEraJuegos(){//inicia funcion establecerEraJuegos
   switch(mensajeRecibidoMinusculas){
-    case "1": recomiendaJuegosRetro();
+    case "1": 
+    inicioEraJuego=1996;   //este par de variables se colocan aquí, con el propósito de que si así lo desea, el usuario
+    finEraJuego=2000;     //puede establecer cuales son sus propios topes de años para establecer las Eras de los juegos.
+    recomiendaJuegosPorEra();
       break;
+
     case "2":
+      inicioEraJuego=2001;
+      finEraJuego=2010;
+      recomiendaJuegosPorEra();
       break;
+
     case "3":
+      inicioEraJuego=2011;
+      finEraJuego=2020;
+      recomiendaJuegosPorEra();
       break;
+
     case "4": recomiendaJuegos();
       break;
     
@@ -340,19 +357,26 @@ function recomiendaJuegos(){
       }//concluye ELSE  
 }
 
-function recomiendaJuegosRetro(){ //1996-2000
-    var miNuevoArray=[];
+function recomiendaJuegosPorEra(){ //INICIO funcion recomiendaJuegosPorEra
+diferenciaAños=finEraJuego-inicioEraJuego;
+    for (let i=0;i<=diferenciaAños;i++){//inicio for principal para sortear juegos por era       
 
-    for (let i=0;i<listaVideojuegosCantidad;i++){
-        if(dataParseada.listaVideojuegos[i].año.includes("2008")){
-          miNuevoArray.push(dataParseada.listaVideojuegos[i]);
-        }
-    }
-    for (let i=0;i<miNuevoArray.length;i++){
-      console.log("JUEGOS ENCONTRADOS CON ERA RETRO: "+miNuevoArray[i].titulo);
+        for(let e=0;e<listaVideojuegosCantidad;e++){//inicio for subprincipal
+              if(dataParseada.listaVideojuegos[e].año==inicioEraJuego.toString()){
+                arrayJuegosEras.push(dataParseada.listaVideojuegos[e]);
+              }
+        }//concluye for subprincipal
+        inicioEraJuego++;
+        
+    }//concluye for principal para sortear juegos por era
+
+    //IMPRIMIR EN CONSOLA PARA PROBAR EL FUNCIONAMIENTO
+    for (let f=0;f<arrayJuegosEras.length;f++){
+     console.log(arrayJuegosEras[f].titulo);
     }
     
-}
+}//CONCLUYE funcion recomiendaJuegosPorEra
+
 
 //las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
 //el siguiente mensaje, si es S, N o si es otro mensaje que no sea alguno de esos, para seguir una estructura
