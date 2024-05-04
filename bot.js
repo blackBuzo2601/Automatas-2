@@ -383,16 +383,28 @@ console.log("mostrando arrayJuegosEras al inicio de la funcion: "+arrayJuegosEra
 function recomendarJuegoIndividual(){
   mensajeAleatorio(arrayJuegosEras.length); //generar No. aleatorio en el rango de la cantidad de juegos de dicha epoca
   posicionJuegoDetectado=randomEntero; //el numero aleatorio generado en la funcion anterior, almacenarlo en la variable
-  ctx.reply("<b>TITULO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
-  +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
-  "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
-  imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
+  console.log("NUMERO ALEATORIO GENERADO: "+posicionJuegoDetectado);
+  for(let b=0;b<arrayJuegosEras.length;b++){
+    console.log(arrayJuegosEras[b].titulo); //ver el array completo para ver que coincida con la posición
+  }
+  console.log("JUEGO QUE DEBE MOSTRAR: "+arrayJuegosEras[posicionJuegoDetectado].titulo);
+
+  ctx.reply("<b>TITULO:</b> "+arrayJuegosEras[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+arrayJuegosEras[posicionJuegoDetectado].genero
+  +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+arrayJuegosEras[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+arrayJuegosEras[posicionJuegoDetectado].edadRecomendada+
+  "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+arrayJuegosEras[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+arrayJuegosEras[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
+  imagenJuegoActual=arrayJuegosEras[posicionJuegoDetectado].imagen; //almacenar ruta del juego actual
+  imagenJuegoActual=imagenJuegoActual.toString(); //convertir ruta a string
+  console.log("variable imagenJuegoActual luego de pasar a string: "+imagenJuegoActual);
+  imagenJuego=imagenJuegoActual; //almacenar ruta de la imagen
+  imagenJuego=imagenJuego.toString();
+  console.log("variable imagenjuego luego de pasar a string: "+imagenJuego);
   ctx.replyWithPhoto({ source: imagenJuego });
+
   ctx.reply("¿Quieres ver un avance del videojuego? <b>(S/N)</b>", {parse_mode:"HTML"});
   banderaPregunta=6; //para preguntar si quiere ver el avance del juego
-  
-  console.log("juego que se va borrar del array: "+arrayJuegosEras[randomEntero].titulo);
-  arrayJuegosEras.splice(randomEntero,1); //eliminar dicha posición, para que no lo vuelva a generar
+
+  console.log("juego que se va borrar del array: "+arrayJuegosEras[posicionJuegoDetectado].titulo);
+  arrayJuegosEras.splice(posicionJuegoDetectado,1); //eliminar dicha posición, para que no lo vuelva a generar
   
   for(let i=0;i<arrayJuegosEras.length;i++){
     console.log("Juego: "+arrayJuegosEras[i].titulo);
