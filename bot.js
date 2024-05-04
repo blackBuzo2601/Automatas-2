@@ -65,6 +65,7 @@ var inicioEraJuego="";
 var finEraJuego="";
 var arrayJuegosEras=[];
 var diferenciaAños=0;
+var banderaPorEra=false; //Esta bandera, cambiara el flujo de la funcion snEnviarAvance()
 
 var idDelVideojuego="00";
 var cantidadClipsSinCensura=4;
@@ -243,6 +244,9 @@ if(banderaNegativaDetectada==true){
         case 15: establecerEraJuegos();
           break;
 
+        case 16: mostrarJuegosPorEra();
+          break;
+
         case 0:
           contadorMsjRepetido();      
           if(contadorMensajesIguales>=2){//aqui entra cuando ya se envió el 3er mensaje igualito
@@ -358,6 +362,7 @@ function recomiendaJuegos(){
 }
 
 function recomiendaJuegosPorEra(){ //INICIO funcion recomiendaJuegosPorEra
+banderaPorEra=true;
 diferenciaAños=finEraJuego-inicioEraJuego;
 arrayJuegosEras=[]; //reiniciar arra
 console.log("mostrando arrayJuegosEras al inicio de la funcion: "+arrayJuegosEras.length);
@@ -371,25 +376,35 @@ console.log("mostrando arrayJuegosEras al inicio de la funcion: "+arrayJuegosEra
         inicioEraJuego++;
       }//concluye for principal para sortear juegos por era
       console.log("mostrando arrayJuegosEras al fin de la funcion: "+arrayJuegosEras.length);
-  
-    mensajeAleatorio(arrayJuegosEras.length);
-    posicionJuegoDetectado=randomEntero; 
-    ctx.reply("<b>TITULO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
-    +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
-    "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
-    banderaPregunta=6;
-    imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
-    ctx.replyWithPhoto({ source: imagenJuego });
-    ctx.reply("¿Quieres ver un avance del videojuego? <b>(S/N)</b>", {parse_mode:"HTML"});
-    banderaDeCompartirLista=false;
-    contadorVideojuegos++;
-
+      recomendarJuegoIndividual();
 }//CONCLUYE funcion recomiendaJuegosPorEra
 
+//Cuando se selecciona una era, se usa esta función para generar los juegos de dicha era.
+function recomendarJuegoIndividual(){
+  mensajeAleatorio(arrayJuegosEras.length); //generar No. aleatorio en el rango de la cantidad de juegos de dicha epoca
+  posicionJuegoDetectado=randomEntero; //el numero aleatorio generado en la funcion anterior, almacenarlo en la variable
+  ctx.reply("<b>TITULO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
+  +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
+  "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
+  imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
+  ctx.replyWithPhoto({ source: imagenJuego });
+  ctx.reply("¿Quieres ver un avance del videojuego? <b>(S/N)</b>", {parse_mode:"HTML"});
+  banderaPregunta=6; //para preguntar si quiere ver el avance del juego
+  
+  console.log("juego que se va borrar del array: "+arrayJuegosEras[randomEntero].titulo);
+  arrayJuegosEras.splice(randomEntero,1); //eliminar dicha posición, para que no lo vuelva a generar
+  
+  for(let i=0;i<arrayJuegosEras.length;i++){
+    console.log("Juego: "+arrayJuegosEras[i].titulo);
+  }
+  console.log("Tamaño del array despues de borrar la posición: "+arrayJuegosEras.length);
+}
 
-//las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
-//el siguiente mensaje, si es S, N o si es otro mensaje que no sea alguno de esos, para seguir una estructura
-//de menu principal.
+/*las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
+el siguiente mensaje, si es S, N o si es otro mensaje que no sea alguno de esos, para seguir una estructura
+de menu principal.*/
+
+//banderaPregunta=6
 function snEnviarAvanceJuego(){
   switch(mensajeRecibidoMinusculas){
     case "s": enviarAvanceJuego();
@@ -426,10 +441,16 @@ function enviarAvanceJuego(){
 
 function snFuncionjuegos(){
   switch(mensajeRecibidoMinusculas){//inicio switch
-    case "s": recomiendaJuegos();
+    case "s": 
+    if(banderaPorEra=true){
+      recomendarJuegoIndividual();
+    }else{
+      recomiendaJuegos();
+    }
       break;
 
     case "n": ctx.reply("Regresando al menu principal... ");
+      banderaPorEra=false;
       banderaPregunta=0;
       contadorVideojuegos=0; //reiniciar contador
       mensajeInicial();
