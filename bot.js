@@ -359,6 +359,8 @@ function recomiendaJuegos(){
 
 function recomiendaJuegosPorEra(){ //INICIO funcion recomiendaJuegosPorEra
 diferenciaAños=finEraJuego-inicioEraJuego;
+arrayJuegosEras=[]; //reiniciar arra
+console.log("mostrando arrayJuegosEras al inicio de la funcion: "+arrayJuegosEras.length);
     for (let i=0;i<=diferenciaAños;i++){//inicio for principal para sortear juegos por era       
 
         for(let e=0;e<listaVideojuegosCantidad;e++){//inicio for subprincipal
@@ -367,14 +369,21 @@ diferenciaAños=finEraJuego-inicioEraJuego;
               }
         }//concluye for subprincipal
         inicioEraJuego++;
-        
-    }//concluye for principal para sortear juegos por era
+      }//concluye for principal para sortear juegos por era
+      console.log("mostrando arrayJuegosEras al fin de la funcion: "+arrayJuegosEras.length);
+  
+    mensajeAleatorio(arrayJuegosEras.length);
+    posicionJuegoDetectado=randomEntero; 
+    ctx.reply("<b>TITULO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].genero
+    +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].edadRecomendada+
+    "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+dataParseada.listaVideojuegos[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
+    banderaPregunta=6;
+    imagenJuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].imagen; //almacenar ruta de la imagen
+    ctx.replyWithPhoto({ source: imagenJuego });
+    ctx.reply("¿Quieres ver un avance del videojuego? <b>(S/N)</b>", {parse_mode:"HTML"});
+    banderaDeCompartirLista=false;
+    contadorVideojuegos++;
 
-    //IMPRIMIR EN CONSOLA PARA PROBAR EL FUNCIONAMIENTO
-    for (let f=0;f<arrayJuegosEras.length;f++){
-     console.log(arrayJuegosEras[f].titulo);
-    }
-    
 }//CONCLUYE funcion recomiendaJuegosPorEra
 
 
