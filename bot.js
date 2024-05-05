@@ -385,7 +385,10 @@ console.log("mostrando arrayJuegosEras al inicio de la funcion: "+arrayJuegosEra
 function recomendarJuegoIndividual(){
   if(arrayJuegosEras.length==0){ //comprobar si no se vació el array, es decir, no puede seguir recomendando juegos
     ctx.reply("Esos son todos los juegos correspondientes a esta era.\nRegresando al menú principal...");
-    //pene
+    banderaPorEra=false;
+    banderaPregunta=0;
+    contadorVideojuegos=0; //reiniciar contador
+    mensajeInicial();
   }else{//ELSE X
   mensajeAleatorio(arrayJuegosEras.length); //generar No. aleatorio en el rango de la cantidad de juegos de dicha epoca
   posicionJuegoDetectado=randomEntero; //el numero aleatorio generado en la funcion anterior, almacenarlo en la variable
