@@ -60,6 +60,8 @@ var elVideo;
 var rutaCarpeta;
 var banderaVideoSinCensura=false;
 var imagenJuego="";
+var imagenJuegoActual="";
+var videoJuegoActual="";
 var nombreVideo="";
 var inicioEraJuego="";
 var finEraJuego="";
@@ -381,6 +383,10 @@ console.log("mostrando arrayJuegosEras al inicio de la funcion: "+arrayJuegosEra
 
 //Cuando se selecciona una era, se usa esta función para generar los juegos de dicha era.
 function recomendarJuegoIndividual(){
+  if(arrayJuegosEras.length==0){ //comprobar si no se vació el array, es decir, no puede seguir recomendando juegos
+    ctx.reply("Esos son todos los juegos correspondientes a esta era.\nRegresando al menú principal...");
+    //pene
+  }else{//ELSE X
   mensajeAleatorio(arrayJuegosEras.length); //generar No. aleatorio en el rango de la cantidad de juegos de dicha epoca
   posicionJuegoDetectado=randomEntero; //el numero aleatorio generado en la funcion anterior, almacenarlo en la variable
   console.log("NUMERO ALEATORIO GENERADO: "+posicionJuegoDetectado);
@@ -388,7 +394,6 @@ function recomendarJuegoIndividual(){
     console.log(arrayJuegosEras[b].titulo); //ver el array completo para ver que coincida con la posición
   }
   console.log("JUEGO QUE DEBE MOSTRAR: "+arrayJuegosEras[posicionJuegoDetectado].titulo);
-
   ctx.reply("<b>TITULO:</b> "+arrayJuegosEras[posicionJuegoDetectado].titulo+"\n\n<b>GÉNERO:</b> "+arrayJuegosEras[posicionJuegoDetectado].genero
   +"\n\n<b>AÑO DE LANZAMIENTO:</b> "+arrayJuegosEras[posicionJuegoDetectado].año+"\n\n<b>EDAD RECOMENDADA:</b> "+arrayJuegosEras[posicionJuegoDetectado].edadRecomendada+
   "\n\n<b>DESCRIPCIÓN GENERAL:</b> "+arrayJuegosEras[posicionJuegoDetectado].descripcionDelJuego+"\n\n<b>PLATAFORMA:</b> "+arrayJuegosEras[posicionJuegoDetectado].plataforma,{parse_mode: "HTML"});
@@ -400,6 +405,7 @@ function recomendarJuegoIndividual(){
   console.log("variable imagenjuego luego de pasar a string: "+imagenJuego);
   ctx.replyWithPhoto({ source: imagenJuego });
 
+  idDelVideojuego=arrayJuegosEras[posicionJuegoDetectado].id; //almacenar el ID PERO en el array generado, sigue buscarlo en el JSON
   ctx.reply("¿Quieres ver un avance del videojuego? <b>(S/N)</b>", {parse_mode:"HTML"});
   banderaPregunta=6; //para preguntar si quiere ver el avance del juego
 
@@ -410,7 +416,10 @@ function recomendarJuegoIndividual(){
     console.log("Juego: "+arrayJuegosEras[i].titulo);
   }
   console.log("Tamaño del array despues de borrar la posición: "+arrayJuegosEras.length);
-}
+  }//ELSE X
+  
+
+}//fin funcion recomendarJuegoIndividual()
 
 /*las funciones s/n que vienen acompañadas de las funciones en si que devuelven los mensajes, son para evaluar
 el siguiente mensaje, si es S, N o si es otro mensaje que no sea alguno de esos, para seguir una estructura
@@ -432,29 +441,54 @@ function snEnviarAvanceJuego(){
   }
 }
 
-function enviarAvanceJuego(){
-  idDelVideojuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].id;
-  nombreVideo="avance"+idDelVideojuego;
-  nombreVideo=nombreVideo.toString();
-  elVideo = 'trailersjuegos/'+nombreVideo+'.mp4';
+//111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+function enviarAvanceJuego(){//inicia funcion enviarAvanceJuego
 
-  fs.readFile(elVideo, (err, videoData) => {
+  if(banderaPorEra==true){ //si se esta refiriendo a un juego individual de una era en particular
+  
+    videoJuegoActual="avance"+idDelVideojuego;
+    videoJuegoActual=videoJuegoActual.toString();
+    elVideo= "trailersjuegos/"+videoJuegoActual+".mp4";
+
+    fs.readFile(elVideo, (err, videoData) => {
       if(err){
           ctx.reply('Error al detectar el video en pc o video no disponible para este juego.');
         }else {
           ctx.reply("<b>Enviando avance...</b>",{parse_mode:"HTML"});
           ctx.replyWithVideo({source:videoData});
       }
-  }); //fin readFile que envia el video
-  ctx.reply("¿Quieres otra recomendación de videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
-  banderaPregunta=1;
-}
+    }); //fin readFile que envia el video
+    ctx.reply("¿Quieres otra recomendación de videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
+    banderaPregunta=1;
+
+//--------------------------------------------------------------------------------------------------------
+  }else{//si se trata de videojuegos en general (aleatorio)
+    idDelVideojuego=dataParseada.listaVideojuegos[posicionJuegoDetectado].id;
+    nombreVideo="avance"+idDelVideojuego;
+    nombreVideo=nombreVideo.toString();
+    elVideo = 'trailersjuegos/'+nombreVideo+'.mp4';
+  
+    fs.readFile(elVideo, (err, videoData) => {
+        if(err){
+            ctx.reply('Error al detectar el video en pc o video no disponible para este juego.');
+          }else {
+            ctx.reply("<b>Enviando avance...</b>",{parse_mode:"HTML"});
+            ctx.replyWithVideo({source:videoData});
+        }
+    }); //fin readFile que envia el video
+    ctx.reply("¿Quieres otra recomendación de videojuego? <b>(S/N)</b>",{parse_mode:"HTML"});
+    banderaPregunta=1;
+  }
+
+}//concluye funcion enviarAvanceJuego
+//111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 
 
+//banderaPregunta=1
 function snFuncionjuegos(){
   switch(mensajeRecibidoMinusculas){//inicio switch
     case "s": 
-    if(banderaPorEra=true){
+    if(banderaPorEra==true){
       recomendarJuegoIndividual();
     }else{
       recomiendaJuegos();
@@ -1063,7 +1097,7 @@ function reiniciarArraysJuegos(){
   paresClaveValorDelObjeto = [];
 }
 
-//banderPregunta=13
+//banderaPregunta=13
 function snVolverAJugar(){
   switch(mensajeRecibidoMinusculas){
     case "s": 
