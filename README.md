@@ -16,7 +16,6 @@ Ultima Actualización: 13/04/2024
 * Elaborarlo en forma de menú principal, haciendo uso de palabras clave como S,N para realizar nuevamente una acción o regresar al menú principal.
 * Reforzar mis conocimientos en JS.
 * Realizar un sistema de login desde cero, es decir, no utilizaremos una herramienta externa para validar credenciales. Cuando un usuario se "Registra" sus datos son almacenados en un archivo de texto. El bot cuando reciba un mensaje, llamará a una función que analiza dicho archivo de texto, si el ID del usuario que mandó mensaje se encuentra en el archivo de texto, significa que está registrado, de no ser así, el código le solicitará al usuario registrarse y no pasará de ahí hasta que el usuario otorgue sus credenciales.
-* Usar la API de Google Maps para enlazar mi perfil personal con mi ubicación y así el bot indicar si me encuentro en el ITE o si estoy lejos del ITE.
 
 # Metas no tan prioritarias
 * Que el bot responda por mí, cuando un mensaje es enviado a mi perfil personal.
