@@ -1,9 +1,9 @@
 # Automatas-2 BOT DE TELEGRAM DE ACCIONES DIVERSAS
 Autor(es): Buzo Zamora Elian
 
-Estatus: Borrador
+Estatus: Final para entrega de proyecto
 
-Ultima Actualización: 13/04/2024
+Ultima Actualización: 30/05/2024
 ## Contenido
 * Metas 
 * Metas no tan prioritarias
@@ -46,4 +46,8 @@ Solo cuando el bot lo indique, el usuario debe responder con s o n, si escribe o
 *Si el bot lo indica, el usuario puede escribir cancelar para regresar al menú principal.
 
 
+# Objetivos sin alcanzar
+*El bot funciona en su totalidad en todas las opciones que proporciona. Puede ser manipulado como un bot que sirva como asistente, cambiando toda la información que éste otorga. Pero no se pudo lograr que el bot interactúe con varios usuarios a la vez, debido a que se programó de una manera que un usuario está interactuando con él, y son muchas variables y banderas que cambian su estado a medida que un usuario se despliega por el menu y por las distintas opciones que el bot ofrece, por lo que, si es posible lograrlo, pero por cuestión de tiempo no se alcanza a desarrollar dicha funcionalidad hasta el momento.
 
+# Url del repositorio
+*https://github.com/blackBuzo2601/Automatas-2
